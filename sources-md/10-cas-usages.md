@@ -1,0 +1,130 @@
+# Chapitre 10 — Cas d’usage concrets
+
+---
+
+## 10.1 Introduction
+
+Après avoir défini l’architecture et ses extensions, il est temps de voir comment elles se traduisent **dans le réel**.  
+Ce chapitre illustre des cas d’usage concrets dans plusieurs secteurs où un pipeline RAG antifragile peut apporter une valeur critique.
+
+---
+
+## 10.2 Santé : lancer l’IA dans une mutuelle de 4 millions de bénéficiaires (MGEN)
+
+### Contexte
+La MGEN, mutuelle historique de l’Éducation nationale, gère les données de santé de millions de personnes. En 2024, aucune équipe IA interne n’existait. La mission : constituer cette équipe, identifier les cas d’usage et poser les bases d’une architecture RAG compatible avec les exigences du secteur santé.
+
+### Pipeline mis en place
+- Montée en compétences de l’équipe sur GCP + S3NS (cloud souverain santé).
+- Ingestion des protocoles internes, FAQ et documentation métier.
+- Retrieval hybride avec filtrage par domaine (optique, dentaire, hospitalisation).
+- Génération encadrée avec citations obligatoires (numéros de protocole).
+- Risk governor : blocage automatique de toute recommandation médicale directe.
+- Hébergement souverain France (exigence données de santé).
+
+### Résultat
+- Première culture IA/RAG installée dans l’organisation.
+- Priorisation des cas d’usage par impact et faisabilité.
+- Pipeline conforme aux contraintes santé dès le départ.  
+
+---
+
+## 10.3 Droit : copilote juridique traçable (Plaide)
+
+### Contexte
+Les avocats passent en moyenne 5 heures à analyser un nouveau dossier : trier les pièces (audios, SMS, captures, mails, scans), construire une chronologie, identifier les points forts et faibles. Plaide est né de ce constat.
+
+### Pipeline mis en place
+- Upload en vrac de toutes les pièces : audios, SMS, captures d’écran, mails, documents scannés.
+- Ingestion multimodale : transcription multi-locuteurs (Speech-to-Text), OCR intelligent, extraction de métadonnées.
+- Retrieval hybride sur l’ensemble du dossier structuré.
+- Génération de livrables : chronologie, inventaire des parties, points forts/faibles, synthèse structurée.
+- Assistant conversationnel : l’avocat pose des questions en langage naturel, les réponses sont sourcées (pièce, page, horodatage).
+- Hébergement France, chiffrement E2E, RGPD natif.
+
+### Résultat
+- Analyse complète d’un dossier en 15 minutes (vs 5 heures).
+- Chaque réponse reliée à sa pièce source.
+- Adoption en beta par des cabinets comme outil de productivité.
+
+---
+
+## 10.4 Conformité & Industrie : du NLP anti-blanchiment à l’indexation documentaire
+
+### Contexte — Fircosoft (LexisNexis Risk Solutions)
+Dans le secteur de la conformité financière, les algorithmes NLP de détection de blanchiment d’argent (AML) doivent traiter des millions de transactions avec zéro tolérance aux faux négatifs. Chaque décision doit être auditée, chaque donnée cloisonnée.
+
+### Contexte — Renault Digital
+L’équipe INDX (Indexation) transforme des milliers de documents techniques non structurés (SharePoint) en bases vectorielles interrogeables via MongoDB Atlas. Le défi : multi-tenancy strict (données confidentielles par marque/projet), gouvernance des accès, et scalabilité industrielle.
+
+### Pipeline mis en place
+- Ingestion robuste avec OCR, nettoyage et extraction de métadonnées techniques.
+- Cloisonnement strict des données par namespace (projet, marque, niveau de confidentialité).
+- Journalisation complète de chaque accès et requête.
+- Risk governor : blocage automatique de toute réponse contenant des données hors périmètre utilisateur.
+- Observabilité : dashboards coût/latence/qualité par pipeline.
+
+### Résultat
+- Zéro fuite de données sensibles.
+- Connaissance technique centralisée et accessible.
+- Auditabilité conforme aux exigences industrielles.  
+
+---
+
+## 10.5 Éducation : générateur pédagogique intelligent (PedaGen)
+
+### Contexte
+Les enseignants français passent des heures à créer des cours, exercices et évaluations adaptés à chaque niveau et à chaque profil d’élève. PedaGen automatise cette création en s’appuyant sur les programmes officiels.
+
+### Pipeline mis en place
+- RAG branché sur une base vectorielle des programmes Eduscol + manuels scolaires (Hachette, Nathan, Hatier).
+- Retrieval filtré par niveau (primaire, collège, lycée) et par matière.
+- Génération en 60 secondes : cours complet + exercices 3 niveaux de difficulté + évaluations.
+- Adaptations automatiques pour profils TDAH et dyslexie.
+- Export PDF professionnel prêt à distribuer.
+- Vérification par critic-LLM : cohérence pédagogique, adéquation au niveau, absence de contenus hors programme.
+
+### Résultat
+- Génération complète en moins d’une minute.
+- Contenus conformes aux programmes officiels.
+- Offres prévues : Établissement et Académie (on-premise, API).  
+
+---
+
+## 10.6 Finance : copilote réglementaire
+
+### Contexte
+Les banques doivent suivre des réglementations complexes (Bâle III, MiFID II).  
+Pipeline fragile = risque d’erreurs coûteuses.  
+
+### Pipeline mis en place
+- Ingestion continue des textes réglementaires.  
+- Retrieval hybride + filtres par juridiction.  
+- Génération encadrée avec versioning.  
+- Gouverneur de risque pour bloquer toute réponse non conforme.  
+
+### Résultat
+- Sécurité juridique renforcée.  
+- Gain de productivité pour les analystes.  
+- Réduction du risque d’amendes.  
+
+---
+
+## 10.7 Tableau récapitulatif
+
+| Secteur   | Expérience | Risque principal | Solution | Résultat |
+|-----------|-----------|-----------------|----------|----------|
+| Santé     | MGEN | Données sensibles, hallucinations | Cloud souverain S3NS + critic-LLM | Culture IA installée, conformité |
+| Droit     | Plaide | Jurisprudences inventées | Citations oblig. + audit + OCR | Analyse 15 min vs 5h |
+| Industrie | Renault / Fircosoft | Fuites de secrets, AML | Cloisonnement + journalisation | Zéro fuite, auditabilité |
+| Éducation | PedaGen | Contenus hors programme | RAG Eduscol + critic pédagogique | Génération < 60s |
+| Finance   | Fircosoft (AML) | Non-conformité | Risk governor + zéro tolérance FN | Conformité, audit |
+
+---
+
+## 10.8 Conclusion et transition
+
+Ces cas d’usage montrent que les pipelines RAG antifragiles ne sont pas théoriques :  
+👉 ils apportent une **valeur critique** dans des environnements sensibles.  
+
+Le prochain chapitre (Chapitre 11) comparera ces approches avec des **alternatives non-RAG** (finetuning, règles expertes, moteurs de recherche traditionnels).

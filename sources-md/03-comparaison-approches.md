@@ -1,0 +1,198 @@
+# Chapitre 3 — Comparaison des approches et problèmes persistants
+
+---
+
+## Panorama des options actuelles
+
+Aujourd’hui, quatre grandes familles d’approches coexistent pour “brancher” l’IA générative à des données externes :
+
+1. **Frameworks intégrés** (LangChain, LlamaIndex, Haystack, etc.)  
+2. **Bases vectorielles seules** (Weaviate, Milvus, Qdrant…)  
+3. **Approches low-code / visuelles** (RAGFlow, Flowise…)  
+4. **Pipelines modulaires sur mesure** (architectures ouvertes, orchestrées et gouvernées)
+
+Chaque approche répond à des besoins différents, avec ses atouts, ses limites et son niveau de maturité.
+
+---
+
+## 1. Les frameworks intégrés
+
+### Exemples
+- **LangChain** → pionnier, grande communauté, riche en connecteurs.  
+- **LlamaIndex** → centré sur ingestion et structuration documentaire.  
+- **Haystack** → robuste sur retrieval et QA classique.  
+
+### Points forts
+- Rapidité de prototypage.  
+- Large écosystème de connecteurs.  
+- Documentation et communauté actives.  
+
+### Limites
+- Couplage fort aux abstractions internes du framework.  
+- Complexité croissante en production (effet “code spaghetti”).  
+- Gouvernance et sécurité souvent laissées de côté.  
+- Stabilité relative : certaines API évoluent vite.  
+
+👉 Pertinent pour **prototyper rapidement** ou explorer un use case, mais demande des efforts supplémentaires pour une mise en production robuste.
+
+---
+
+## 2. Les bases vectorielles seules
+
+### Exemples
+- **Weaviate**, **Milvus**, **Qdrant**.  
+
+### Points forts
+- Très performantes et scalables.  
+- Fonctionnalités avancées de recherche (hybrid search, re-ranking, filtres).  
+- Excellentes briques techniques pour la mémoire documentaire.  
+
+### Limites
+- Ce ne sont pas des pipelines complets : ingestion, prompts et vérification restent à orchestrer.  
+- Gouvernance et conformité peu couvertes nativement.  
+
+Adaptées comme **fondation mémoire** dans une architecture RAG, mais nécessitent une intégration dans un pipeline plus large.
+
+---
+
+## 3. Les approches low-code
+
+### Exemples
+- **RAGFlow**, **Flowise**.  
+
+### Points forts
+- Interfaces visuelles accessibles.  
+- Permettent à des non-développeurs de prototyper rapidement.  
+- Très utiles pour démonstrations ou ateliers d’idéation.  
+
+### Limites
+- Flexibilité réduite face à des besoins complexes.  
+- Gouvernance quasi inexistante.  
+- Difficultés à industrialiser et monitorer à grande échelle.  
+
+Conviennent pour **évangéliser, prototyper ou tester des concepts**, mais limitées pour une exploitation critique.
+
+---
+
+## 4. Le pipeline modulaire
+
+### Caractéristiques
+- **Modules indépendants** : ingestion, retrieval, génération, vérification.  
+- **Orchestrateur central** : coordination et gouvernance.  
+- **Agnosticité** : liberté de changer de modèle, base ou cloud.  
+- **Observabilité native** : logs, métriques, auditabilité.  
+
+### Points forts
+- Robustesse et résilience.  
+- Traçabilité et conformité intégrées.  
+- Flexibilité (adapter chaque module sans tout réécrire).  
+- Capacité à s’améliorer (approche antifragile).  
+
+### Limites
+- Mise en place plus exigeante (design upfront, ingénierie solide).  
+- Coût initial supérieur à un framework clé en main.  
+
+👉 C’est l’**approche la plus durable et souveraine**, pensée pour la production critique.
+
+---
+
+## 📊 Tableau comparatif
+
+| Approche               | Points forts                         | Limites                           | Maturité | Cas idéal d’usage |
+|-------------------------|--------------------------------------|-----------------------------------|----------|-------------------|
+| **LangChain**           | Rapidité, large communauté           | Complexité, couplage, gouvernance faible | ⭐⭐⭐☆    | POC, prototypage rapide |
+| **LlamaIndex**          | Ingestion avancée, structuration     | API changeantes, monitoring limité | ⭐⭐⭐     | Gestion documentaire |
+| **Haystack**            | Retrieval robuste, QA classique      | Moins flexible côté génération     | ⭐⭐⭐⭐    | Recherche textuelle, QA |
+| **RAGFlow / Flowise**   | Accessibles, visuels                 | Gouvernance quasi nulle            | ⭐⭐☆     | Démo, évangélisation |
+| **Weaviate / Milvus / Qdrant** | Scalabilité, hybrid search | Pipeline incomplet                 | ⭐⭐⭐⭐    | Mémoire vectorielle |
+| **Pipeline modulaire**  | Robuste, traçable, souverain         | Mise en place exigeante            | ⭐⭐⭐⭐⭐   | Production critique |
+
+
+---
+
+## Cas d’usage typiques
+
+Pour illustrer ces différences, voici quelques situations où chaque approche trouve sa place :
+
+- **Framework intégré (LangChain, LlamaIndex, Haystack)**  
+  👉 Une startup qui veut présenter un **POC en 2 semaines** pour convaincre un client ou un investisseur.  
+
+- **Base vectorielle seule (Weaviate, Milvus, Qdrant)**  
+  👉 Une DSI qui cherche à construire un **moteur de recherche interne** performant sur ses documents techniques.  
+
+- **Approche low-code (Flowise, RAGFlow)**  
+  👉 Une école ou un hackathon qui veut permettre à des étudiants ou citoyens de **prototyper un assistant IA** sans écrire de code.  
+
+- **Pipeline modulaire**  
+  👉 Une banque, un hôpital ou un cabinet juridique qui a besoin d’un **système critique, traçable et souverain**.
+
+---
+
+
+## 🔀 Schéma comparatif — 4 approches et problèmes communs
+
+```text
+
+   [ Frameworks intégrés ]
+     + rapide à prototyper
+     - dette technique, peu gouvernés
+
+
+   [ Bases vectorielles ]
+     + mémoire scalable (Weaviate, Milvus…)
+     - pipeline incomplet
+
+
+   [ Approches low-code ]
+     + accessibles, visuels (Flowise, RAGFlow…)
+     - peu industrialisables
+
+
+   [ Pipeline modulaire ]
+     + robuste, souverain, traçable
+     - plus exigeant à mettre en place
+
+
+   -------------------------------
+
+   Problèmes transverses communs :
+   - hallucinations persistantes
+   - biais structurels
+   - obsolescence rapide
+   - coûts croissants
+
+```
+
+
+---
+
+## Problèmes transverses persistants
+
+Quelle que soit l’approche choisie, certains défis restent communs :
+
+1. **Hallucinations** — Les modèles n’ont pas été conçus pour dire “je ne sais pas”. Même avec RAG, ils peuvent déformer ou ignorer les sources.  
+2. **Biais** — Les données d’entraînement et les algorithmes de retrieval amplifient certains contextes au détriment d’autres.  
+3. **Obsolescence rapide** — Les frameworks évoluent vite, créant une dette technique accélérée.  
+4. **Coûts** — Entre API LLM, bases vectorielles et orchestration, le RAG naïf peut devenir coûteux dès que l’échelle augmente.  
+
+Ces problèmes rappellent que la vraie valeur ne réside pas seulement dans l’outil choisi, mais dans une **architecture pensée pour durer, gouvernée et évolutive**.
+
+---
+
+## Conclusion du chapitre
+
+Les frameworks actuels sont utiles pour **prototyper et tester des idées**.  
+Les bases vectorielles offrent des **fondations performantes** pour la mémoire.  
+Les approches low-code démocratisent l’accès, mais au prix de la robustesse.  
+
+L’approche **pipeline modulaire** représente aujourd’hui la voie la plus crédible pour des systèmes :  
+- gouvernés,  
+- traçables,  
+- souverains,  
+- et capables de grandir avec les usages et la complexité.
+
+
+---
+
+En résumé, chaque approche a ses atouts mais aussi ses limites structurelles.  
+Le chapitre suivant va poser les **principes fondateurs** (modularité, agnosticité, configurabilité, antifragilité) qui permettent d’aller au-delà de ces choix techniques pour construire des architectures durables.

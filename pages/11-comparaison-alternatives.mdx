@@ -1,0 +1,222 @@
+import Mermaid from '../components/Mermaid'
+import Comments from '../components/Comments'
+
+# Chapitre 11 — Comparaison avec les alternatives au RAG
+
+---
+
+## 11.1 Introduction
+
+Le RAG n’est pas la seule approche pour dépasser les limites des LLMs.  
+Ce chapitre compare les **alternatives majeures** : finetuning, moteurs de recherche traditionnels, règles expertes, et combinaisons hybrides.  
+
+---
+
+## 11.2 Finetuning des modèles
+
+### Description
+Adapter un LLM aux données d'une organisation via réentraînement ou fine-tuning (LoRA, QLoRA, full fine-tuning).
+
+### Avantages
+- Le modèle intègre directement le savoir spécialisé.
+- Réduction des coûts d'inférence (moins besoin de retrieval).
+- Performances supérieures sur tâches très spécifiques et répétitives.
+- Latence réduite (pas de retrieval à chaque requête).
+
+### Limites
+- **Coûts d'entraînement** : de quelques centaines d'euros (LoRA sur 7B) à plusieurs dizaines de milliers (full fine-tune sur 70B+).
+- **Obsolescence** : les données sont figées dans le modèle. Chaque mise à jour = réentraînement.
+- **Risque de fuite** : un modèle fine-tuné peut restituer des données sensibles en inférence.
+- **Catastrophic forgetting** : le modèle peut "oublier" ses capacités générales en se spécialisant.
+
+### Quand choisir le finetuning plutôt que le RAG ?
+- Domaine stable avec vocabulaire très spécifique (biologie structurée, taxonomies fixes).
+- Tâches répétitives à haut volume (classification, extraction d'entités).
+- Contraintes de latence strictes (< 100ms par requête).
+
+### Quand le RAG est préférable ?
+- Corpus qui évolue fréquemment (réglementation, actualités, documentation interne).
+- Besoin de traçabilité (citer les sources exactes).
+- Budget limité pour le compute.
+
+### L'approche hybride RAG + finetuning
+La combinaison la plus puissante : un modèle fine-tuné sur le style et le vocabulaire du domaine, alimenté par un RAG pour les données actualisées. Le modèle comprend mieux le contexte, le RAG apporte la fraîcheur et la traçabilité.
+
+<Mermaid
+  chart={`
+flowchart TB
+  F["Modèle fine-tuné<br/>(vocabulaire métier)"]
+  R["RAG<br/>(données actualisées + traçabilité)"]
+  H["Meilleur des deux mondes"]
+  F --> H
+  R --> H
+`}
+/>
+
+## 11.3 Moteurs de recherche traditionnels
+
+### Description
+Approches basées sur BM25, Elasticsearch, Solr, etc.  
+
+### Avantages
+- Simplicité, scalabilité, maturité.  
+- Coûts réduits.  
+- Gouvernance plus simple (index documentaires).  
+
+### Limites
+- Pas de génération de réponse, seulement de la recherche.  
+- Ne comprend pas le langage de manière profonde.  
+
+### Cas idéal
+- Recherche documentaire classique (jurisprudence, catalogue produits).  
+
+---
+
+## 11.4 Règles expertes et systèmes symboliques
+
+### Description
+Systèmes basés sur des règles (if/then), ontologies, graphes de connaissances.  
+
+### Avantages
+- Précision et explicabilité.  
+- Gouvernance forte.  
+- Facile à certifier (ISO, médical).  
+
+### Limites
+- Faible couverture si règles incomplètes.  
+- Maintenance lourde.  
+
+### Cas idéal
+- Conformité réglementaire stricte.  
+- Environnements normés (aviation, médecine).  
+
+---
+
+## 11.5 Architectures hybrides
+
+### Description
+Combiner plusieurs approches :  
+- RAG + finetuning.  
+- RAG + règles expertes.  
+- Recherche traditionnelle + LLM.  
+
+### Avantages
+- Bénéficie du meilleur des deux mondes.  
+- Résilience et flexibilité accrues.  
+
+### Limites
+- Complexité d’orchestration.  
+- Coûts de maintenance.  
+
+### Cas idéal
+- Projets critiques où robustesse et précision sont indispensables.  
+
+---
+
+## 11.6 Schéma comparatif
+
+<Mermaid
+  chart={`
+flowchart TB
+  A["Finetuning<br/>modèle enrichi mais statique"]
+  B["BM25 / Search<br/>robuste mais non génératif"]
+  C["Règles expertes<br/>explicables mais limitées"]
+  D["RAG<br/>flexible mais nécessite gouvernance"]
+  E["Hybrides<br/>puissants mais complexes"]
+  A --> B --> C --> D --> E
+`}
+/>
+
+---
+
+## 11.7 Tableau synthétique
+
+| Approche        | Avantages                        | Limites                        | Cas idéal |
+|-----------------|----------------------------------|--------------------------------|-----------|
+| Finetuning      | Intègre savoir, spécialisation   | Coût, obsolescence             | Domaines stables |
+| Recherche (BM25)| Simple, scalable, peu coûteux    | Pas de génération              | Catalogues, docs |
+| Règles expertes | Explicables, gouvernance forte   | Faible couverture, rigide      | Secteurs régulés |
+| RAG             | Flexible, personnalisable        | Gouvernance complexe           | Données évolutives |
+| Hybrides        | Résilients, polyvalents          | Complexité, maintenance        | Usages critiques |
+
+---
+
+## 11.8 L'émergence du RAG agentique
+
+### Description
+Une évolution récente : le **RAG agentique** combine un pipeline RAG avec des **agents IA autonomes** capables de planifier, exécuter des actions et itérer.
+
+### Différence avec le RAG classique
+- **RAG classique** : question → retrieval → génération → réponse.
+- **RAG agentique** : question → l'agent décide quoi chercher, dans quel ordre, reformule si nécessaire, combine plusieurs sources, et itère jusqu'à satisfaction.
+
+### Schéma de fonctionnement (boucle agentique)
+
+<Mermaid
+  chart={`
+flowchart TB
+  U[Question] --> P[Agent / Planner LLM]
+  P --> R[Retrieve + Tools]
+  R --> E[Evaluate / Critic]
+  E -->|insuffisant| P
+  E -->|suffisant| G[Génération finale]
+  G --> A[Réponse]
+`}
+/>
+
+### Exemple Python : boucle agentique minimale
+
+```python
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import List
+
+
+@dataclass
+class Verdict:
+    ok: bool
+    rewrite: str
+
+
+def agentic_rag(question: str, max_iter: int = 3) -> str:
+    query = question
+    for _ in range(max_iter):
+        docs = retriever.search(query, top_k=5)
+        draft = generator.generate(question=query, documents=docs)
+        verdict: Verdict = critic.evaluate(draft, docs)
+        if verdict.ok:
+            return draft
+        query = verdict.rewrite
+    return "Je ne suis pas certain. Une vérification humaine est requise."
+```
+
+### Avantages
+- Gère des questions complexes multi-étapes.
+- Peut combiner recherche documentaire, appels API, calculs.
+- S'adapte dynamiquement à la qualité des résultats.
+
+### Limites
+- Complexité d'orchestration décuplée.
+- Coûts d'inférence multipliés (boucles d'appels LLM).
+- Observabilité et gouvernance encore plus critiques (l'agent peut diverger).
+- Risque de boucles infinies sans garde-fous.
+
+### Position dans l'écosystème
+Le RAG agentique n'annule pas les principes de ce manifeste — il les renforce.  
+Un agent sans gouvernance est un agent dangereux.  
+Les principes de modularité, vérification et risk governor deviennent encore plus essentiels dans un contexte agentique.
+
+### Sources (RAG agentique)
+- [ReAct — Synergizing Reasoning and Acting in Language Models (arXiv:2210.03629)](https://arxiv.org/abs/2210.03629)
+
+---
+
+## 11.9 Conclusion et transition
+
+
+Chaque approche a ses forces et faiblesses.  
+Le RAG n’est pas une solution universelle : il s’inscrit dans un **continuum de stratégies**.  
+
+👉 Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
+
+<Comments />

@@ -1,0 +1,717 @@
+import Mermaid from '../components/Mermaid'
+import Comments from '../components/Comments'
+
+# Chapitre 6 — Anatomie du pipeline
+
+---
+
+## 6.1 Introduction
+
+Après avoir vu l’importance d’une architecture antifragile (Chapitre 5), détaillons maintenant le cœur opérationnel : le **pipeline**.  
+Un pipeline bien conçu ne se limite pas à coller un moteur vectoriel à un modèle : c’est une **chaîne organisée d’étapes spécialisées**, coordonnées par un orchestrateur.  
+
+---
+
+## 6.2 Vue d’ensemble
+
+Un pipeline antifragile suit quatre grandes étapes : **ingestion → retrieval → génération → vérification**, sous la supervision d’un orchestrateur.
+
+<Mermaid
+  chart={`
+flowchart LR
+  I[Ingestion] --> R[Retrieval] --> G[Génération] --> V[Vérification]
+  O[Orchestrateur central] -.-> I
+  O -.-> R
+  O -.-> G
+  O -.-> V
+`}
+/>
+
+👉 Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
+
+---
+
+## 6.3 Étape 1 : Ingestion
+
+L’ingestion est la **porte d’entrée** du pipeline.  
+Elle consiste à transformer des données brutes en documents exploitables.
+
+### Bonnes pratiques
+- Normaliser les formats (PDF, Word, JSON, APIs).  
+- Nettoyer le bruit (footers, doublons, OCR correct).  
+- Extraire des métadonnées (date, auteur, version, source).  
+
+### Erreurs courantes
+- Parsing incomplet (ex. PDF scannés mal traités).  
+- Absence de suivi des versions.  
+- Manque de pipeline d’ETL clair.  
+
+Une ingestion fragile = retrieval biaisé dès le départ.
+
+---
+
+### 6.3.1 L'ingestion en profondeur
+
+L'ingestion "en profondeur" ne se limite pas à charger des fichiers : elle **structure, segmente, vectorise et gouverne** le corpus.  
+Objectif : transformer des sources hétérogènes en **unités de connaissance fiables**, prêtes pour le retrieval.
+
+#### 6.3.1.1 Objectifs et artefacts produits
+
+- Texte nettoyé et normalisé (encodage, sections, tables, entêtes).  
+- Métadonnées riches (source, date, version, droits, confidentialité).  
+- Chunks **adressables** (IDs stables, offsets, doc_id).  
+- Embeddings + index prêts à requêter (vecteurs, BM25).  
+
+#### 6.3.1.2 Chunking : stratégies et compromis
+
+**Quatre stratégies dominantes** :
+
+| Stratégie | Idée | Quand l'utiliser | Limites |
+|---|---|---|---|
+| **Fixed-size** | Découpage fixe par tokens/caractères | Baseline rapide, documents homogènes | Peut couper le contexte en plein milieu |
+| **Recursive** | Découper d'abord par structure (titres, paragraphes), puis affiner | Documents structurés (Markdown, HTML, DOCX) | Nécessite des heuristiques propres à chaque format |
+| **Semantic** | Créer des frontières quand le sens change | Longs documents continus (notes, transcriptions) | Plus coûteux (embeddings) |
+| **Document-aware** | Règles par type (table, code, section légale) | PDF structurés, code, tables | Demande un parser spécialisé |
+
+**Impact de la taille des chunks (extraits chiffrés)** — résultats d'une évaluation RAG multi-corpus :
+
+| Corpus (évaluation NVIDIA) | Taille/stratégie gagnante | Accuracy E2E | Note |
+|---|---:|---:|---|
+| FinanceBench | 1 024 tokens | 0.579 | Page-level proche (0.560) |
+| Earnings-Call | 512 tokens | 0.681 | Contexte court mais dense |
+| KG-RAG | 1 024 tokens | 0.804 | Page-level 0.790 |
+| RAGBattlePacket | 1 024 tokens | 0.790 | Page-level non indiqué |
+
+Conclusion pratique : la "bonne" taille dépend du type de documents **et** de la structure des questions.  
+Sur des corpus juridiques (Plaide) et santé (MGEN), le gain vient souvent d'un **chunking document-aware** (articles, sections, annexes) plus que d'un simple ajustement de taille.
+
+##### Overlap : pourquoi, combien, quand éviter
+- **Pourquoi** : réduire les coupures de contexte au bord des chunks.  
+- **Combien** : souvent **10-20%** suffit (ex. chunk 500 tokens, overlap 50-100).  
+- **Quand éviter** : documents très courts, ou si vous faites déjà du **re-ranking** (l'overlap ajoute du bruit).
+
+##### Chunking spécialisé par type de document
+- **PDF structuré** : découper par titres + paragraphes; garder les numéros d'articles.  
+- **PDF scanné** : OCR -> détection de blocs -> nettoyage agressif des artefacts.  
+- **Markdown** : sections (`#`, `##`, `###`) + limites de code fences.  
+- **HTML** : split par `<h1>…<h3>` puis par `<p>`.  
+- **Tables** : chunk par ligne/colonne, stocker schéma + table complète.  
+- **Code source** : chunk par fonction/classe; garder la signature avec la docstring.
+
+##### Late chunking vs early chunking
+- **Early chunking** : on découpe **avant** l'indexation (classique).  
+- **Late chunking** : on indexe d'abord **au niveau document**, puis on recoupe **après** un premier retrieval.  
+
+**Quand préférer le late chunking ?**  
+- Corpus courts, mais documents très structurés (contrats, normes).  
+- Quand la cohérence globale du document compte plus que la granularité fine.
+
+##### Exemple Python (from scratch)
+
+```python
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import List
+
+@dataclass
+class Chunk:
+    doc_id: str
+    chunk_id: str
+    text: str
+    start: int
+    end: int
+
+
+def simple_tokenize(text: str) -> List[str]:
+    # Tokenisation simple (pour un usage réel, préférez un tokenizer dédié)
+    return text.split()
+
+
+def chunk_fixed(text: str, doc_id: str, size: int, overlap: int) -> List[Chunk]:
+    tokens = simple_tokenize(text)
+    chunks: List[Chunk] = []
+    step = max(1, size - overlap)
+    for i in range(0, len(tokens), step):
+        window = tokens[i : i + size]
+        if not window:
+            break
+        chunk_text = " ".join(window)
+        chunks.append(Chunk(doc_id, f"{doc_id}-{i}", chunk_text, i, i + len(window)))
+    return chunks
+
+
+def recursive_split(text: str, separators: List[str], max_tokens: int) -> List[str]:
+    # Découpage récursif: on split d'abord par gros séparateurs, puis on affine
+    if max_tokens <= 0:
+        raise ValueError("max_tokens must be > 0")
+
+    def _split(block: str, seps: List[str]) -> List[str]:
+        if len(simple_tokenize(block)) <= max_tokens or not seps:
+            return [block]
+        sep = seps[0]
+        parts = block.split(sep)
+        results: List[str] = []
+        for part in parts:
+            results.extend(_split(part, seps[1:]))
+        return results
+
+    chunks = _split(text, separators)
+    # Re-grouper si nécessaire
+    out: List[str] = []
+    buf: List[str] = []
+    for c in chunks:
+        if len(simple_tokenize(" ".join(buf + [c]))) <= max_tokens:
+            buf.append(c)
+        else:
+            out.append(" ".join(buf).strip())
+            buf = [c]
+    if buf:
+        out.append(" ".join(buf).strip())
+    return [c for c in out if c]
+
+
+# Exemple d'usage
+text = "# Article 1\nLe contrat est...\n\n# Article 2\nLe delai est de...\n"
+seps = ["\n# ", "\n\n", "\n", ". "]
+chunks = recursive_split(text, seps, max_tokens=120)
+print(chunks[:2])
+```
+
+##### Exemple Python (LangChain)
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=800,
+    chunk_overlap=100,
+    separators=["\n# ", "\n\n", "\n", ". ", " "]
+)
+
+chunks = splitter.split_text(long_document)
+print(len(chunks), chunks[0][:200])
+```
+
+#### 6.3.1.3 Embeddings : du texte au vecteur
+
+Un embedding est une **projection numérique** : on transforme une phrase en un vecteur dense qui capture le **sens** plutôt que la forme exacte.  
+Deux textes proches en sens -> vecteurs proches en distance (cosinus, dot product).
+
+##### Comparatif des modèles d'embedding (référence MTEB retrieval)
+
+| Modèle | Dim | MTEB Retrieval (NDCG@10) | Coût API (USD / 1M tokens) | FR |
+|---|---:|---:|---:|---|
+| OpenAI `text-embedding-3-large` | 3 072 | 55.44 | 0.13 | Oui (multilingue) |
+| OpenAI `text-embedding-ada-002` | 1 536 | 49.25 | 0.10 | Oui (multilingue) |
+| Cohere `embed-multilingual-v3.0` | 1 024 | 55.00 | 0.12 | Oui (multilingue) |
+| Sentence-Transformers `all-MiniLM-L6-v2` | 384 | 41.95 | Self-hosted | EN (FR limité) |
+| BGE `bge-large-en-v1.5` | 1 024 | 54.29 | Self-hosted | EN (FR limité) |
+| E5 `e5-large-v2` | 1 024 | 50.56 | Self-hosted | EN (FR limité) |
+| Mistral `mistral-embed` | 1 024 | 55.26 | 0.10 | Non précisé |
+| Voyage `voyage-large-2-instruct` | 1 024 | 58.28 | 0.12 | Non précisé |
+
+Notes : les scores MTEB Retrieval proviennent de benchmarks publiés (voir sources). Les modèles open-source n'ont pas de coût API fixe mais un **coût d'infrastructure** (CPU/GPU + stockage).
+
+##### Fine-tuning d'embeddings : quand et comment
+- **Quand** : jargon métier, taxonomies propres, ou faibles recall/précision sur vos requêtes réelles.  
+- **Comment** : entraînement contrastif sur paires *(question, passage)* et triplets *(positif, négatif)*.  
+- **Signal minimum** : logs de recherche, clics, ou Q/A validées par experts.
+
+##### Multilingual vs monolingual (cas français)
+- **Multilingue** : couvre FR/EN/DE, utile pour corpus mixtes ou clients internationaux.  
+- **Monolingue** : souvent meilleur sur un domaine spécifique, mais moins robuste hors FR.  
+
+Recommandation : tester 1 modèle multilingue + 1 modèle francophone et **choisir sur métriques terrain**.
+
+##### Quantization des embeddings (réduction des coûts)
+- **Quantization 8-bit / 4-bit** : diviser la mémoire et accélérer la recherche.  
+- **Product Quantization (PQ)** : compresser les vecteurs en codes courts.  
+- **HNSW + PQ** : compromis qualité / vitesse / RAM.
+
+##### Exemple Python : embeddings OpenAI et local
+
+```python
+from __future__ import annotations
+from typing import List
+
+# 1) API OpenAI
+from openai import OpenAI
+
+client = OpenAI()
+
+texts = ["Contrat de travail", "Prescription en droit du travail"]
+resp = client.embeddings.create(model="text-embedding-3-large", input=texts)
+openai_vectors: List[List[float]] = [v.embedding for v in resp.data]
+
+# 2) Local (Sentence-Transformers)
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
+local_vectors = model.encode(texts, normalize_embeddings=True)
+```
+
+#### 6.3.1.4 Coûts LLMs : comparer, router, maîtriser
+
+Les coûts ne sont pas un détail : ils structurent l'architecture (routing, caching, re-ranking).  
+Voici un **comparatif simplifié** (prix publics, par 1M tokens) :
+
+| Modèle | Input $ / 1M | Output $ / 1M | Source |
+|---|---:|---:|---|
+| OpenAI GPT-4o | 2.50 | 10.00 | OpenAI API pricing |
+| OpenAI GPT-4o-mini | 0.15 | 0.60 | OpenAI API pricing |
+| Claude Opus | 5.00 | 25.00 | Anthropic pricing |
+| Claude Sonnet | 3.00 | 15.00 | Anthropic pricing |
+| Claude Haiku | 0.25 | 1.25 | Anthropic pricing |
+| Mistral Large 3 | 2.00 | 6.00 | Mistral docs |
+| Mistral Small 3.2 | 0.10 | 0.30 | Mistral docs |
+| Gemini 2.5 Pro | 1.25 | 10.00 | Google Gemini pricing |
+| Gemini 2.5 Flash | 0.30 | 2.50 | Google Gemini pricing |
+| Llama 3.1 70B (API) | 0.90 | 0.90 | Together AI pricing |
+
+##### Routage intelligent (routing)
+
+```python
+from __future__ import annotations
+from typing import Literal
+
+Model = Literal["gpt-4o-mini", "gpt-4o", "claude-sonnet", "claude-opus"]
+
+
+def route_question(question: str, risk_level: int) -> Model:
+    # Heuristique simple : plus la question est longue/critique, plus le modèle doit être robuste
+    if risk_level >= 8 or len(question) > 200:
+        return "gpt-4o"
+    if risk_level >= 5:
+        return "claude-sonnet"
+    return "gpt-4o-mini"
+```
+
+##### Calcul du coût d'un pipeline RAG complet
+
+```python
+from __future__ import annotations
+from dataclasses import dataclass
+
+@dataclass
+class Price:
+    input_per_m: float
+    output_per_m: float
+
+
+def cost_per_month(
+    requests: int,
+    prompt_tokens: int,
+    output_tokens: int,
+    model: Price,
+) -> float:
+    in_cost = (requests * prompt_tokens) / 1_000_000 * model.input_per_m
+    out_cost = (requests * output_tokens) / 1_000_000 * model.output_per_m
+    return in_cost + out_cost
+
+# Exemple : 30k req/mois, 2 200 tokens d'entrée, 400 de sortie
+price_gpt4o = Price(2.50, 10.00)
+monthly = cost_per_month(30_000, 2_200, 400, price_gpt4o)
+print(f"Coût mensuel ≈ ${monthly:.2f}")
+```
+
+##### Exemple chiffré : 1000 requêtes/jour, 50k docs
+
+**Hypothèses** (à adapter) :
+- 30 000 requêtes / mois.  
+- 200 tokens pour la requête, 2 000 tokens de contexte, 400 tokens de réponse.  
+- Génération via GPT-4o, critic via GPT-4o-mini.  
+- Embeddings `text-embedding-3-large` pour index + requêtes.  
+
+**Résultat** :
+- **≈ 293 $ / mois** (≈ 293 € à parité), pour les requêtes.  
+- **≈ 5.2 $** de coût unique pour l'index initial (50k docs × 800 tokens).  
+
+Les coûts explosent surtout avec : **trop de contexte**, **trop de tokens sortants**, et **pas de routing**.
+
+#### 6.3.1.5 Gestion du cycle de vie documentaire
+
+Un corpus vivant doit être **versionné, rafraîchi et gouverné**.
+
+##### Ingestion incrémentale vs reindexation complète
+- **Incrémentale** : détecter les nouveaux documents et ne reindexer que ce qui a changé.  
+- **Complète** : utile après un changement majeur de format ou de modèle d'embedding.
+
+##### Détection des changements (hash / diff / versioning)
+
+```python
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import Dict
+import hashlib
+
+@dataclass
+class DocMeta:
+    doc_id: str
+    sha256: str
+    version: int
+
+
+def content_hash(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def should_reindex(doc_id: str, text: str, registry: Dict[str, DocMeta]) -> bool:
+    new_hash = content_hash(text)
+    old = registry.get(doc_id)
+    return old is None or old.sha256 != new_hash
+```
+
+##### Caches : semantic cache, embedding cache, response cache
+
+- **Embedding cache** : `hash(contenu) -> embedding` pour éviter les recomputations.  
+- **Response cache** : question exacte -> réponse (avec TTL).  
+- **Semantic cache** : similarité d'embeddings pour réutiliser une réponse proche.  
+
+```python
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import List, Optional
+import time
+import numpy as np
+
+@dataclass
+class CacheEntry:
+    query_emb: np.ndarray
+    answer: str
+    timestamp: float
+
+class SemanticCache:
+    def __init__(self, ttl_s: int = 7 * 24 * 3600, threshold: float = 0.92):
+        self.ttl_s = ttl_s
+        self.threshold = threshold
+        self.entries: List[CacheEntry] = []
+
+    def lookup(self, query_emb: np.ndarray) -> Optional[str]:
+        now = time.time()
+        for e in self.entries:
+            if now - e.timestamp > self.ttl_s:
+                continue
+            sim = float(np.dot(query_emb, e.query_emb))
+            if sim >= self.threshold:
+                return e.answer
+        return None
+
+    def add(self, query_emb: np.ndarray, answer: str) -> None:
+        self.entries.append(CacheEntry(query_emb, answer, time.time()))
+```
+
+##### TTL sur les chunks (réglementaire vs actualités)
+- **Réglementaire** : TTL long (6-24 mois).  
+- **Actualités** : TTL court (7-30 jours) + freshness boost.
+
+##### Suppression sélective (droit à l'oubli)
+
+```python
+# Exemple (pseudo-API vecteur)
+vector_db.delete(filter={"doc_id": "DOC-2024-001"})
+```
+
+##### Déduplication et fraîcheur
+- Déduplication par **hash de contenu** et similarité sémantique.  
+- Freshness scoring : `score_final = 0.8 * score_sémantique + 0.2 * score_récence`.
+
+```python
+from __future__ import annotations
+
+def freshness_score(days_old: int) -> float:
+    # Exemple simple : décroissance exponentielle
+    return 0.5 ** (days_old / 30)
+```
+
+### Sources (ingestion)
+
+- [NVIDIA — Best chunking strategy for RAG pipelines](https://developer.nvidia.com/blog/best-chunking-strategy-for-rag-pipelines/)
+- [OpenAI — New embedding models and API updates (prix + dims)](https://openai.com/index/new-embedding-models-and-api-updates/)
+- [OpenAI — New and improved embedding model (ada-002)](https://openai.com/index/new-and-improved-embedding-model/)
+- [Cohere — Embed models (v3, langues, dimensions)](https://docs.cohere.com/docs/cohere-embed)
+- [Cohere — Pricing (Embed)](https://cohere.com/pricing)
+- [BAAI — BGE model card (MTEB retrieval scores)](https://huggingface.co/BAAI/bge-large-en-v1.5)
+- [Hugging Face — all-MiniLM-L6-v2 model card (dimension)](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+- [Snowflake — MTEB Retrieval scores list](https://github.com/Snowflake-Labs/arctic-embed/tree/main?tab=readme-ov-file#benchmarks)
+- [Mistral — Mistral Embed (prix)](https://docs.mistral.ai/models/mistral-embed/)
+- [Mistral — Embedding model release (MTEB 55.26)](https://mistral.ai/en/news/embedding-model-2348)
+- [Voyage AI — voyage-large-2-instruct (MTEB retrieval + dimension)](https://www.voyageai.com/blog/voyage-large-2-instruct)
+- [Voyage AI — Pricing](https://docs.voyageai.com/docs/pricing)
+- [OpenAI — API Pricing (GPT-4o, GPT-4o-mini)](https://platform.openai.com/pricing)
+- [Anthropic — Pricing](https://www.anthropic.com/pricing)
+- [Mistral — Mistral Large 3 pricing](https://docs.mistral.ai/models/mistral-large/)
+- [Mistral — Mistral Small 3.2 pricing](https://docs.mistral.ai/models/mistral-small/)
+- [Google — Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing)
+- [Together AI — Pricing (Llama 3.1 70B)](https://www.together.ai/pricing)
+- [Jégou et al. — Product Quantization (PQ)](https://arxiv.org/abs/1009.0976)
+- [Malkov & Yashunin — HNSW](https://arxiv.org/abs/1603.09320)
+
+---
+
+## 6.4 Étape 2 : Retrieval
+
+Le retrieval est le **moteur de recherche interne** du pipeline.  
+C’est lui qui va sélectionner les documents les plus pertinents.
+
+### Techniques
+- **Vector search** : recherche par embeddings.  
+- **Hybrid search** : combiner vecteurs + BM25.  
+- **Re-ranking** : reclasser les résultats avec un modèle spécialisé.  
+
+### Bonnes pratiques
+- Choisir la bonne granularité (chunks ni trop petits ni trop gros).  
+- Ajouter des filtres sémantiques et des métadonnées.  
+- Surveiller la précision/recall via métriques.  
+
+Retrieval robuste = moins d’hallucinations.
+
+---
+
+## 6.5 Étape 3 : Génération
+
+La génération correspond au **travail du LLM** : formuler une réponse en utilisant les documents trouvés.
+
+### Bonnes pratiques
+- Encadrer le prompt (instructions claires, citations obligatoires).  
+- Limiter le rôle du modèle à l’**assemblage** et non à l’**invention**.  
+- Utiliser des gabarits (templates de prompts).  
+
+### Erreurs courantes
+- Concaténer trop de documents (bruit + coûts élevés).  
+- Laisser le modèle répondre librement sans contrainte.  
+
+👉 Une génération bien encadrée est le cœur de la crédibilité du pipeline.
+
+---
+
+## 6.6 Étape 4 : Vérification
+
+La vérification est l’étape qui transforme une réponse “probable” en une réponse **fiable et gouvernée**.
+
+### Techniques
+- **Critic LLM** : un second modèle vérifie la cohérence de la réponse.  
+- **Risk governor** : filtre de conformité (données sensibles, RGPD, biais).  
+- **Auditabilité** : chaque réponse reliée à ses sources.  
+
+C’est la **ceinture de sécurité** du pipeline.
+
+---
+
+## 6.7 L’orchestrateur
+
+L’orchestrateur est le **chef d’orchestre** :  
+- il coordonne les 4 étapes,  
+- applique la gouvernance,  
+- journalise chaque interaction,  
+- gère les fallbacks et la redondance.
+
+Sans orchestrateur, le pipeline est une suite de scripts.  
+Avec orchestrateur, c’est une **infrastructure maîtrisée**.
+
+### Exemple Python : orchestrateur minimal
+
+```python
+# orchestrator.py — Orchestrateur RAG modulaire
+from dataclasses import dataclass
+from typing import List, Optional
+import yaml
+
+@dataclass
+class RAGResponse:
+    answer: str
+    sources: List[dict]
+    confidence: float
+    audit_trail: dict
+
+class RAGOrchestrator:
+    """Orchestrateur central du pipeline RAG antifragile."""
+    
+    def __init__(self, config_path: str = "pipeline_config.yaml"):
+        with open(config_path) as f:
+            self.config = yaml.safe_load(f)
+        
+        # Modules injectés (agnosticité)
+        self.ingester = self._load_module("ingestion")
+        self.retriever = self._load_module("retrieval")
+        self.generator = self._load_module("generation")
+        self.verifier = self._load_module("verification")
+    
+    def query(self, question: str, user_context: Optional[dict] = None) -> RAGResponse:
+        """Pipeline complet : retrieval → génération → vérification."""
+        
+        # 1. Retrieval hybride
+        documents = self.retriever.search(
+            query=question,
+            top_k=self.config["retrieval"]["top_k"],
+            strategy=self.config["retrieval"]["strategy"],
+        )
+        
+        # 2. Génération avec citations obligatoires
+        raw_response = self.generator.generate(
+            question=question,
+            documents=documents,
+            template=self.config["generation"]["prompt_template"],
+            citations_required=self.config["generation"]["citations_obligatoires"],
+        )
+        
+        # 3. Vérification (critic LLM + risk governor)
+        verified = self.verifier.verify(
+            response=raw_response,
+            sources=documents,
+            config=self.config["verification"],
+        )
+        
+        if not verified.is_safe:
+            # Escalade humaine ou réponse de fallback
+            return self._handle_unsafe(verified)
+        
+        return RAGResponse(
+            answer=verified.text,
+            sources=verified.cited_sources,
+            confidence=verified.confidence_score,
+            audit_trail=verified.audit_log,
+        )
+    
+    def _handle_unsafe(self, result) -> RAGResponse:
+        """Gestion des réponses bloquées par le gouverneur de risque."""
+        return RAGResponse(
+            answer="Cette question nécessite une validation humaine.",
+            sources=[],
+            confidence=0.0,
+            audit_trail={"blocked_reason": result.risk_flags},
+        )
+
+# Utilisation
+orchestrator = RAGOrchestrator("pipeline_config.yaml")
+response = orchestrator.query("Quel est le délai de prescription en droit du travail ?")
+print(response.answer)
+print(f"Sources: {len(response.sources)}, Confiance: {response.confidence:.0%}")
+```
+
+L’orchestrateur coordonne les 4 étapes sans connaître les détails d’implémentation de chaque module. C’est le principe de **modularité** en action.
+
+---
+
+## 6.8 Schéma détaillé du pipeline antifragile
+
+<Mermaid
+  chart={`
+flowchart TB
+  subgraph Ingestion
+    I[Ingestion]
+    I --> I1[OCR / Parsing]
+    I --> I2[Nettoyage]
+    I --> I3[Métadonnées]
+  end
+  subgraph Retrieval
+    R[Retrieval]
+    R --> R1[Index vectoriel]
+    R --> R2[Hybrid search]
+    R --> R3[Re-ranking]
+  end
+  subgraph Generation
+    G[Génération]
+    G --> G1[Prompt template]
+    G --> G2[Citations obligatoires]
+    G --> G3[Multi-LLM]
+  end
+  subgraph Verification
+    V[Vérification]
+    V --> V1[Critic LLM]
+    V --> V2[Risk governor]
+    V --> V3[Journalisation]
+  end
+  I --> R --> G --> V --> A[Réponse validée + Audit]
+`}
+/>
+
+👉 Ce schéma met en évidence les **sous-modules** de chaque étape.
+
+---
+
+## 6.9 Analogie : le pipeline comme organisme vivant
+
+- **Ingestion = système digestif** : transformer la matière brute en nutriments exploitables.  
+- **Retrieval = mémoire** : retrouver l’information pertinente.  
+- **Génération = langage** : formuler une réponse intelligible.  
+- **Vérification = système immunitaire** : détecter et corriger les erreurs.  
+- **Orchestrateur = cerveau** : coordonner l’ensemble.  
+
+Le pipeline antifragile se comporte comme un organisme vivant : chaque organe est spécialisé, mais c’est leur coopération qui crée la résilience.
+
+---
+
+## 6.10 Erreurs fréquentes et pièges
+
+- **Mauvais découpage des chunks** : bruit, perte de contexte.  
+- **Index non mis à jour** : réponses obsolètes.  
+- **Prompts trop longs** : coûts explosifs et dépassements de tokens.  
+- **Absence de vérification** : hallucinations validées sans contrôle.  
+
+Les erreurs sont inévitables, mais un pipeline antifragile apprend à les corriger.
+
+---
+
+## 6.11 Monitoring et observabilité
+
+Un pipeline antifragile doit être **observé en continu** :  
+
+- **Logs centralisés** pour tracer chaque étape.  
+- **Tableaux de bord qualité** : taux d’hallucinations, recall du retrieval, coûts.  
+- **Alertes proactives** : détection de PII, dérive des performances, dépassements budgétaires.  
+- **Boucles de feedback** : utiliser les erreurs pour ajuster ingestion, retrieval ou prompts.  
+
+👉 L’observabilité est la clé pour passer de la théorie à la pratique.
+
+---
+
+## 6.12 Exemple chiffré simplifié
+
+- Corpus : 100 000 documents juridiques.  
+- Retrieval hybride sélectionne 20 passages pertinents.  
+- Génération assemble une réponse avec 5 citations.  
+- Vérification par critic-LLM élimine 2 incohérences.  
+
+Résultat : une réponse **fiable, sourcée et générée en moins de 3 secondes**, avec un coût maîtrisé.
+
+---
+
+## 6.13 Cas concrets
+
+- **Santé** : ingestion de protocoles médicaux → retrieval hybride → génération encadrée → vérification par critic-LLM.  
+- **Droit** : ingestion de jurisprudences → retrieval multi-index → génération avec citations obligatoires → auditabilité garantie.  
+- **Support client** : ingestion de FAQ → retrieval filtré par contexte → génération adaptée au ton → vérification pour éviter les hallucinations.  
+
+---
+
+## 6.14 Comparaison avec les frameworks actuels
+
+Beaucoup de frameworks actuels implémentent seulement : **ingestion + retrieval + génération**.  
+La **vérification** et l’**orchestrateur** sont souvent absents.  
+
+C’est la différence entre :  
+- un pipeline de **démonstration** (rapide mais fragile),  
+- et une architecture **antifragile** (robuste, traçable, souveraine).  
+
+---
+
+## 6.15 Conclusion et transition
+
+L’anatomie du pipeline révèle une vérité simple :  
+👉 **chaque étape est un maillon critique**.  
+
+Une ingestion fragile biaise tout le reste.  
+Un retrieval faible augmente les hallucinations.  
+Une génération non encadrée perd la crédibilité.  
+Une absence de vérification supprime la confiance.  
+
+Ce n’est pas un luxe, c’est une nécessité : un pipeline antifragile doit être conçu comme un **organisme complet**, avec un orchestrateur comme cerveau.
+
+---
+
+## 6.16 Transition vers le Chapitre 7
+
+Le prochain chapitre confrontera cette vision **pipeline modulaire** avec les **frameworks actuels** : LangChain, LlamaIndex, Haystack…  
+Chapitre 7 : **Modularité vs frameworks**.
+
+<Comments />

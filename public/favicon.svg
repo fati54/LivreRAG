@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Livre RAG">
+  <rect width="64" height="64" rx="12" fill="#1a365d"/>
+  <path d="M18 18h18c6 0 10 4 10 10v20H28c-6 0-10-4-10-10V18z" fill="#2563eb"/>
+  <path d="M46 18H28c-6 0-10 4-10 10v20h18c6 0 10-4 10-10V18z" fill="#0d9488" opacity="0.9"/>
+  <path d="M24 26h16M24 34h16M24 42h12" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
+</svg>
