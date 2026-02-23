@@ -1,4 +1,4 @@
-# Chapitre 12 — Limites et défis
+# Chapitre 12 : Limites et défis
 
 ---
 
@@ -7,7 +7,7 @@
 Un manifeste responsable ne peut pas seulement chanter ses promesses.  
 Il doit aussi reconnaître ses **limites**, ses **angles morts** et ses **défis non résolus**.  
 
-👉 Le pipeline modulaire antifragile n’est pas une baguette magique.  
+Le pipeline modulaire antifragile n’est pas une baguette magique.  
 C’est une **direction prometteuse**, mais encore incomplète.  
 
 ---
@@ -20,7 +20,7 @@ Mettre en œuvre un pipeline modulaire antifragile n’est pas gratuit :
 - multiplication des modules = plus de points de défaillance,  
 - orchestration plus lourde qu’un “framework clé en main”.  
 
-👉 Défi : **abaisser la barrière d’entrée** (standards ouverts, documentation, outillage accessible).  
+Défi : **abaisser la barrière d’entrée** (standards ouverts, documentation, outillage accessible).  
 
 ---
 
@@ -33,8 +33,8 @@ Pas encore de **protocole commun** pour :
 - interfaces entre modules,  
 - auditabilité cross-modules.  
 
-👉 Risque : des “Lego incompatibles”.  
-👉 Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
+Risque : des “Lego incompatibles”.  
+Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
 + Proposer un standard « OpenRAG » regroupant 5 à 7 interfaces minimales (Ingestion, Index, Retriever, Reranker, Generator, Critic, Governor) et un schéma commun d’événements d’audit.
 
 
@@ -45,7 +45,7 @@ Pas encore de **protocole commun** pour :
 - Trop de gouvernance = système lent, bureaucratique.  
 - Trop peu = fuite de données, hallucinations, perte de confiance.  
 
-👉 Défi : trouver un **équilibre subtil** entre contrôle et fluidité, sécurité et expérience utilisateur.  
+Défi : trouver un **équilibre subtil** entre contrôle et fluidité, sécurité et expérience utilisateur.  
 
 ---
 
@@ -56,7 +56,7 @@ Même dans un pipeline antifragile, le **LLM reste le cœur**.
 - Si les modèles stagnent, le pipeline plafonne.  
 - Si une API fermée disparaît, le pipeline souffre.  
 
-👉 Sujet à creuser : hybrider avec **d’autres paradigmes** (symbolique, probabiliste, graphes de connaissance).  
+Sujet à creuser : hybrider avec **d’autres paradigmes** (symbolique, probabiliste, graphes de connaissance).  
 
 ---
 
@@ -65,7 +65,7 @@ Même dans un pipeline antifragile, le **LLM reste le cœur**.
 Antifragilité = souvent **redondance** (retrievers multiples, critic LLM, gouverneur).  
 Plus de calcul = plus de consommation énergétique.  
 
-👉 Défi : inventer un **RAG frugal** :  
+Défi : inventer un **RAG frugal** :  
 - caching intelligent,  
 - modèles légers spécialisés,  
 - arbitrage entre précision et coût carbone.  
@@ -80,7 +80,7 @@ La souveraineté et l’open source sont des idéaux fragiles.
 - Les startups financées reproduisent ces logiques.  
 - Les États eux-mêmes peuvent imposer des règles contradictoires.  
 
-👉 Défi : créer une **gouvernance collective** (fondations, consortiums, alliances open source).  
+Défi : créer une **gouvernance collective** (fondations, consortiums, alliances open source).  
 
 ---
 
@@ -122,7 +122,7 @@ Même avec des pipelines antifragiles, certaines limites persistent :
 
 Reconnaître ces limites, ce n’est pas fragiliser le manifeste, c’est l’ancrer dans la réalité.  
 
-👉 Le pipeline modulaire antifragile est une **direction crédible**, mais :  
+Le pipeline modulaire antifragile est une **direction crédible**, mais :  
 - complexe,  
 - énergivore,  
 - dépendant de standards à inventer,  

@@ -1,4 +1,4 @@
-# Chapitre 13 — Conclusion générale
+# Chapitre 13 : Conclusion générale
 
 ---
 
@@ -14,7 +14,7 @@ Chemin faisant, nous avons appris que :
 
 ## 🔑 Le message central
 
-👉 Le futur de l’IA générative ne se jouera pas sur la **taille des modèles**, mais sur la **qualité des pipelines**.  
+Le futur de l’IA générative ne se jouera pas sur la **taille des modèles**, mais sur la **qualité des pipelines**.  
 Les modèles sont des briques impressionnantes, mais sans architecture, ils s’effondrent au premier choc.  
 
 ---
@@ -58,7 +58,7 @@ De la boîte noire fragile à l’écosystème vivant, le chemin est exigeant.
 Mais il est aussi porteur d’une promesse : celle de systèmes qui **méritent la confiance**.  
 
 🌱 Construisons ensemble des pipelines **robustes, souverains et antifragiles**.  
-C’est un **appel à l’action collective** — car la véritable valeur de l’IA n’est pas dans les modèles, mais dans les **systèmes que nous créons autour d’eux**.  
+C’est un **appel à l’action collective** : car la véritable valeur de l’IA n’est pas dans les modèles, mais dans les **systèmes que nous créons autour d’eux**.  
 
 ---
 

@@ -1,6 +1,7 @@
+import Mermaid from '../components/Mermaid'
 import Comments from '../components/Comments'
 
-# Chapitre 14 — Par où commencer ?
+# Chapitre 14 : Par où commencer ?
 
 ---
 
@@ -44,29 +45,21 @@ cas_usage:
 
 Même pour un POC, structurez votre code en **4 modules distincts** dès le départ :
 
-```text
-project/
-├── config/
-│   └── pipeline_config.yaml      # Configuration centralisée
-├── modules/
-│   ├── ingestion/
-│   │   ├── loader.py             # Chargement PDF, Markdown, etc.
-│   │   ├── cleaner.py            # Nettoyage, OCR
-│   │   └── chunker.py            # Découpage en chunks
-│   ├── retrieval/
-│   │   ├── vector_search.py      # Recherche vectorielle
-│   │   ├── bm25_search.py        # Recherche lexicale
-│   │   └── reranker.py           # Re-classement
-│   ├── generation/
-│   │   ├── prompt_builder.py     # Construction des prompts
-│   │   └── llm_client.py         # Client LLM (agnostique)
-│   └── verification/
-│       ├── critic.py             # Critic LLM
-│       └── risk_governor.py      # Gouverneur de risque
-├── orchestrator.py               # Chef d'orchestre
-├── main.py
-└── tests/
-```
+<Mermaid
+  chart={`
+flowchart TB
+  P["project/"] --> C["config/\\npipeline_config.yaml"]
+  P --> MOD["modules/"]
+  MOD --> I["ingestion/"]
+  MOD --> R["retrieval/"]
+  MOD --> G["generation/"]
+  MOD --> V["verification/"]
+  P --> O["orchestrator.py"]
+  P --> M["main.py"]
+  P --> T["tests/"]
+`}/>
+
+Lecture : l’arborescence sépare clairement la configuration, les modules et l’orchestration, ce qui facilite l’évolution sans tout casser.
 
 **Pourquoi maintenant ?** Parce que migrer d'un script monolithique vers une architecture modulaire coûte 10x plus cher que de bien structurer dès le départ.
 
@@ -77,7 +70,7 @@ project/
 Voici le code minimal pour un pipeline fonctionnel :
 
 ```python
-# main.py — Pipeline RAG minimal mais modulaire
+# main.py : Pipeline RAG minimal mais modulaire
 import yaml
 from modules.ingestion.loader import load_documents
 from modules.ingestion.chunker import chunk_documents
@@ -122,7 +115,7 @@ for src in result["sources"]:
     print(f"  → {src['filename']} (p.{src.get('page', '?')})")
 ```
 
-**Remarque** : pas de vérification à cette étape. C'est normal — on l'ajoute à l'étape suivante. L'important est que la structure modulaire soit en place.
+**Remarque** : pas de vérification à cette étape. C'est normal : on l'ajoute à l'étape suivante. L'important est que la structure modulaire soit en place.
 
 ---
 
@@ -131,7 +124,7 @@ for src in result["sources"]:
 C'est l'étape qui transforme un prototype en **système digne de confiance**.
 
 ```python
-# modules/verification/critic.py — Critic LLM minimal
+# modules/verification/critic.py : Critic LLM minimal
 class BasicCritic:
     """Vérifie que la réponse est cohérente avec les sources."""
     
@@ -188,11 +181,28 @@ Un pipeline sans observabilité est un pipeline aveugle.
 
 ### Boucle d'amélioration
 
-```text
-Déployer → Mesurer → Identifier les faiblesses → Corriger → Redéployer
-     ↑                                                          │
-     └──────────────────────────────────────────────────────────┘
-```
+<Mermaid
+  chart={`
+flowchart LR
+  D["Déployer"] --> M["Mesurer"] --> I["Identifier les faiblesses"] --> C["Corriger"] --> R["Redéployer"]
+  R --> D
+`}/>
+
+Lecture : la boucle d’amélioration continue transforme les retours terrain en ajustements concrets.
+
+### Bloc complémentaire : RAGOps / LLMOps
+
+Une fois le pipeline en place, l’industrialisation passe par des pratiques “ops” :
+
+- **Versioning des prompts** et des templates.  
+- **Versioning d’index** (rebuild, rollback, double écriture).  
+- **Observabilité** centralisée (traces, métriques, logs).  
+- **A/B tests** sur stratégies de retrieval et prompts.  
+- **Gating** des déploiements (feature flags, canary).  
+
+**Sources**  
+- [OpenTelemetry : observabilité standard](https://opentelemetry.io/docs/)  
+- [MLflow : tracking et lifecycle](https://mlflow.org/docs/latest/)  
 
 Les erreurs les plus fréquentes au démarrage :
 
@@ -213,7 +223,7 @@ Les erreurs les plus fréquentes au démarrage :
 | **4** | Ajouter la vérification | 1-2 jours |
 | **5** | Observer et itérer | Continu |
 
-👉 En **une semaine**, vous avez un pipeline modulaire, vérifiable et évolutif.  
+En **une semaine**, vous avez un pipeline modulaire, vérifiable et évolutif.  
 Pas un jouet fragile, mais la **première brique d'une architecture antifragile**.
 
 ---
@@ -222,11 +232,11 @@ Pas un jouet fragile, mais la **première brique d'une architecture antifragile*
 
 Une fois ce socle en place, les prochaines itérations peuvent ajouter :
 
-- **Retrieval hybride** (vecteurs + BM25) — cf. Chapitre 6.
-- **Time-travel retrieval** pour les corpus versionnés — cf. Chapitre 9.
-- **Mémoire pyramidale** pour les conversations longues — cf. Chapitre 9.
-- **Gouverneur de risque** pour les cas critiques — cf. Chapitre 8.
-- **Observabilité avancée** (OpenTelemetry, dashboards) — cf. Chapitre 8.
+- **Retrieval hybride** (vecteurs + BM25) : cf. Chapitre 6.
+- **Time-travel retrieval** pour les corpus versionnés : cf. Chapitre 9.
+- **Mémoire pyramidale** pour les conversations longues : cf. Chapitre 9.
+- **Gouverneur de risque** pour les cas critiques : cf. Chapitre 8.
+- **Observabilité avancée** (OpenTelemetry, dashboards) : cf. Chapitre 8.
 
 Chaque extension est un module indépendant. C'est la force de l'approche modulaire : **on ajoute sans tout casser**.
 

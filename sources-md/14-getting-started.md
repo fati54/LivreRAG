@@ -1,4 +1,4 @@
-# Chapitre 14 — Par où commencer ?
+# Chapitre 14 : Par où commencer ?
 
 ---
 
@@ -75,7 +75,7 @@ project/
 Voici le code minimal pour un pipeline fonctionnel :
 
 ```python
-# main.py — Pipeline RAG minimal mais modulaire
+# main.py : Pipeline RAG minimal mais modulaire
 import yaml
 from modules.ingestion.loader import load_documents
 from modules.ingestion.chunker import chunk_documents
@@ -120,7 +120,7 @@ for src in result["sources"]:
     print(f"  → {src['filename']} (p.{src.get('page', '?')})")
 ```
 
-**Remarque** : pas de vérification à cette étape. C'est normal — on l'ajoute à l'étape suivante. L'important est que la structure modulaire soit en place.
+**Remarque** : pas de vérification à cette étape. C'est normal : on l'ajoute à l'étape suivante. L'important est que la structure modulaire soit en place.
 
 ---
 
@@ -129,7 +129,7 @@ for src in result["sources"]:
 C'est l'étape qui transforme un prototype en **système digne de confiance**.
 
 ```python
-# modules/verification/critic.py — Critic LLM minimal
+# modules/verification/critic.py : Critic LLM minimal
 class BasicCritic:
     """Vérifie que la réponse est cohérente avec les sources."""
     
@@ -211,7 +211,7 @@ Les erreurs les plus fréquentes au démarrage :
 | **4** | Ajouter la vérification | 1-2 jours |
 | **5** | Observer et itérer | Continu |
 
-👉 En **une semaine**, vous avez un pipeline modulaire, vérifiable et évolutif.  
+En **une semaine**, vous avez un pipeline modulaire, vérifiable et évolutif.  
 Pas un jouet fragile, mais la **première brique d'une architecture antifragile**.
 
 ---
@@ -220,11 +220,11 @@ Pas un jouet fragile, mais la **première brique d'une architecture antifragile*
 
 Une fois ce socle en place, les prochaines itérations peuvent ajouter :
 
-- **Retrieval hybride** (vecteurs + BM25) — cf. Chapitre 6.
-- **Time-travel retrieval** pour les corpus versionnés — cf. Chapitre 9.
-- **Mémoire pyramidale** pour les conversations longues — cf. Chapitre 9.
-- **Gouverneur de risque** pour les cas critiques — cf. Chapitre 8.
-- **Observabilité avancée** (OpenTelemetry, dashboards) — cf. Chapitre 8.
+- **Retrieval hybride** (vecteurs + BM25) : cf. Chapitre 6.
+- **Time-travel retrieval** pour les corpus versionnés : cf. Chapitre 9.
+- **Mémoire pyramidale** pour les conversations longues : cf. Chapitre 9.
+- **Gouverneur de risque** pour les cas critiques : cf. Chapitre 8.
+- **Observabilité avancée** (OpenTelemetry, dashboards) : cf. Chapitre 8.
 
 Chaque extension est un module indépendant. C'est la force de l'approche modulaire : **on ajoute sans tout casser**.
 

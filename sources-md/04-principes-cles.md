@@ -1,4 +1,4 @@
-# Chapitre 4 — Les quatre principes fondateurs : modularité, agnosticité, configurabilité, antifragilité
+# Chapitre 4 : Les quatre principes fondateurs : modularité, agnosticité, configurabilité, antifragilité
 
 ---
 
@@ -20,7 +20,7 @@ Chaque module (ingestion, retrieval, génération, vérification) peut être am�
 - **Évolutivité** : on remplace une technologie (ex. moteur vectoriel) sans refactoriser tout le pipeline.  
 - **Innovation continue** : on expérimente localement sans risquer l’ensemble.
 
-👉 On peut comparer la modularité à un **pipeline Lego** : des briques standards, interchangeables et évolutives.  
+On peut comparer la modularité à un **pipeline Lego** : des briques standards, interchangeables et évolutives.  
 C’est aussi le principe des **microservices** en ingénierie logicielle.
 
 ---
@@ -56,7 +56,7 @@ C’est un principe hérité du DevOps et du MLOps modernes.
 ### Exemple : fichier de configuration YAML
 
 ```yaml
-# pipeline_config.yaml — Configuration d'un pipeline RAG antifragile
+# pipeline_config.yaml : Configuration d'un pipeline RAG antifragile
 pipeline:
   name: "rag-juridique-v2"
   version: "2.1.0"
@@ -97,7 +97,7 @@ verification:
     escalade_humaine: true
 ```
 
-👉 Changer de base vectorielle, de LLM ou de stratégie de retrieval = modifier une ligne YAML, pas réécrire du code.
+Changer de base vectorielle, de LLM ou de stratégie de retrieval = modifier une ligne YAML, pas réécrire du code.
 
 ---
 
@@ -146,7 +146,7 @@ C’est un principe essentiel pour des systèmes critiques comme la santé ou la
 ---
 
 
-##  Schéma — Le quadrilatère des principes
+##  Schéma : Le quadrilatère des principes
 
 ```text
               ┌───────────────┐

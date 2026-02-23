@@ -1,7 +1,7 @@
 import Mermaid from '../components/Mermaid'
 import Comments from '../components/Comments'
 
-# Chapitre 6 — Anatomie du pipeline
+# Chapitre 6 : Anatomie du pipeline
 
 ---
 
@@ -27,7 +27,7 @@ flowchart LR
 `}
 />
 
-👉 Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
+Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
 
 ---
 
@@ -73,7 +73,7 @@ Objectif : transformer des sources hétérogènes en **unités de connaissance f
 | **Semantic** | Créer des frontières quand le sens change | Longs documents continus (notes, transcriptions) | Plus coûteux (embeddings) |
 | **Document-aware** | Règles par type (table, code, section légale) | PDF structurés, code, tables | Demande un parser spécialisé |
 
-**Impact de la taille des chunks (extraits chiffrés)** — résultats d'une évaluation RAG multi-corpus :
+**Impact de la taille des chunks (extraits chiffrés)** : résultats d'une évaluation RAG multi-corpus :
 
 | Corpus (évaluation NVIDIA) | Taille/stratégie gagnante | Accuracy E2E | Note |
 |---|---:|---:|---|
@@ -425,26 +425,26 @@ def freshness_score(days_old: int) -> float:
 
 ### Sources (ingestion)
 
-- [NVIDIA — Best chunking strategy for RAG pipelines](https://developer.nvidia.com/blog/best-chunking-strategy-for-rag-pipelines/)
-- [OpenAI — New embedding models and API updates (prix + dims)](https://openai.com/index/new-embedding-models-and-api-updates/)
-- [OpenAI — New and improved embedding model (ada-002)](https://openai.com/index/new-and-improved-embedding-model/)
-- [Cohere — Embed models (v3, langues, dimensions)](https://docs.cohere.com/docs/cohere-embed)
-- [Cohere — Pricing (Embed)](https://cohere.com/pricing)
-- [BAAI — BGE model card (MTEB retrieval scores)](https://huggingface.co/BAAI/bge-large-en-v1.5)
-- [Hugging Face — all-MiniLM-L6-v2 model card (dimension)](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
-- [Snowflake — MTEB Retrieval scores list](https://github.com/Snowflake-Labs/arctic-embed/tree/main?tab=readme-ov-file#benchmarks)
-- [Mistral — Mistral Embed (prix)](https://docs.mistral.ai/models/mistral-embed/)
-- [Mistral — Embedding model release (MTEB 55.26)](https://mistral.ai/en/news/embedding-model-2348)
-- [Voyage AI — voyage-large-2-instruct (MTEB retrieval + dimension)](https://www.voyageai.com/blog/voyage-large-2-instruct)
-- [Voyage AI — Pricing](https://docs.voyageai.com/docs/pricing)
-- [OpenAI — API Pricing (GPT-4o, GPT-4o-mini)](https://platform.openai.com/pricing)
-- [Anthropic — Pricing](https://www.anthropic.com/pricing)
-- [Mistral — Mistral Large 3 pricing](https://docs.mistral.ai/models/mistral-large/)
-- [Mistral — Mistral Small 3.2 pricing](https://docs.mistral.ai/models/mistral-small/)
-- [Google — Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing)
-- [Together AI — Pricing (Llama 3.1 70B)](https://www.together.ai/pricing)
-- [Jégou et al. — Product Quantization (PQ)](https://arxiv.org/abs/1009.0976)
-- [Malkov & Yashunin — HNSW](https://arxiv.org/abs/1603.09320)
+- [NVIDIA : Best chunking strategy for RAG pipelines](https://developer.nvidia.com/blog/best-chunking-strategy-for-rag-pipelines/)
+- [OpenAI : New embedding models and API updates (prix + dims)](https://openai.com/index/new-embedding-models-and-api-updates/)
+- [OpenAI : New and improved embedding model (ada-002)](https://openai.com/index/new-and-improved-embedding-model/)
+- [Cohere : Embed models (v3, langues, dimensions)](https://docs.cohere.com/docs/cohere-embed)
+- [Cohere : Pricing (Embed)](https://cohere.com/pricing)
+- [BAAI : BGE model card (MTEB retrieval scores)](https://huggingface.co/BAAI/bge-large-en-v1.5)
+- [Hugging Face : all-MiniLM-L6-v2 model card (dimension)](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+- [Snowflake : MTEB Retrieval scores list](https://github.com/Snowflake-Labs/arctic-embed/tree/main?tab=readme-ov-file#benchmarks)
+- [Mistral : Mistral Embed (prix)](https://docs.mistral.ai/models/mistral-embed/)
+- [Mistral : Embedding model release (MTEB 55.26)](https://mistral.ai/en/news/embedding-model-2348)
+- [Voyage AI : voyage-large-2-instruct (MTEB retrieval + dimension)](https://www.voyageai.com/blog/voyage-large-2-instruct)
+- [Voyage AI : Pricing](https://docs.voyageai.com/docs/pricing)
+- [OpenAI : API Pricing (GPT-4o, GPT-4o-mini)](https://platform.openai.com/pricing)
+- [Anthropic : Pricing](https://www.anthropic.com/pricing)
+- [Mistral : Mistral Large 3 pricing](https://docs.mistral.ai/models/mistral-large/)
+- [Mistral : Mistral Small 3.2 pricing](https://docs.mistral.ai/models/mistral-small/)
+- [Google : Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing)
+- [Together AI : Pricing (Llama 3.1 70B)](https://www.together.ai/pricing)
+- [Jégou et al. : Product Quantization (PQ)](https://arxiv.org/abs/1009.0976)
+- [Malkov & Yashunin : HNSW](https://arxiv.org/abs/1603.09320)
 
 ---
 
@@ -467,6 +467,45 @@ Retrieval robuste = moins d’hallucinations.
 
 ---
 
+### 6.4.1 Évaluer un pipeline RAG en pratique
+
+L’évaluation doit couvrir **deux niveaux** :  
+1) la **qualité du retrieval** (est‑ce que je récupère les bons passages ?)  
+2) la **fidélité de la réponse** (est‑ce que la génération respecte les sources ?)
+
+#### Retrieval
+Métriques usuelles : **Recall@K**, **nDCG@K**, **MRR**.  
+Benchmarks utiles pour tester la robustesse : **BEIR**, **MS MARCO**, **KILT**, **HotpotQA**, **Natural Questions**.  
+
+#### Génération
+Métriques à surveiller : **faithfulness**, **exactitude**, **citation coverage**, **taux de refus**, **latence** et **coût**.  
+Un outil pratique pour automatiser ces contrôles est **RAGAS** (évaluation basée sur LLM + heuristiques).
+
+**Sources**  
+- [BEIR : benchmark retrieval](https://arxiv.org/abs/2104.08663)  
+- [MS MARCO : dataset QA/retrieval](https://arxiv.org/abs/1611.09268)  
+- [KILT : knowledge‑intensive tasks](https://arxiv.org/abs/2009.02252)  
+- [HotpotQA : multi‑hop QA](https://arxiv.org/abs/1809.09600)  
+- [Natural Questions](https://aclanthology.org/Q19-1026/)  
+- [RAGAS : évaluation RAG](https://arxiv.org/abs/2309.15217)  
+
+### 6.4.2 Retrieval avancé (au‑delà du simple vecteur)
+
+Quand les requêtes deviennent complexes, les techniques suivantes améliorent fortement la qualité du retrieval :
+
+- **Query rewriting / feedback génératif** : enrichir la requête avec un LLM pour récupérer plus de signal.  
+- **HyDE** : générer un “document hypothétique” puis vectoriser ce document pour retrouver de vrais passages.  
+- **ColBERT (late interaction)** : meilleure précision via matching token‑par‑token.  
+- **SPLADE (sparse retrieval)** : combine la force du lexical et la robustesse neuronale.
+
+**Sources**  
+- [Generative Relevance Feedback : query rewriting](https://arxiv.org/abs/2304.13157)  
+- [HyDE](https://arxiv.org/abs/2212.10496)  
+- [ColBERT](https://arxiv.org/abs/2004.12832)  
+- [SPLADE](https://arxiv.org/abs/2107.05720)  
+
+---
+
 ## 6.5 Étape 3 : Génération
 
 La génération correspond au **travail du LLM** : formuler une réponse en utilisant les documents trouvés.
@@ -480,7 +519,7 @@ La génération correspond au **travail du LLM** : formuler une réponse en util
 - Concaténer trop de documents (bruit + coûts élevés).  
 - Laisser le modèle répondre librement sans contrainte.  
 
-👉 Une génération bien encadrée est le cœur de la crédibilité du pipeline.
+Une génération bien encadrée est le cœur de la crédibilité du pipeline.
 
 ---
 
@@ -511,7 +550,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 ### Exemple Python : orchestrateur minimal
 
 ```python
-# orchestrator.py — Orchestrateur RAG modulaire
+# orchestrator.py : Orchestrateur RAG modulaire
 from dataclasses import dataclass
 from typing import List, Optional
 import yaml
@@ -625,7 +664,7 @@ flowchart TB
 `}
 />
 
-👉 Ce schéma met en évidence les **sous-modules** de chaque étape.
+Ce schéma met en évidence les **sous-modules** de chaque étape.
 
 ---
 
@@ -661,7 +700,7 @@ Un pipeline antifragile doit être **observé en continu** :
 - **Alertes proactives** : détection de PII, dérive des performances, dépassements budgétaires.  
 - **Boucles de feedback** : utiliser les erreurs pour ajuster ingestion, retrieval ou prompts.  
 
-👉 L’observabilité est la clé pour passer de la théorie à la pratique.
+L’observabilité est la clé pour passer de la théorie à la pratique.
 
 ---
 
@@ -698,7 +737,7 @@ C’est la différence entre :
 ## 6.15 Conclusion et transition
 
 L’anatomie du pipeline révèle une vérité simple :  
-👉 **chaque étape est un maillon critique**.  
+**chaque étape est un maillon critique**.  
 
 Une ingestion fragile biaise tout le reste.  
 Un retrieval faible augmente les hallucinations.  

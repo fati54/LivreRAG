@@ -1,11 +1,11 @@
-# Chapitre 7 — Modularité vs frameworks
+# Chapitre 7 : Modularité vs frameworks
 
 ---
 
 ## 7.1 Introduction
 
 Après avoir détaillé l’anatomie du pipeline (Chapitre 6), il est essentiel de comparer deux approches qui coexistent aujourd’hui :  
-👉 **les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
+**les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
 
 Cette comparaison est centrale : elle détermine si l’on construit un **prototype rapide** ou une **infrastructure durable**.
 
@@ -168,9 +168,9 @@ Exploration (POC rapide) → Industrialisation (pipeline modulaire)
 Plusieurs sources confirment la difficulté de passer du POC à la production :
 
 - **Gartner (2024)** estime que plus de 30% des projets d’IA générative seront abandonnés après le stade du POC d’ici fin 2025, en raison de la qualité des données, de coûts mal maîtrisés et d’une gouvernance insuffisante.
-- **Nassim Nicholas Taleb, *Antifragile* (2012)** — Le concept d’antifragilité qui sous-tend ce manifeste : les systèmes qui bénéficient du désordre plutôt que d’en souffrir.
-- **Google DORA Report (2024)** — 90% des développeurs utilisent désormais l’IA générative, mais l’observabilité et la gouvernance restent les principaux défis.
-- **Stanford HAI — AI Index Report (2024)** — Les coûts d’entraînement des modèles ont explosé, renforçant l’argument économique en faveur du RAG vs le fine-tuning.
+- **Nassim Nicholas Taleb, *Antifragile* (2012)** : Le concept d’antifragilité qui sous-tend ce manifeste : les systèmes qui bénéficient du désordre plutôt que d’en souffrir.
+- **Google DORA Report (2024)** : 90% des développeurs utilisent désormais l’IA générative, mais l’observabilité et la gouvernance restent les principaux défis.
+- **Stanford HAI : AI Index Report (2024)** : Les coûts d’entraînement des modèles ont explosé, renforçant l’argument économique en faveur du RAG vs le fine-tuning.
 
 Ces données confirment qu’il ne s’agit pas seulement d’un choix technique, mais d’un **enjeu stratégique**.
 
@@ -183,4 +183,4 @@ Mais leur nature même les rend fragiles dès qu’on parle de conformité, de s
 
 Le pipeline modulaire est plus coûteux au départ, mais il constitue la **fondation antifragile** des systèmes de demain.  
 
-👉 Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.
+Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.

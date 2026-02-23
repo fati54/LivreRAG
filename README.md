@@ -22,7 +22,7 @@ git push -u origin main
 1. Va sur [vercel.com](https://vercel.com) et connecte-toi avec GitHub
 2. Clique sur **"Add New Project"**
 3. Sélectionne le repo **livre-rag-site**
-4. Vercel détecte automatiquement Next.js — clique sur **Deploy**
+4. Vercel détecte automatiquement Next.js : clique sur **Deploy**
 5. En 1-2 minutes, ton site est live ! 🎉
 
 ### 3. (Optionnel) Domaine custom
@@ -66,4 +66,4 @@ styles/
 
 ## 📝 Licence
 
-© 2025 Fatima-Ezzahra Bouzidi Idrissi — Tous droits réservés.
+© 2025 Fatima-Ezzahra Bouzidi Idrissi : Tous droits réservés.

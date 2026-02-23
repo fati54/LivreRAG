@@ -1,4 +1,4 @@
-# Chapitre 8 — Sécurité, gouvernance et souveraineté
+# Chapitre 8 : Sécurité, gouvernance et souveraineté
 
 ---
 
@@ -7,7 +7,7 @@
 Un pipeline RAG n’est pas un gadget de hackathon.  
 Il sera utilisé pour des **données sensibles**, des **décisions critiques**, des **contextes réglementés** (santé, finance, droit, éducation).  
 
-👉 La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
+La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
 
 Or, la plupart des frameworks actuels (LangChain, LlamaIndex, etc.) traitent la sécurité **après coup**, comme une couche externe. Résultat :  
 - fuites de données internes,  
@@ -105,7 +105,7 @@ Chaque réponse doit être traçable :
 - **OpenTelemetry**, **W&B**, **MLflow**, dashboards custom.  
 - **Alertes proactives** (fuite de PII, coûts anormaux, dérive qualité).  
 
-👉 L’observabilité est la colonne vertébrale de la gouvernance.  
+L’observabilité est la colonne vertébrale de la gouvernance.  
 
 ---
 
@@ -223,7 +223,7 @@ La **sécurité**, la **gouvernance** et la **souveraineté** forment un **cercl
 - **Gouvernance** → confiance légale et organisationnelle.  
 - **Souveraineté** → indépendance stratégique.  
 
-👉 Sans elles, on obtient des **pipelines-jouets**.  
+Sans elles, on obtient des **pipelines-jouets**.  
 Avec elles, on obtient des **pipelines critiques**, capables de soutenir santé, droit, économie.  
 
 Le prochain chapitre (Chapitre 9) explorera les **extensions possibles du pipeline** : mémoire longue, agents, multi-modalité.

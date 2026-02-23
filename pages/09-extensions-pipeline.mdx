@@ -1,7 +1,7 @@
 import Mermaid from '../components/Mermaid'
 import Comments from '../components/Comments'
 
-# Chapitre 9 — Les extensions originales du pipeline
+# Chapitre 9 : Les extensions originales du pipeline
 
 ---
 
@@ -17,7 +17,7 @@ Jusqu’ici, nous avons défini :
 Mais un pipeline modulaire ne doit pas seulement **corriger les faiblesses**.
 Il doit aussi être **inventif, évolutif et enrichi**.
 
-👉 Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
+Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
 
 ---
 
@@ -47,7 +47,7 @@ C’est une extension critique pour la **traçabilité** et la **conformité lé
 ### Exemple Python : Time-travel retrieval
 
 ```python
-# time_travel_retriever.py — Recherche avec dimension temporelle
+# time_travel_retriever.py : Recherche avec dimension temporelle
 from datetime import datetime
 from typing import List, Optional
 
@@ -134,12 +134,12 @@ Il agit comme un **pair reviewer** automatique.
 * Dans un hôpital → le critic vérifie que la réponse respecte les guidelines médicales.
 * Dans une banque → le critic rejette toute hallucination chiffrée non sourcée.
 
-👉 C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
+C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
 
 ### Exemple Python : Critic LLM
 
 ```python
-# critic_llm.py — Vérification automatique des réponses
+# critic_llm.py : Vérification automatique des réponses
 from dataclasses import dataclass
 from typing import List
 
@@ -271,8 +271,8 @@ print(context_nodes)
 ```
 
 ### Sources (Graph RAG)
-- [GraphRAG Survey — arXiv:2408.08921](https://arxiv.org/abs/2408.08921)
-- [GraphRAG — arXiv:2501.00309](https://arxiv.org/abs/2501.00309)
+- [GraphRAG Survey : arXiv:2408.08921](https://arxiv.org/abs/2408.08921)
+- [GraphRAG : arXiv:2501.00309](https://arxiv.org/abs/2501.00309)
 
 ---
 
@@ -307,7 +307,7 @@ Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des
 
 
 
-# 📌 Synthèse visuelle — Extensions originales du pipeline RAG
+# 📌 Synthèse visuelle : Extensions originales du pipeline RAG
 
 ---
 
@@ -319,9 +319,14 @@ Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des
 * En santé → comparer protocoles 2020 vs 2024.
 * Implémentation → métadonnées temporelles + requêtes historiques.
 
-```
- Question → [ Retrieval temporel ] → Résultat adapté à l’année demandée
-```
+<Mermaid
+  chart={`
+flowchart LR
+  Q["Question"] --> T["Retrieval temporel"]
+  T --> R["Résultat adapté à l'année demandée"]
+`}/>
+
+Lecture : la requête est évaluée dans un contexte temporel pour récupérer la version pertinente au bon moment.
 
 ---
 
@@ -333,13 +338,14 @@ Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des
 * **Moyenne** (session/projet) : historique ciblé.
 * **Longue** (archive/KB) : savoir durable.
 
-```
-    Mémoire courte
-         │
-    Mémoire moyenne
-         │
-    Mémoire longue
-```
+<Mermaid
+  chart={`
+flowchart TB
+  C["Mémoire courte\ncache session"] --> M["Mémoire moyenne\nsession ou projet"]
+  M --> L["Mémoire longue\narchive ou base durable"]
+`}/>
+
+Lecture : l’information passe de la mémoire courte vers des couches plus stables et durables.
 
 ---
 
@@ -351,9 +357,15 @@ Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des
 * Rejette ou reformule en cas d’erreur.
 * Exemples → médecine (guidelines), banque (chiffres exacts).
 
-```
-LLM principal → Réponse → [ Critic LLM ] → Validation / Correction
-```
+<Mermaid
+  chart={`
+flowchart LR
+  L["LLM principal"] --> R["Réponse"]
+  R --> C["Critic LLM"]
+  C --> V["Validation ou correction"]
+`}/>
+
+Lecture : un second modèle vérifie la réponse avant qu’elle ne soit exposée.
 
 ---
 
@@ -365,32 +377,32 @@ LLM principal → Réponse → [ Critic LLM ] → Validation / Correction
 * Détection de biais, signaux faibles.
 * Escalade vers humain si doute.
 
-```
-Réponse → [ Gouverneur de risque ] → Validée / Bloquée / Escaladée
-```
+<Mermaid
+  chart={`
+flowchart LR
+  R["Réponse"] --> G["Gouverneur de risque"]
+  G --> V["Validée"]
+  G --> B["Bloquée"]
+  G --> E["Escaladée"]
+`}/>
+
+Lecture : le gouverneur applique les politiques et décide si la réponse est publiée, bloquée ou revue par un humain.
 
 ---
 
 ## 🧬 Vision globale
 
-```
-[ Time-travel retrieval ]
-          │
-          ▼
- [ Mémoire pyramidale ]
-          │
-          ▼
- [ Génération (LLM) ]
-          │
-          ▼
- [ Critic LLM ]
-          │
-          ▼
- [ Gouverneur de risque ]
-          │
-          ▼
- [ Réponse antifragile ]
-```
+<Mermaid
+  chart={`
+flowchart TB
+  T["Time-travel retrieval"] --> M["Mémoire pyramidale"]
+  M --> G["Génération (LLM)"]
+  G --> C["Critic LLM"]
+  C --> R["Gouverneur de risque"]
+  R --> A["Réponse antifragile"]
+`}/>
+
+Lecture : les extensions s’enchaînent pour produire une réponse plus sûre, plus contextualisée et plus fiable.
 
 ---
 
@@ -403,7 +415,7 @@ Ces **extensions** transforment le pipeline en un système **vivant et évolutif
 * 🔍 **Vérifié** (critic LLM)
 * 🛡️ **Sécurisé & gouverné** (risk governor)
 
-👉 Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
+Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
 
 
 Le **Chapitre 10 présente des cas concrets. : Cas d’usage emblématiques**.

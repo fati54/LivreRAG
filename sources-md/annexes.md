@@ -1,21 +1,21 @@
-# 📎 Annexes — Mode d’emploi opérationnel du pipeline RAG
+# 📎 Annexes : Mode d’emploi opérationnel du pipeline RAG
 
 ---
 
-## Annexe A — I/O et vision multimodale
+## Annexe A : I/O et vision multimodale
 
 ---
 
 # 🧩 Schéma du pipeline RAG modulaire & antifragile 
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/pipeline.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/pipeline.png "Pipeline RAG modulaire & antifragile")
 
 ---
 
 
-# 🧩 Pipeline RAG modulaire & antifragile — Vue complète
+# 🧩 Pipeline RAG modulaire & antifragile : Vue complète
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/pipeline_2.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/pipeline_2.png "Pipeline RAG modulaire & antifragile")
 
 ```text
 [ 1. SOURCES ]
@@ -129,7 +129,7 @@
 ---
 🧩 carte mentale
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/mind.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/mind.png "Pipeline RAG modulaire & antifragile")
 
 
 ### Explication simplifiée
@@ -142,7 +142,7 @@
 - **Tables** : fichiers Excel, bases de données.  
 - **APIs** : ERP/CRM, SaaS externes.  
 
-👉 Ça liste tous les types de contenus qu’on peut brancher.
+Ça liste tous les types de contenus qu’on peut brancher.
 
 ---
 
@@ -180,7 +180,7 @@ L’index est comme un gros catalogue intelligent pour retrouver vite l’info.
 - **Mémoires spéciales** : time travel, pyramid memory.  
 - **Gouvernance** : filtrer les résultats selon les règles.  
 
-👉 C’est le chef d’orchestre qui décide quoi chercher et comment combiner.
+C’est le chef d’orchestre qui décide quoi chercher et comment combiner.
 
 ---
 
@@ -210,7 +210,7 @@ C’est la partie pour éviter les réponses fausses ou risquées.
 - Rapports **RGPD/HIPAA**.  
 - **Red teaming** (tester les failles de sécurité).  
 
-👉 Comme un tableau de bord qualité et conformité.
+Comme un tableau de bord qualité et conformité.
 
 ---
 
@@ -316,7 +316,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe B — Schémas récapitulatifs & pipeline détaillé
+## Annexe B : Schémas récapitulatifs & pipeline détaillé
 
 ### B.1 Pipeline global (vue d’ensemble)
 
@@ -342,7 +342,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse validée ] ──► [ Observabilité / Audit / Feedback ]
 ```
 
-### B.2 Étape 1 — Ingestion & normalisation
+### B.2 Étape 1 : Ingestion & normalisation
 
 ```text
 [ Sources brutes ]
@@ -359,7 +359,7 @@ Utilisateur / Systèmes → [ Entrées ]
   └─ PII Filter (amont)
 ```
 
-### B.3 Étape 2 — Indexation & stockage
+### B.3 Étape 2 : Indexation & stockage
 
 ```text
 [ Chunks + Métadonnées ]
@@ -374,7 +374,7 @@ Utilisateur / Systèmes → [ Entrées ]
   └─ Cold: originaux chiffrés + logs ingestion
 ```
 
-### B.4 Étape 3 — Retrieval (sélection candidates)
+### B.4 Étape 3 : Retrieval (sélection candidates)
 
 ```text
 [ Requête enrichie ]
@@ -387,7 +387,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Union de candidats ]
 ```
 
-### B.5 Étape 4 — Fusion & re-ranking
+### B.5 Étape 4 : Fusion & re-ranking
 
 ```text
 [ Candidats (K1 + K2) ]
@@ -400,7 +400,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Top N final + Citations ]
 ```
 
-### B.6 Étape 5 — Génération (prompts contrôlés)
+### B.6 Étape 5 : Génération (prompts contrôlés)
 
 ```text
 [ Contexte Top N + Instructions ]
@@ -413,7 +413,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse provisoire + Citations ]
 ```
 
-### B.7 Étape 6 — Vérification (critic)
+### B.7 Étape 6 : Vérification (critic)
 
 ```text
 [ Réponse provisoire ]
@@ -425,7 +425,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse revue ]
 ```
 
-### B.8 Étape 7 — Gouverneur de risque (policies)
+### B.8 Étape 7 : Gouverneur de risque (policies)
 
 ```text
 [ Réponse revue ]
@@ -439,7 +439,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse validée ]
 ```
 
-### B.9 Étape 8 — Observabilité, audit & boucles de feedback
+### B.9 Étape 8 : Observabilité, audit & boucles de feedback
 
 ```text
 [ Événements ]
@@ -453,7 +453,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Dashboards + Alertes ]  →  [ Améliorations: prompts, index, policies ]
 ```
 
-### B.10 Étape 9 — Réponse & post-traitement
+### B.10 Étape 9 : Réponse & post-traitement
 
 ```text
 [ Réponse validée ]
@@ -468,7 +468,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe C — Checklists pratiques
+## Annexe C : Checklists pratiques
 
 ### C.1 Qualité des données
 - [ ] OCR appliqué correctement  
@@ -506,7 +506,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe D — Outils open source
+## Annexe D : Outils open source
 
 | Outil                                 | Points forts              | Limites                            |
 | ------------------------------------- | ------------------------- | ---------------------------------- |
@@ -521,7 +521,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe E — Évaluation & métriques
+## Annexe E : Évaluation & métriques
 
 | Catégorie   | Métrique                | Cible prod               |
 | ----------- | ----------------------- | ------------------------ |
@@ -546,7 +546,7 @@ Utilisateur / Systèmes → [ Entrées ]
 - **Process** : réévaluer régulièrement (hebdomadaire) sur un échantillon représentatif pour détecter les dérives.
 
 
-## Annexe F — Red teaming
+## Annexe F : Red teaming
 
 - Attaques : prompt injection, data poisoning, jailbreak, exfiltration PII.  
 - Rôles : red team (attaque), blue team (défense), purple team (coordination).  
@@ -554,7 +554,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe G — Stratégies de stockage
+## Annexe G : Stratégies de stockage
 
 - **Hot storage** : chunks + embeddings + index (opérationnel).  
 - **Cold storage** : originaux chiffrés + logs d’ingestion (probatoire).  
@@ -562,7 +562,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe H — Bonnes pratiques de déploiement
+## Annexe H : Bonnes pratiques de déploiement
 
 - **Canary / Blue-Green** : limiter l’impact d’une régression.  
 - **Migrations d’index** : double écriture + vérification croisée.  
@@ -572,7 +572,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe I — Glossaire visuel
+## Annexe I : Glossaire visuel
 
 - 🎼 **Orchestrateur** → chef d’orchestre du pipeline.  
 - 🤖 **LLM** → générateur encadré.  
@@ -586,7 +586,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe J — Templates de configuration (YAML)
+## Annexe J : Templates de configuration (YAML)
 
 ### J.1 Pipeline minimal modulaire
 ```yaml
@@ -665,4 +665,4 @@ observability:
 
 Ces annexes ne sont pas figées : c’est un **kit évolutif** qui accompagne le manifeste.  
 Elles visent un double objectif : **pragmatisme opérationnel** et **ouverture communautaire**.  
-Améliore-les, adapte-les, partage tes retours — pour des pipelines **robustes, souverains et antifragiles**.
+Améliore-les, adapte-les, partage tes retours : pour des pipelines **robustes, souverains et antifragiles**.

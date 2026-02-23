@@ -1,6 +1,6 @@
 # 🧩 Schéma du pipeline RAG modulaire & antifragile 
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/pipeline.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/pipeline.png "Pipeline RAG modulaire & antifragile")
 
 
 ```mermaid

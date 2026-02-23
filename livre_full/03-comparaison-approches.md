@@ -1,4 +1,4 @@
-# Chapitre 3 — Comparaison des approches et problèmes persistants
+# Chapitre 3 : Comparaison des approches et problèmes persistants
 
 ---
 
@@ -33,7 +33,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Gouvernance et sécurité souvent laissées de côté.  
 - Stabilité relative : certaines API évoluent vite.  
 
-👉 Pertinent pour **prototyper rapidement** ou explorer un use case, mais demande des efforts supplémentaires pour une mise en production robuste.
+Pertinent pour **prototyper rapidement** ou explorer un use case, mais demande des efforts supplémentaires pour une mise en production robuste.
 
 ---
 
@@ -51,7 +51,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Ce ne sont pas des pipelines complets : ingestion, prompts et vérification restent à orchestrer.  
 - Gouvernance et conformité peu couvertes nativement.  
 
-👉 Adaptées comme **fondation mémoire** dans une architecture RAG, mais nécessitent une intégration dans un pipeline plus large.
+Adaptées comme **fondation mémoire** dans une architecture RAG, mais nécessitent une intégration dans un pipeline plus large.
 
 ---
 
@@ -70,7 +70,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Gouvernance quasi inexistante.  
 - Difficultés à industrialiser et monitorer à grande échelle.  
 
-👉 Conviennent pour **évangéliser, prototyper ou tester des concepts**, mais limitées pour une exploitation critique.
+Conviennent pour **évangéliser, prototyper ou tester des concepts**, mais limitées pour une exploitation critique.
 
 ---
 
@@ -92,7 +92,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Mise en place plus exigeante (design upfront, ingénierie solide).  
 - Coût initial supérieur à un framework clé en main.  
 
-👉 C’est l’**approche la plus durable et souveraine**, pensée pour la production critique.
+C’est l’**approche la plus durable et souveraine**, pensée pour la production critique.
 
 ---
 
@@ -115,21 +115,21 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 Pour illustrer ces différences, voici quelques situations où chaque approche trouve sa place :
 
 - **Framework intégré (LangChain, LlamaIndex, Haystack)**  
-  👉 Une startup qui veut présenter un **POC en 2 semaines** pour convaincre un client ou un investisseur.  
+  Une startup qui veut présenter un **POC en 2 semaines** pour convaincre un client ou un investisseur.  
 
 - **Base vectorielle seule (Weaviate, Milvus, Qdrant)**  
-  👉 Une DSI qui cherche à construire un **moteur de recherche interne** performant sur ses documents techniques.  
+  Une DSI qui cherche à construire un **moteur de recherche interne** performant sur ses documents techniques.  
 
 - **Approche low-code (Flowise, RAGFlow)**  
-  👉 Une école ou un hackathon qui veut permettre à des étudiants ou citoyens de **prototyper un assistant IA** sans écrire de code.  
+  Une école ou un hackathon qui veut permettre à des étudiants ou citoyens de **prototyper un assistant IA** sans écrire de code.  
 
 - **Pipeline modulaire**  
-  👉 Une banque, un hôpital ou un cabinet juridique qui a besoin d’un **système critique, traçable et souverain**.
+  Une banque, un hôpital ou un cabinet juridique qui a besoin d’un **système critique, traçable et souverain**.
 
 ---
 
 
-## 🔀 Schéma comparatif — 4 approches et problèmes communs
+## 🔀 Schéma comparatif : 4 approches et problèmes communs
 
 ```text
 
@@ -170,12 +170,12 @@ Pour illustrer ces différences, voici quelques situations où chaque approche t
 
 Quelle que soit l’approche choisie, certains défis restent communs :
 
-1. **Hallucinations** — Les modèles n’ont pas été conçus pour dire “je ne sais pas”. Même avec RAG, ils peuvent déformer ou ignorer les sources.  
-2. **Biais** — Les données d’entraînement et les algorithmes de retrieval amplifient certains contextes au détriment d’autres.  
-3. **Obsolescence rapide** — Les frameworks évoluent vite, créant une dette technique accélérée.  
-4. **Coûts** — Entre API LLM, bases vectorielles et orchestration, le RAG naïf peut devenir coûteux dès que l’échelle augmente.  
+1. **Hallucinations** : Les modèles n’ont pas été conçus pour dire “je ne sais pas”. Même avec RAG, ils peuvent déformer ou ignorer les sources.  
+2. **Biais** : Les données d’entraînement et les algorithmes de retrieval amplifient certains contextes au détriment d’autres.  
+3. **Obsolescence rapide** : Les frameworks évoluent vite, créant une dette technique accélérée.  
+4. **Coûts** : Entre API LLM, bases vectorielles et orchestration, le RAG naïf peut devenir coûteux dès que l’échelle augmente.  
 
-👉 Ces problèmes rappellent que la vraie valeur ne réside pas seulement dans l’outil choisi, mais dans une **architecture pensée pour durer, gouvernée et évolutive**.
+Ces problèmes rappellent que la vraie valeur ne réside pas seulement dans l’outil choisi, mais dans une **architecture pensée pour durer, gouvernée et évolutive**.
 
 ---
 
@@ -185,7 +185,7 @@ Les frameworks actuels sont utiles pour **prototyper et tester des idées**.
 Les bases vectorielles offrent des **fondations performantes** pour la mémoire.  
 Les approches low-code démocratisent l’accès, mais au prix de la robustesse.  
 
-👉 L’approche **pipeline modulaire** représente aujourd’hui la voie la plus crédible pour des systèmes :  
+L’approche **pipeline modulaire** représente aujourd’hui la voie la plus crédible pour des systèmes :  
 - gouvernés,  
 - traçables,  
 - souverains,  

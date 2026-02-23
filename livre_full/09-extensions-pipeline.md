@@ -1,4 +1,4 @@
-# Chapitre 9 — Les extensions originales du pipeline
+# Chapitre 9 : Les extensions originales du pipeline
 
 ---
 
@@ -14,7 +14,7 @@ Jusqu’ici, nous avons défini :
 Mais un pipeline modulaire ne doit pas seulement **corriger les faiblesses**.
 Il doit aussi être **inventif, évolutif et enrichi**.
 
-👉 Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
+Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
 
 ---
 
@@ -39,7 +39,7 @@ Permettre au pipeline de retrouver des documents **dans une dimension temporelle
 * Permettre des requêtes comme :
   *“Explique-moi ce qu’un médecin aurait recommandé en 2019 selon les guidelines officielles.”*
 
-👉 C’est une extension critique pour la **traçabilité** et la **conformité légale**.
+C’est une extension critique pour la **traçabilité** et la **conformité légale**.
 
 ---
 
@@ -62,7 +62,7 @@ Dans un support client :
 * mémoire moyenne → contexte du client (produits possédés, tickets passés).
 * mémoire longue → base documentaire (FAQ, manuels).
 
-👉 Ce design évite la surcharge cognitive du LLM et renforce la **pertinence contextuelle**.
+Ce design évite la surcharge cognitive du LLM et renforce la **pertinence contextuelle**.
 
 ---
 
@@ -88,7 +88,7 @@ Il agit comme un **pair reviewer** automatique.
 * Dans un hôpital → le critic vérifie que la réponse respecte les guidelines médicales.
 * Dans une banque → le critic rejette toute hallucination chiffrée non sourcée.
 
-👉 C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
+C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
 
 ---
 
@@ -113,7 +113,7 @@ Dans un cabinet juridique :
 * le gouverneur n’expose pas une réponse unique,
 * mais propose : *“2 jurisprudences possibles, à vérifier par un juriste.”*
 
-👉 C’est la logique du **“human in the loop” intelligent**.
+C’est la logique du **“human in the loop” intelligent**.
 
 ---
 
@@ -153,13 +153,13 @@ Ces extensions transforment le pipeline :
 * **Critic LLM** → introduit la vérification par les pairs automatisée.
 * **Gouverneur de risque intelligent** → incarne la gouvernance vivante et dynamique.
 
-👉 Ensemble, elles créent un pipeline **plus qu’un outil** : un système **évolutif, critique, souverain et antifragile**.
+Ensemble, elles créent un pipeline **plus qu’un outil** : un système **évolutif, critique, souverain et antifragile**.
 
 Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des cas d’usage concrets** : santé, droit, support client.
 
 
 
-# 📌 Synthèse visuelle — Extensions originales du pipeline RAG
+# 📌 Synthèse visuelle : Extensions originales du pipeline RAG
 
 ---
 
@@ -255,7 +255,7 @@ Ces **extensions** transforment le pipeline en un système **vivant et évolutif
 * 🔍 **Vérifié** (critic LLM)
 * 🛡️ **Sécurisé & gouverné** (risk governor)
 
-👉 Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
+Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
 
 
 Le **Chapitre 10 présente des cas concrets. : Cas d’usage emblématiques**.

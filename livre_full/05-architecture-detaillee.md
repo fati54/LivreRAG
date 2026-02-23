@@ -1,4 +1,4 @@
-# Chapitre 5 — Architecture détaillée : du jouet fragile à l’infrastructure antifragile
+# Chapitre 5 : Architecture détaillée : du jouet fragile à l’infrastructure antifragile
 
 ---
 
@@ -9,7 +9,7 @@ Les chapitres précédents ont montré :
 - le mirage d’un RAG naïf (Chapitre 2),  
 - et la comparaison des approches actuelles (Chapitre 3–4).  
 
-👉 Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
+Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
 
 Il est temps de franchir un cap : concevoir une **infrastructure antifragile**, capable de transformer un prototype fragile en un système critique.
 
@@ -28,7 +28,7 @@ Un RAG naïf ressemble à un **jouet technologique** :
 - Absence de filtrage des PII.  
 - Obsolescence rapide face à des évolutions réglementaires ou techniques.  
 
-👉 Résultat : un système fragile, peu digne de confiance.
+Résultat : un système fragile, peu digne de confiance.
 
 ---
 
@@ -51,11 +51,11 @@ ne plus voir le pipeline comme une simple *feature collée au modèle*, mais com
 - **Le jouet fragile** : un petit drone de loisir. Il vole bien en intérieur, mais au premier coup de vent, il s’écrase.  
 - **L’infrastructure antifragile** : l’aviation mondiale. Des milliers d’avions, redondants, supervisés par des tours de contrôle, avec audits permanents. Chaque incident renforce la sécurité globale.  
 
-👉 Le pipeline modulaire doit ressembler à l’aviation, pas à un gadget.
+Le pipeline modulaire doit ressembler à l’aviation, pas à un gadget.
 
 ---
 
-## 5.5 Schéma comparatif — pipeline fragile vs antifragile
+## 5.5 Schéma comparatif : pipeline fragile vs antifragile
 
 ### ❌ Pipeline naïf (fragile)
 
@@ -108,7 +108,7 @@ L’architecture antifragile s’inspire de disciplines éprouvées :
 - **Chaos engineering** → tester volontairement la robustesse du système en introduisant des perturbations contrôlées.  
 - **Biologie** → les organismes vivants qui s’adaptent et s’améliorent après des chocs illustrent bien l’antifragilité.  
 
-👉 La robustesse ne vient pas de la force brute, mais de l’**organisation intelligente**.
+La robustesse ne vient pas de la force brute, mais de l’**organisation intelligente**.
 
 ---
 
@@ -122,7 +122,7 @@ Une architecture antifragile ne se limite pas à la technique : elle doit intég
 - **Droit à l’oubli** : capacité à supprimer une information sur demande.  
 - **Risk governor** : composant qui surveille les sorties et bloque toute réponse risquée ou hors politique.
 
-👉 Sans gouvernance, la robustesse technique reste incomplète.
+Sans gouvernance, la robustesse technique reste incomplète.
 
 ---
 
@@ -135,7 +135,7 @@ Un pipeline antifragile doit être capable de **grandir avec les usages**.
 - **Monitoring de performance** : latence, coût par requête, consommation mémoire.  
 - **Optimisation continue** : ajustement dynamique des paramètres (taille des chunks, méthodes de retrieval).  
 
-👉 L’antifragilité inclut la capacité à absorber la croissance sans s’effondrer.
+L’antifragilité inclut la capacité à absorber la croissance sans s’effondrer.
 
 ---
 

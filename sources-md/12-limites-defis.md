@@ -1,4 +1,4 @@
-# Chapitre 12 — Limites et défis
+# Chapitre 12 : Limites et défis
 
 ---
 
@@ -7,7 +7,7 @@
 Un manifeste responsable ne peut pas seulement chanter ses promesses.  
 Il doit aussi reconnaître ses **limites**, ses **angles morts** et ses **défis non résolus**.  
 
-👉 Le pipeline modulaire antifragile n’est pas une baguette magique.  
+Le pipeline modulaire antifragile n’est pas une baguette magique.  
 C’est une **direction prometteuse**, mais encore incomplète.  
 
 ---
@@ -34,7 +34,7 @@ Pas encore de **protocole commun** pour :
 - auditabilité cross-modules.  
 
 Risque : des “Lego incompatibles”.  
-👉 Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
+Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
 + Proposer un standard « OpenRAG » regroupant 5 à 7 interfaces minimales (Ingestion, Index, Retriever, Reranker, Generator, Critic, Governor) et un schéma commun d’événements d’audit.
 
 
@@ -65,7 +65,7 @@ Sujet à creuser : hybrider avec **d’autres paradigmes** (symbolique, probabil
 Antifragilité = souvent **redondance** (retrievers multiples, critic LLM, gouverneur).  
 Plus de calcul = plus de consommation énergétique.  
 
-👉 Défi : inventer un **RAG frugal** :  
+Défi : inventer un **RAG frugal** :  
 - caching intelligent,  
 - modèles légers spécialisés,  
 - arbitrage entre précision et coût carbone.  

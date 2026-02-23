@@ -1,7 +1,7 @@
 import Mermaid from '../components/Mermaid'
 import Comments from '../components/Comments'
 
-# Chapitre 11 — Comparaison avec les alternatives au RAG
+# Chapitre 11 : Comparaison avec les alternatives au RAG
 
 ---
 
@@ -113,7 +113,25 @@ Combiner plusieurs approches :
 
 ---
 
-## 11.6 Schéma comparatif
+## 11.6 Encadré : Long context vs RAG
+
+Les modèles à **long contexte** peuvent parfois remplacer un RAG simple, mais pas toujours.
+
+**Quand le long contexte suffit :**
+- Corpus **petit et stable**, peu de mises à jour.  
+- Besoin d’une réponse immédiate, sans contrainte de traçabilité.  
+
+**Quand le RAG reste préférable :**
+- Corpus **volumineux et évolutif** (réglementation, docs internes).  
+- Besoin d’**auditabilité** (citations, sources, versioning).  
+- Risque de “**lost in the middle**” : le modèle néglige des passages au milieu d’un très long contexte.
+
+**Source**  
+- [Lost in the Middle : limitations long context](https://aclanthology.org/2024.tacl-1.9/)
+
+---
+
+## 11.7 Schéma comparatif
 
 <Mermaid
   chart={`
@@ -129,7 +147,7 @@ flowchart TB
 
 ---
 
-## 11.7 Tableau synthétique
+## 11.8 Tableau synthétique
 
 | Approche        | Avantages                        | Limites                        | Cas idéal |
 |-----------------|----------------------------------|--------------------------------|-----------|
@@ -141,7 +159,7 @@ flowchart TB
 
 ---
 
-## 11.8 L'émergence du RAG agentique
+## 11.9 L'émergence du RAG agentique
 
 ### Description
 Une évolution récente : le **RAG agentique** combine un pipeline RAG avec des **agents IA autonomes** capables de planifier, exécuter des actions et itérer.
@@ -202,21 +220,21 @@ def agentic_rag(question: str, max_iter: int = 3) -> str:
 - Risque de boucles infinies sans garde-fous.
 
 ### Position dans l'écosystème
-Le RAG agentique n'annule pas les principes de ce manifeste — il les renforce.  
+Le RAG agentique n'annule pas les principes de ce manifeste : il les renforce.  
 Un agent sans gouvernance est un agent dangereux.  
 Les principes de modularité, vérification et risk governor deviennent encore plus essentiels dans un contexte agentique.
 
 ### Sources (RAG agentique)
-- [ReAct — Synergizing Reasoning and Acting in Language Models (arXiv:2210.03629)](https://arxiv.org/abs/2210.03629)
+- [ReAct : Synergizing Reasoning and Acting in Language Models (arXiv:2210.03629)](https://arxiv.org/abs/2210.03629)
 
 ---
 
-## 11.9 Conclusion et transition
+## 11.10 Conclusion et transition
 
 
 Chaque approche a ses forces et faiblesses.  
 Le RAG n’est pas une solution universelle : il s’inscrit dans un **continuum de stratégies**.  
 
-👉 Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
+Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
 
 <Comments />

@@ -1,4 +1,4 @@
-# Chapitre 9 — Les extensions originales du pipeline
+# Chapitre 9 : Les extensions originales du pipeline
 
 ---
 
@@ -14,7 +14,7 @@ Jusqu’ici, nous avons défini :
 Mais un pipeline modulaire ne doit pas seulement **corriger les faiblesses**.
 Il doit aussi être **inventif, évolutif et enrichi**.
 
-👉 Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
+Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
 
 ---
 
@@ -44,7 +44,7 @@ C’est une extension critique pour la **traçabilité** et la **conformité lé
 ### Exemple Python : Time-travel retrieval
 
 ```python
-# time_travel_retriever.py — Recherche avec dimension temporelle
+# time_travel_retriever.py : Recherche avec dimension temporelle
 from datetime import datetime
 from typing import List, Optional
 
@@ -131,12 +131,12 @@ Il agit comme un **pair reviewer** automatique.
 * Dans un hôpital → le critic vérifie que la réponse respecte les guidelines médicales.
 * Dans une banque → le critic rejette toute hallucination chiffrée non sourcée.
 
-👉 C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
+C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
 
 ### Exemple Python : Critic LLM
 
 ```python
-# critic_llm.py — Vérification automatique des réponses
+# critic_llm.py : Vérification automatique des réponses
 from dataclasses import dataclass
 from typing import List
 
@@ -256,7 +256,7 @@ Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des
 
 
 
-# 📌 Synthèse visuelle — Extensions originales du pipeline RAG
+# 📌 Synthèse visuelle : Extensions originales du pipeline RAG
 
 ---
 
@@ -352,7 +352,7 @@ Ces **extensions** transforment le pipeline en un système **vivant et évolutif
 * 🔍 **Vérifié** (critic LLM)
 * 🛡️ **Sécurisé & gouverné** (risk governor)
 
-👉 Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
+Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
 
 
 Le **Chapitre 10 présente des cas concrets. : Cas d’usage emblématiques**.

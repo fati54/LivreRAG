@@ -1,4 +1,4 @@
-# Chapitre 6 — Anatomie du pipeline
+# Chapitre 6 : Anatomie du pipeline
 
 ---
 
@@ -19,7 +19,7 @@ Un pipeline antifragile suit quatre grandes étapes : **ingestion → retrieval 
                   [ Orchestrateur central ]
 ```
 
-👉 Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
+Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
 
 ---
 
@@ -38,7 +38,7 @@ Elle consiste à transformer des données brutes en documents exploitables.
 - Absence de suivi des versions.  
 - Manque de pipeline d’ETL clair.  
 
-👉 Une ingestion fragile = retrieval biaisé dès le départ.
+Une ingestion fragile = retrieval biaisé dès le départ.
 
 ---
 
@@ -57,7 +57,7 @@ C’est lui qui va sélectionner les documents les plus pertinents.
 - Ajouter des filtres sémantiques et des métadonnées.  
 - Surveiller la précision/recall via métriques.  
 
-👉 Retrieval robuste = moins d’hallucinations.
+Retrieval robuste = moins d’hallucinations.
 
 ---
 
@@ -74,7 +74,7 @@ La génération correspond au **travail du LLM** : formuler une réponse en util
 - Concaténer trop de documents (bruit + coûts élevés).  
 - Laisser le modèle répondre librement sans contrainte.  
 
-👉 Une génération bien encadrée est le cœur de la crédibilité du pipeline.
+Une génération bien encadrée est le cœur de la crédibilité du pipeline.
 
 ---
 
@@ -87,7 +87,7 @@ La vérification est l’étape qui transforme une réponse “probable” en un
 - **Risk governor** : filtre de conformité (données sensibles, RGPD, biais).  
 - **Auditabilité** : chaque réponse reliée à ses sources.  
 
-👉 C’est la **ceinture de sécurité** du pipeline.
+C’est la **ceinture de sécurité** du pipeline.
 
 ---
 
@@ -134,7 +134,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 [ Réponse validée + Audit ]
 ```
 
-👉 Ce schéma met en évidence les **sous-modules** de chaque étape.
+Ce schéma met en évidence les **sous-modules** de chaque étape.
 
 ---
 
@@ -146,7 +146,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 - **Vérification = système immunitaire** : détecter et corriger les erreurs.  
 - **Orchestrateur = cerveau** : coordonner l’ensemble.  
 
-👉 Le pipeline antifragile se comporte comme un organisme vivant : chaque organe est spécialisé, mais c’est leur coopération qui crée la résilience.
+Le pipeline antifragile se comporte comme un organisme vivant : chaque organe est spécialisé, mais c’est leur coopération qui crée la résilience.
 
 ---
 
@@ -157,7 +157,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 - **Prompts trop longs** : coûts explosifs et dépassements de tokens.  
 - **Absence de vérification** : hallucinations validées sans contrôle.  
 
-👉 Les erreurs sont inévitables, mais un pipeline antifragile apprend à les corriger.
+Les erreurs sont inévitables, mais un pipeline antifragile apprend à les corriger.
 
 ---
 
@@ -170,7 +170,7 @@ Un pipeline antifragile doit être **observé en continu** :
 - **Alertes proactives** : détection de PII, dérive des performances, dépassements budgétaires.  
 - **Boucles de feedback** : utiliser les erreurs pour ajuster ingestion, retrieval ou prompts.  
 
-👉 L’observabilité est la clé pour passer de la théorie à la pratique.
+L’observabilité est la clé pour passer de la théorie à la pratique.
 
 ---
 
@@ -181,7 +181,7 @@ Un pipeline antifragile doit être **observé en continu** :
 - Génération assemble une réponse avec 5 citations.  
 - Vérification par critic-LLM élimine 2 incohérences.  
 
-👉 Résultat : une réponse **fiable, sourcée et générée en <3 secondes**, avec un coût maîtrisé.
+Résultat : une réponse **fiable, sourcée et générée en <3 secondes**, avec un coût maîtrisé.
 
 ---
 
@@ -196,7 +196,7 @@ Un pipeline antifragile doit être **observé en continu** :
 ## 6.14 Comparaison avec les frameworks actuels
 
 Beaucoup de frameworks actuels implémentent seulement : **ingestion + retrieval + génération**.  
-👉 La **vérification** et l’**orchestrateur** sont souvent absents.  
+La **vérification** et l’**orchestrateur** sont souvent absents.  
 
 C’est la différence entre :  
 - un pipeline de **démonstration** (rapide mais fragile),  
@@ -207,7 +207,7 @@ C’est la différence entre :
 ## 6.15 Conclusion et transition
 
 L’anatomie du pipeline révèle une vérité simple :  
-👉 **chaque étape est un maillon critique**.  
+**chaque étape est un maillon critique**.  
 
 Une ingestion fragile biaise tout le reste.  
 Un retrieval faible augmente les hallucinations.  
@@ -221,4 +221,4 @@ Ce n’est pas un luxe, c’est une nécessité : un pipeline antifragile doit �
 ## 6.16 Transition vers le Chapitre 7
 
 Le prochain chapitre confrontera cette vision **pipeline modulaire** avec les **frameworks actuels** : LangChain, LlamaIndex, Haystack…  
-👉 Chapitre 7 : **Modularité vs frameworks**.
+Chapitre 7 : **Modularité vs frameworks**.

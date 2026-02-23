@@ -1,4 +1,4 @@
-# Chapitre 6 — Anatomie du pipeline
+# Chapitre 6 : Anatomie du pipeline
 
 ---
 
@@ -19,7 +19,7 @@ Un pipeline antifragile suit quatre grandes étapes : **ingestion → retrieval 
                   [ Orchestrateur central ]
 ```
 
-👉 Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
+Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
 
 ---
 
@@ -74,7 +74,7 @@ La génération correspond au **travail du LLM** : formuler une réponse en util
 - Concaténer trop de documents (bruit + coûts élevés).  
 - Laisser le modèle répondre librement sans contrainte.  
 
-👉 Une génération bien encadrée est le cœur de la crédibilité du pipeline.
+Une génération bien encadrée est le cœur de la crédibilité du pipeline.
 
 ---
 
@@ -105,7 +105,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 ### Exemple Python : orchestrateur minimal
 
 ```python
-# orchestrator.py — Orchestrateur RAG modulaire
+# orchestrator.py : Orchestrateur RAG modulaire
 from dataclasses import dataclass
 from typing import List, Optional
 import yaml
@@ -216,7 +216,7 @@ L’orchestrateur coordonne les 4 étapes sans connaître les détails d’impl�
 [ Réponse validée + Audit ]
 ```
 
-👉 Ce schéma met en évidence les **sous-modules** de chaque étape.
+Ce schéma met en évidence les **sous-modules** de chaque étape.
 
 ---
 
@@ -252,7 +252,7 @@ Un pipeline antifragile doit être **observé en continu** :
 - **Alertes proactives** : détection de PII, dérive des performances, dépassements budgétaires.  
 - **Boucles de feedback** : utiliser les erreurs pour ajuster ingestion, retrieval ou prompts.  
 
-👉 L’observabilité est la clé pour passer de la théorie à la pratique.
+L’observabilité est la clé pour passer de la théorie à la pratique.
 
 ---
 
@@ -289,7 +289,7 @@ C’est la différence entre :
 ## 6.15 Conclusion et transition
 
 L’anatomie du pipeline révèle une vérité simple :  
-👉 **chaque étape est un maillon critique**.  
+**chaque étape est un maillon critique**.  
 
 Une ingestion fragile biaise tout le reste.  
 Un retrieval faible augmente les hallucinations.  

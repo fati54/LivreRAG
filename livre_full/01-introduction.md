@@ -1,4 +1,4 @@
-# Chapitre 1 — Introduction
+# Chapitre 1 : Introduction
 
 ---
 
@@ -21,7 +21,7 @@ Mais derrière la magie, la réalité est plus crue :
 - ils amplifient leurs biais,  
 - et ils restent figés dans le temps.  
 
-👉 Nous croyons dialoguer avec une intelligence omnisciente ; en vérité, nous interrogeons une **boîte noire statistique**.
+Nous croyons dialoguer avec une intelligence omnisciente ; en vérité, nous interrogeons une **boîte noire statistique**.
 
 ---
 
@@ -37,7 +37,7 @@ Trois biais cognitifs renforcent cette illusion :
 3. **L’effet Google**  
    Une réponse instantanée est spontanément perçue comme correcte.
 
-👉 Résultat : nous confondons aisance verbale et vérité.
+Résultat : nous confondons aisance verbale et vérité.
 
 ---
 
@@ -45,10 +45,10 @@ Trois biais cognitifs renforcent cette illusion :
 
 Cette illusion cache quatre faiblesses fondamentales :
 
-1. **Un savoir figé** — le modèle ignore tout après sa date d’entraînement.  
-2. **Les hallucinations** — en cas de doute, il invente avec aplomb.  
-3. **L’opacité** — impossible de comprendre pourquoi telle réponse est produite.  
-4. **Les coûts croissants** — derrière chaque phrase fluide se cache une facture énergétique et financière.
+1. **Un savoir figé** : le modèle ignore tout après sa date d’entraînement.  
+2. **Les hallucinations** : en cas de doute, il invente avec aplomb.  
+3. **L’opacité** : impossible de comprendre pourquoi telle réponse est produite.  
+4. **Les coûts croissants** : derrière chaque phrase fluide se cache une facture énergétique et financière.
 
 ---
 
@@ -58,7 +58,7 @@ Cette illusion cache quatre faiblesses fondamentales :
 * Des étudiants ont rendu des copies brillantes mais truffées d’erreurs subtiles.  
 * Des chercheurs ont observé que les réponses d’un modèle variaient d’un jour à l’autre, suite à des ajustements opaques de l’API.  
 
-👉 Ces cas montrent une vérité simple : **le modèle donne l’illusion du savoir, mais ne garantit jamais la vérité.**
+Ces cas montrent une vérité simple : **le modèle donne l’illusion du savoir, mais ne garantit jamais la vérité.**
 
 ---
 
@@ -69,8 +69,8 @@ Accepter que le modèle seul est insuffisant.
 Qu’il n’est pas une fin, mais un **maillon**.
 
 Ce chapitre pose la ligne de fracture :  
-- soit nous restons fascinés par le mythe du *« LLM-Dieu »* — et nous bâtirons des systèmes fragiles,  
-- soit nous comprenons que le modèle doit être intégré dans un **écosystème modulaire** — et nous pourrons bâtir des systèmes antifragiles.  
+- soit nous restons fascinés par le mythe du *« LLM-Dieu »* : et nous bâtirons des systèmes fragiles,  
+- soit nous comprenons que le modèle doit être intégré dans un **écosystème modulaire** : et nous pourrons bâtir des systèmes antifragiles.  
 
 ---
 
@@ -83,4 +83,4 @@ Un pipeline modulaire, gouverné et souverain, peut transformer ce gadget en **i
 - évolutive,  
 - et surtout, digne de confiance.  
 
-👉 Voilà le cœur de ce manifeste : passer du **jouet fragile** à l’**infrastructure antifragile**.
+Voilà le cœur de ce manifeste : passer du **jouet fragile** à l’**infrastructure antifragile**.

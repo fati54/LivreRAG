@@ -1,6 +1,6 @@
 import Comments from '../components/Comments'
 
-# Chapitre 12 — Limites et défis
+# Chapitre 12 : Limites et défis
 
 ---
 
@@ -9,7 +9,7 @@ import Comments from '../components/Comments'
 Un manifeste responsable ne peut pas seulement chanter ses promesses.  
 Il doit aussi reconnaître ses **limites**, ses **angles morts** et ses **défis non résolus**.  
 
-👉 Le pipeline modulaire antifragile n’est pas une baguette magique.  
+Le pipeline modulaire antifragile n’est pas une baguette magique.  
 C’est une **direction prometteuse**, mais encore incomplète.  
 
 ---
@@ -36,7 +36,7 @@ Pas encore de **protocole commun** pour :
 - auditabilité cross-modules.  
 
 Risque : des “Lego incompatibles”.  
-👉 Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
+Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
 + Proposer un standard « OpenRAG » regroupant 5 à 7 interfaces minimales (Ingestion, Index, Retriever, Reranker, Generator, Critic, Governor) et un schéma commun d’événements d’audit.
 
 
@@ -67,7 +67,7 @@ Sujet à creuser : hybrider avec **d’autres paradigmes** (symbolique, probabil
 Antifragilité = souvent **redondance** (retrievers multiples, critic LLM, gouverneur).  
 Plus de calcul = plus de consommation énergétique.  
 
-👉 Défi : inventer un **RAG frugal** :  
+Défi : inventer un **RAG frugal** :  
 - caching intelligent,  
 - modèles légers spécialisés,  
 - arbitrage entre précision et coût carbone.  
@@ -113,10 +113,27 @@ Les modèles multilingues couvrent le français, mais les modèles **monolingues
 Conclusion : évaluer **au moins 1 modèle FR dédié** et 1 modèle multilingue.
 
 ### Sources (langue française)
-- [CamemBERT — a French language model (arXiv:1911.03894)](https://arxiv.org/abs/1911.03894)
+- [CamemBERT : a French language model (arXiv:1911.03894)](https://arxiv.org/abs/1911.03894)
 - [FlauBERT + FLUE benchmark (LREC 2020)](https://aclanthology.org/2020.lrec-1.302/)
-- [DrBenchmark — French biomedical benchmark (arXiv:2308.08764)](https://arxiv.org/abs/2308.08764)
-- [MTEB — Massive Text Embedding Benchmark (arXiv:2210.07316)](https://arxiv.org/abs/2210.07316)
+- [DrBenchmark : French biomedical benchmark (arXiv:2308.08764)](https://arxiv.org/abs/2308.08764)
+- [MTEB : Massive Text Embedding Benchmark (arXiv:2210.07316)](https://arxiv.org/abs/2210.07316)
+
+---
+
+## 📚 12.8 Gouvernance des données et licences
+
+Un pipeline RAG crédible doit gérer **la provenance, les droits d’usage et la traçabilité** des données :
+
+- **Provenance** : d’où vient chaque document, avec quelle date et quel auteur.  
+- **Droits d’usage** : vérifier si l’on a le droit d’indexer et de ré‑utiliser le contenu.  
+- **Data lineage** : garder une trace claire des transformations (OCR, nettoyage, chunking).  
+- **Conformité** : respecter les obligations RGPD sur les données personnelles.  
+- **Licences** : distinguer contenu interne, open data, Creative Commons et données sous contrat.
+
+**Sources**  
+- [RGPD : règlement 2016/679](https://eur-lex.europa.eu/eli/reg/2016/679/oj)  
+- [Creative Commons : licences](https://creativecommons.org/licenses/)  
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)  
 
 ---
 

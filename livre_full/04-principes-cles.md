@@ -1,4 +1,4 @@
-# Chapitre 4 — Les quatre principes fondateurs : modularité, agnosticité, configurabilité, antifragilité
+# Chapitre 4 : Les quatre principes fondateurs : modularité, agnosticité, configurabilité, antifragilité
 
 ---
 
@@ -20,7 +20,7 @@ Chaque module (ingestion, retrieval, génération, vérification) peut être am�
 - **Évolutivité** : on remplace une technologie (ex. moteur vectoriel) sans refactoriser tout le pipeline.  
 - **Innovation continue** : on expérimente localement sans risquer l’ensemble.
 
-👉 On peut comparer la modularité à un **pipeline Lego** : des briques standards, interchangeables et évolutives.  
+On peut comparer la modularité à un **pipeline Lego** : des briques standards, interchangeables et évolutives.  
 C’est aussi le principe des **microservices** en ingénierie logicielle.
 
 ---
@@ -35,7 +35,7 @@ Pas de dépendance définitive à un LLM, une base vectorielle ou un cloud.
 - **Agilité** : basculer vers un nouveau modèle sans tout réécrire.  
 - **Pérennité** : éviter l’obsolescence rapide et le “vendor lock-in”.
 
-👉 L’agnosticité est une **lingua franca technologique** : elle permet au système de dialoguer avec tous.  
+L’agnosticité est une **lingua franca technologique** : elle permet au système de dialoguer avec tous.  
 Dans un contexte de souveraineté numérique, c’est un facteur clé de confiance.
 
 ---
@@ -50,7 +50,7 @@ Un pipeline doit proposer des **paramètres réglables** (taille des chunks, typ
 - **Expérimentation rapide** : tester plusieurs configurations sans redéployer.  
 - **Efficience opérationnelle** : configuration as code, intégrable en CI/CD.
 
-👉 La configurabilité ressemble à un **tableau de bord d’avion** : les réglages sont accessibles, sans démonter le moteur.  
+La configurabilité ressemble à un **tableau de bord d’avion** : les réglages sont accessibles, sans démonter le moteur.  
 C’est un principe hérité du DevOps et du MLOps modernes.
 
 ---
@@ -65,7 +65,7 @@ Il ne se contente pas de résister : il apprend, s’adapte et devient plus robu
 - **Redondance** : multiplier les retrievers ou modèles pour diversifier les perspectives.  
 - **Expérimentation contrôlée** : intégrer du chaos engineering ou du red teaming.  
 
-👉 L’antifragilité peut être comparée à un **muscle** : plus il est sollicité, plus il devient fort.  
+L’antifragilité peut être comparée à un **muscle** : plus il est sollicité, plus il devient fort.  
 C’est un principe essentiel pour des systèmes critiques comme la santé ou la finance.
 
 ---
@@ -100,7 +100,7 @@ C’est un principe essentiel pour des systèmes critiques comme la santé ou la
 ---
 
 
-##  Schéma — Le quadrilatère des principes
+##  Schéma : Le quadrilatère des principes
 
 ```text
               ┌───────────────┐
@@ -140,4 +140,4 @@ C’est un principe essentiel pour des systèmes critiques comme la santé ou la
 Ces quatre principes ne sont pas des idéaux abstraits : ils forment un **quadrilatère structurel** où chaque dimension renforce les autres.  
 C’est sur ce socle que se construit un pipeline RAG antifragile : non pas une rustine, mais une **infrastructure vivante, souveraine et durable**.
 
-👉 Le prochain chapitre détaillera l’**architecture concrète** et ses analogies avec les systèmes distribués.
+Le prochain chapitre détaillera l’**architecture concrète** et ses analogies avec les systèmes distribués.

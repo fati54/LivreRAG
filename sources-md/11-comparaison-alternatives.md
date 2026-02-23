@@ -1,4 +1,4 @@
-# Chapitre 11 — Comparaison avec les alternatives au RAG
+# Chapitre 11 : Comparaison avec les alternatives au RAG
 
 ---
 
@@ -152,7 +152,7 @@ Une évolution récente : le **RAG agentique** combine un pipeline RAG avec des 
 - Risque de boucles infinies sans garde-fous.
 
 ### Position dans l'écosystème
-Le RAG agentique n'annule pas les principes de ce manifeste — il les renforce.  
+Le RAG agentique n'annule pas les principes de ce manifeste : il les renforce.  
 Un agent sans gouvernance est un agent dangereux.  
 Les principes de modularité, vérification et risk governor deviennent encore plus essentiels dans un contexte agentique.
 
@@ -164,4 +164,4 @@ Les principes de modularité, vérification et risk governor deviennent encore p
 Chaque approche a ses forces et faiblesses.  
 Le RAG n’est pas une solution universelle : il s’inscrit dans un **continuum de stratégies**.  
 
-👉 Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
+Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.

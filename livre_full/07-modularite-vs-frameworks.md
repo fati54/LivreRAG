@@ -1,11 +1,11 @@
-# Chapitre 7 — Modularité vs frameworks
+# Chapitre 7 : Modularité vs frameworks
 
 ---
 
 ## 7.1 Introduction
 
 Après avoir détaillé l’anatomie du pipeline (Chapitre 6), il est essentiel de comparer deux approches qui coexistent aujourd’hui :  
-👉 **les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
+**les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
 
 Cette comparaison est centrale : elle détermine si l’on construit un **prototype rapide** ou une **infrastructure durable**.
 
@@ -160,7 +160,7 @@ Une **banque** met en place un pipeline modulaire souverain. Résultat : conform
 - **Court terme** : les frameworks intégrés minimisent les coûts initiaux, mais la dette technique augmente rapidement avec la montée en charge.  
 - **Long terme** : le pipeline modulaire demande un investissement upfront plus élevé, mais offre un **ROI supérieur** grâce à la maintenance simplifiée, la conformité intégrée et la flexibilité.  
 
-👉 Les organisations doivent penser en **coût total de possession (TCO)**, pas seulement en coût de démarrage.
+Les organisations doivent penser en **coût total de possession (TCO)**, pas seulement en coût de démarrage.
 
 ---
 
@@ -195,7 +195,7 @@ Exploration (POC rapide) → Industrialisation (pipeline modulaire)
 
 Selon une étude fictive inspirée des analyses Gartner (2024), plus de **70% des projets LLM échouent à passer du POC à la production** faute d’architecture modulaire et de gouvernance adaptée.  
 
-👉 Cela confirme qu’il ne s’agit pas seulement d’un choix technique, mais d’un **enjeu stratégique**.
+Cela confirme qu’il ne s’agit pas seulement d’un choix technique, mais d’un **enjeu stratégique**.
 
 ---
 
@@ -206,4 +206,4 @@ Mais leur nature même les rend fragiles dès qu’on parle de conformité, de s
 
 Le pipeline modulaire est plus coûteux au départ, mais il constitue la **fondation antifragile** des systèmes de demain.  
 
-👉 Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.
+Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.

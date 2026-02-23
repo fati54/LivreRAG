@@ -1,4 +1,4 @@
-# Chapitre 10 — Cas d’usage concrets
+# Chapitre 10 : Cas d’usage concrets
 
 ---
 
@@ -51,10 +51,10 @@ Les avocats passent en moyenne 5 heures à analyser un nouveau dossier : trier l
 
 ## 10.4 Conformité & Industrie : du NLP anti-blanchiment à l’indexation documentaire
 
-### Contexte — Fircosoft (LexisNexis Risk Solutions)
+### Contexte : Fircosoft (LexisNexis Risk Solutions)
 Dans le secteur de la conformité financière, les algorithmes NLP de détection de blanchiment d’argent (AML) doivent traiter des millions de transactions avec zéro tolérance aux faux négatifs. Chaque décision doit être auditée, chaque donnée cloisonnée.
 
-### Contexte — Renault Digital
+### Contexte : Renault Digital
 L’équipe INDX (Indexation) transforme des milliers de documents techniques non structurés (SharePoint) en bases vectorielles interrogeables via MongoDB Atlas. Le défi : multi-tenancy strict (données confidentielles par marque/projet), gouvernance des accès, et scalabilité industrielle.
 
 ### Pipeline mis en place
@@ -125,6 +125,6 @@ Pipeline fragile = risque d’erreurs coûteuses.
 ## 10.8 Conclusion et transition
 
 Ces cas d’usage montrent que les pipelines RAG antifragiles ne sont pas théoriques :  
-👉 ils apportent une **valeur critique** dans des environnements sensibles.  
+ils apportent une **valeur critique** dans des environnements sensibles.  
 
 Le prochain chapitre (Chapitre 11) comparera ces approches avec des **alternatives non-RAG** (finetuning, règles expertes, moteurs de recherche traditionnels).

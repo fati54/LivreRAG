@@ -1,4 +1,4 @@
-# Chapitre 11 — Comparaison avec les alternatives au RAG
+# Chapitre 11 : Comparaison avec les alternatives au RAG
 
 ---
 
@@ -119,4 +119,4 @@ Hybrides        → puissants mais complexes
 Chaque approche a ses forces et faiblesses.  
 Le RAG n’est pas une solution universelle : il s’inscrit dans un **continuum de stratégies**.  
 
-👉 Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
+Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.

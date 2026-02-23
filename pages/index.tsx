@@ -156,7 +156,7 @@ export default function HomePage() {
   return (
     <div className="home">
       <Head>
-        <title>RAG : Architectures Antifragiles — Livre open source</title>
+        <title>RAG : Architectures Antifragiles : Livre open source</title>
         <meta
           name="description"
           content="Manifeste et guide technique sur les architectures RAG antifragiles, par Fatima-Ezzahra Bouzidi Idrissi."
@@ -358,24 +358,20 @@ export default function HomePage() {
         <div className="home-testimonial-grid">
           <div className="home-testimonial-card">
             <p>
-              “Un guide clair, pragmatique, qui met enfin la gouvernance au
-              centre.”
+              “Un travail remarquable ; la question des coûts et de la
+              fiabilité est enfin traitée.”
             </p>
-            <span>— Lecteur (placeholder)</span>
+            <span>: Ariel Shadrac Ouedraogo, doctorant en médecine</span>
           </div>
           <div className="home-testimonial-card">
             <p>
-              “J’ai compris pourquoi mon RAG tombait en panne en production.”
+              “La section sur les limites opérationnelles est précieuse,
+              rarement détaillée ailleurs.”
             </p>
-            <span>— Architecte IA (placeholder)</span>
-          </div>
-          <div className="home-testimonial-card">
-            <p>
-              “Un vrai livre de référence, pas un tuto de plus.”
-            </p>
-            <span>— Lead Data (placeholder)</span>
+            <span>: Ariel Shadrac Ouedraogo</span>
           </div>
         </div>
+        <p className="home-note">D’autres retours arrivent bientôt.</p>
       </section>
 
       <section className="home-section home-cta-final" id="newsletter">

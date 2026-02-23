@@ -24,8 +24,8 @@ Parce que la modularité, la souveraineté et l’antifragilité ne sont pas des
 * de nouvelles découvertes techniques,  
 * et surtout : de nouvelles contributions communautaires.  
 
-👉 Ce texte s’adresse autant aux **ingénieurs et architectes IA** qu’aux **décideurs et chercheurs** qui veulent dépasser la hype pour bâtir des systèmes durables.  
-👉 Si certains points te semblent manquants ou discutables : rejoins la discussion.  
+Ce texte s’adresse autant aux **ingénieurs et architectes IA** qu’aux **décideurs et chercheurs** qui veulent dépasser la hype pour bâtir des systèmes durables.  
+Si certains points te semblent manquants ou discutables : rejoins la discussion.  
 Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi par la diversité des regards et des pratiques. 
 
 ---
@@ -41,7 +41,7 @@ Ce manifeste est donc un appel :
 - bâtir des pipelines **ouverts, gouvernés et antifragiles**,  
 - et le faire ensemble, dans une démarche communautaire et open source.  
 
-👉 Mon expérience m’a appris que ce combat dépasse l’individuel : il ne peut être gagné qu’ensemble.  
+Mon expérience m’a appris que ce combat dépasse l’individuel : il ne peut être gagné qu’ensemble.  
 
 ---
 

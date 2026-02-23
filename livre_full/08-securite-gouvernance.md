@@ -1,4 +1,4 @@
-# Chapitre 8 — Sécurité, gouvernance et souveraineté
+# Chapitre 8 : Sécurité, gouvernance et souveraineté
 
 ---
 
@@ -7,7 +7,7 @@
 Un pipeline RAG n’est pas un gadget de hackathon.  
 Il sera utilisé pour des **données sensibles**, des **décisions critiques**, des **contextes réglementés** (santé, finance, droit, éducation).  
 
-👉 La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
+La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
 
 Or, la plupart des frameworks actuels (LangChain, LlamaIndex, etc.) traitent la sécurité **après coup**, comme une couche externe. Résultat :  
 - fuites de données internes,  
@@ -43,7 +43,7 @@ Un pipeline mal conçu peut aspirer et ré-exposer des **données personnelles i
 Une fois indexé, un document est rarement supprimable.  
 Mais un pipeline responsable doit permettre la **purge sélective** (par chunk, UUID).  
 
-👉 La **souveraineté documentaire** repose sur cette capacité.  
+La **souveraineté documentaire** repose sur cette capacité.  
 
 ---
 
@@ -89,7 +89,7 @@ Où tourne le pipeline ? Qui contrôle ?
 - **Cloud souverain / local** → plus coûteux, mais maîtrise totale.  
 - **Hybride** → local par défaut, fallback API externe si besoin.  
 
-👉 La souveraineté n’est pas un luxe, mais un **prérequis de confiance**.  
+La souveraineté n’est pas un luxe, mais un **prérequis de confiance**.  
 
 ---
 
@@ -105,7 +105,7 @@ Chaque réponse doit être traçable :
 - **OpenTelemetry**, **W&B**, **MLflow**, dashboards custom.  
 - **Alertes proactives** (fuite de PII, coûts anormaux, dérive qualité).  
 
-👉 L’observabilité est la colonne vertébrale de la gouvernance.  
+L’observabilité est la colonne vertébrale de la gouvernance.  
 
 ---
 
@@ -130,7 +130,7 @@ Le pipeline doit être testé **contre ses propres failles** :
 ### Outils
 - **GuardrailsAI**, **NeMo Guardrails**, **firewalls IA**.  
 
-👉 Le red teaming est une assurance-vie : on découvre les failles avant les attaquants.  
+Le red teaming est une assurance-vie : on découvre les failles avant les attaquants.  
 
 ---
 
@@ -139,7 +139,7 @@ Le pipeline doit être testé **contre ses propres failles** :
 - **Samsung (2023)** → fuite de code interne via ChatGPT → interdiction interne.  
 - **Avocats US (2023)** → ChatGPT a inventé des jurisprudences inexistantes → sanctions disciplinaires.  
 
-👉 Morale : sans gouvernance, une erreur devient un scandale.  
+Morale : sans gouvernance, une erreur devient un scandale.  
 
 ---
 
@@ -223,7 +223,7 @@ La **sécurité**, la **gouvernance** et la **souveraineté** forment un **cercl
 - **Gouvernance** → confiance légale et organisationnelle.  
 - **Souveraineté** → indépendance stratégique.  
 
-👉 Sans elles, on obtient des **pipelines-jouets**.  
-👉 Avec elles, on obtient des **pipelines critiques**, capables de soutenir santé, droit, économie.  
+Sans elles, on obtient des **pipelines-jouets**.  
+Avec elles, on obtient des **pipelines critiques**, capables de soutenir santé, droit, économie.  
 
 Le prochain chapitre (Chapitre 9) explorera les **extensions possibles du pipeline** : mémoire longue, agents, multi-modalité.

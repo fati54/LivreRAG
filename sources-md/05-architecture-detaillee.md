@@ -1,4 +1,4 @@
-# Chapitre 5 — Architecture détaillée : du jouet fragile à l’infrastructure antifragile
+# Chapitre 5 : Architecture détaillée : du jouet fragile à l’infrastructure antifragile
 
 ---
 
@@ -9,7 +9,7 @@ Les chapitres précédents ont montré :
 - le mirage d’un RAG naïf (Chapitre 2),  
 - et la comparaison des approches actuelles (Chapitre 3–4).  
 
-👉 Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
+Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
 
 Il est temps de franchir un cap : concevoir une **infrastructure antifragile**, capable de transformer un prototype fragile en un système critique.
 
@@ -76,7 +76,7 @@ L’architecture antifragile s’inspire de disciplines éprouvées :
 - **Chaos engineering** → tester volontairement la robustesse du système en introduisant des perturbations contrôlées.  
 - **Biologie** → les organismes vivants qui s’adaptent et s’améliorent après des chocs illustrent bien l’antifragilité.  
 
-👉 La robustesse ne vient pas de la force brute, mais de l’**organisation intelligente**.
+La robustesse ne vient pas de la force brute, mais de l’**organisation intelligente**.
 
 ---
 
@@ -107,7 +107,7 @@ L’antifragilité inclut la capacité à absorber la croissance sans s’effond
 
 ---
 
-## 5.9 Exemples concrets — retours d’expérience
+## 5.9 Exemples concrets : retours d’expérience
 
 - **Santé (MGEN)** : en construisant la première équipe IA d’une mutuelle gérant 4 millions de bénéficiaires, j’ai constaté que le premier réflexe était de brancher un LLM sur les FAQ existantes. Résultat : des réponses fluides mais parfois contradictoires avec les protocoles internes. La solution a été d’imposer un pipeline avec critic-LLM et un cloud souverain (S3NS) pour la conformité des données de santé.
 

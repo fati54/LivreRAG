@@ -1,13 +1,14 @@
+import Mermaid from '../components/Mermaid'
 import Comments from '../components/Comments'
 
-# Chapitre 7 — Modularité vs frameworks
+# Chapitre 7 : Modularité vs frameworks
 
 ---
 
 ## 7.1 Introduction
 
 Après avoir détaillé l’anatomie du pipeline (Chapitre 6), il est essentiel de comparer deux approches qui coexistent aujourd’hui :  
-👉 **les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
+**les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
 
 Cette comparaison est centrale : elle détermine si l’on construit un **prototype rapide** ou une **infrastructure durable**.
 
@@ -20,18 +21,13 @@ Ils séduisent par leur rapidité, mais reposent sur une logique **monolithique 
 
 ### Schéma typique d’un framework intégré
 
-```text
-[ Ingestion basique ]
-        │
-        ▼
-[ Retrieval vectoriel ]
-        │
-        ▼
-[ Génération LLM ]
-        │
-        ▼
-[ Réponse brute ]
-```
+<Mermaid
+  chart={`
+flowchart TB
+  I["Ingestion basique"] --> R["Retrieval vectoriel"] --> G["Génération LLM"] --> A["Réponse brute"]
+`}/>
+
+Lecture : un enchaînement minimal rapide à mettre en place, mais sans gouvernance ni vérification.
 
 ### Avantages
 - Prototypage rapide.  
@@ -56,36 +52,37 @@ Il est pensé comme une **infrastructure orchestrée et traçable**.
 
 ### Schéma typique d’un pipeline modulaire
 
-```text
-[ Ingestion robuste ]
-   ├─ Parsing avancé
-   ├─ Nettoyage
-   └─ Métadonnées
-        │
-        ▼
-[ Retrieval hybride ]
-   ├─ Vector search
-   ├─ BM25
-   └─ Re-ranking
-        │
-        ▼
-[ Génération encadrée ]
-   ├─ Templates de prompts
-   ├─ Citations obligatoires
-   └─ Multi-LLM
-        │
-        ▼
-[ Vérification ]
-   ├─ Critic LLM
-   ├─ Risk governor
-   └─ Auditabilité
-        │
-        ▼
-[ Réponse validée ]
-        │
-        ▼
-[ Orchestrateur central ]
-```
+<Mermaid
+  chart={`
+flowchart TB
+  subgraph Ingestion
+    I1["Parsing avancé"]
+    I2["Nettoyage"]
+    I3["Métadonnées"]
+  end
+  subgraph Retrieval
+    R1["Vector search"]
+    R2["BM25"]
+    R3["Re-ranking"]
+  end
+  subgraph Generation
+    G1["Templates de prompts"]
+    G2["Citations obligatoires"]
+    G3["Multi-LLM"]
+  end
+  subgraph Verification
+    V1["Critic LLM"]
+    V2["Risk governor"]
+    V3["Auditabilité"]
+  end
+  Ingestion --> Retrieval --> Generation --> Verification --> A["Réponse validée"]
+  O["Orchestrateur central"] -.-> Ingestion
+  O -.-> Retrieval
+  O -.-> Generation
+  O -.-> Verification
+`}/>
+
+Lecture : chaque module est spécialisé, et l’orchestrateur garantit la cohérence globale et l’auditabilité.
 
 ### Avantages
 - Robustesse et traçabilité.  
@@ -145,9 +142,13 @@ On peut voir les frameworks et le pipeline modulaire comme deux **étapes dans u
 - **Framework intégré** : idéal en phase **exploration / prototypage**.  
 - **Pipeline modulaire** : incontournable en phase **industrialisation / production critique**.  
 
-```text
-Exploration (POC rapide) → Industrialisation (pipeline modulaire)
-```
+<Mermaid
+  chart={`
+flowchart LR
+  E["Exploration\nPOC rapide"] --> I["Industrialisation\npipeline modulaire"]
+`}/>
+
+Lecture : on démarre vite en exploration, puis on investit dans la robustesse pour la production.
 
 ---
 
@@ -170,9 +171,9 @@ Exploration (POC rapide) → Industrialisation (pipeline modulaire)
 Plusieurs sources confirment la difficulté de passer du POC à la production :
 
 - **Gartner (2024)** estime que plus de 30% des projets d’IA générative seront abandonnés après le stade du POC d’ici fin 2025, en raison de la qualité des données, de coûts mal maîtrisés et d’une gouvernance insuffisante.
-- **Nassim Nicholas Taleb, *Antifragile* (2012)** — Le concept d’antifragilité qui sous-tend ce manifeste : les systèmes qui bénéficient du désordre plutôt que d’en souffrir.
-- **Google DORA Report (2024)** — 90% des développeurs utilisent désormais l’IA générative, mais l’observabilité et la gouvernance restent les principaux défis.
-- **Stanford HAI — AI Index Report (2024)** — Les coûts d’entraînement des modèles ont explosé, renforçant l’argument économique en faveur du RAG vs le fine-tuning.
+- **Nassim Nicholas Taleb, *Antifragile* (2012)** : Le concept d’antifragilité qui sous-tend ce manifeste : les systèmes qui bénéficient du désordre plutôt que d’en souffrir.
+- **Google DORA Report (2024)** : 90% des développeurs utilisent désormais l’IA générative, mais l’observabilité et la gouvernance restent les principaux défis.
+- **Stanford HAI : AI Index Report (2024)** : Les coûts d’entraînement des modèles ont explosé, renforçant l’argument économique en faveur du RAG vs le fine-tuning.
 
 Ces données confirment qu’il ne s’agit pas seulement d’un choix technique, mais d’un **enjeu stratégique**.
 
@@ -185,6 +186,6 @@ Mais leur nature même les rend fragiles dès qu’on parle de conformité, de s
 
 Le pipeline modulaire est plus coûteux au départ, mais il constitue la **fondation antifragile** des systèmes de demain.  
 
-👉 Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.
+Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.
 
 <Comments />

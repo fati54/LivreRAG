@@ -15,7 +15,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: (
       <span>
-        © 2025 — <strong>Fatima-Ezzahra Bouzidi Idrissi</strong> — RAG : Architectures Antifragiles pour l'IA Générative
+        © 2025 : <strong>Fatima-Ezzahra Bouzidi Idrissi</strong> : RAG : Architectures Antifragiles pour l'IA Générative
       </span>
     ),
   },
@@ -26,10 +26,10 @@ const config: DocsThemeConfig = {
       process.env.NEXT_PUBLIC_SITE_URL ||
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '');
     const metaTitle = title
-      ? `${title} — RAG Antifragile`
+      ? `${title} : RAG Antifragile`
       : "RAG : Architectures Antifragiles pour l'IA Générative";
     const description =
-      "RAG : Architectures Antifragiles pour l'IA Générative — Manifeste et Guide Technique par Fatima-Ezzahra Bouzidi Idrissi";
+      "RAG : Architectures Antifragiles pour l'IA Générative : Manifeste et Guide Technique par Fatima-Ezzahra Bouzidi Idrissi";
     const url = baseUrl ? `${baseUrl}${router.asPath}` : router.asPath;
 
     return (
@@ -49,7 +49,7 @@ const config: DocsThemeConfig = {
   },
   useNextSeoProps() {
     return {
-      titleTemplate: '%s — RAG Antifragile',
+      titleTemplate: '%s : RAG Antifragile',
     };
   },
   sidebar: {

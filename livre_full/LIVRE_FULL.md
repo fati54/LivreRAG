@@ -24,8 +24,8 @@ Parce que la modularité, la souveraineté et l’antifragilité ne sont pas des
 * de nouvelles découvertes techniques,  
 * et surtout : de nouvelles contributions communautaires.  
 
-👉 Ce texte s’adresse autant aux **ingénieurs et architectes IA** qu’aux **décideurs et chercheurs** qui veulent dépasser la hype pour bâtir des systèmes durables.  
-👉 Si certains points te semblent manquants ou discutables : rejoins la discussion.  
+Ce texte s’adresse autant aux **ingénieurs et architectes IA** qu’aux **décideurs et chercheurs** qui veulent dépasser la hype pour bâtir des systèmes durables.  
+Si certains points te semblent manquants ou discutables : rejoins la discussion.  
 Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi par la diversité des regards et des pratiques. 
 
 ---
@@ -41,7 +41,7 @@ Ce manifeste est donc un appel :
 - bâtir des pipelines **ouverts, gouvernés et antifragiles**,  
 - et le faire ensemble, dans une démarche communautaire et open source.  
 
-👉 Mon expérience m’a appris que ce combat dépasse l’individuel : il ne peut être gagné qu’ensemble.  
+Mon expérience m’a appris que ce combat dépasse l’individuel : il ne peut être gagné qu’ensemble.  
 
 ---
 
@@ -58,7 +58,7 @@ Ce manifeste est donc un appel :
 ---
 
 📌 *Ce livre est une carte. Mais la route, c’est nous qui allons l’ouvrir, ensemble.*
-# Chapitre 1 — Introduction
+# Chapitre 1 : Introduction
 
 ---
 
@@ -81,7 +81,7 @@ Mais derrière la magie, la réalité est plus crue :
 - ils amplifient leurs biais,  
 - et ils restent figés dans le temps.  
 
-👉 Nous croyons dialoguer avec une intelligence omnisciente ; en vérité, nous interrogeons une **boîte noire statistique**.
+Nous croyons dialoguer avec une intelligence omnisciente ; en vérité, nous interrogeons une **boîte noire statistique**.
 
 ---
 
@@ -97,7 +97,7 @@ Trois biais cognitifs renforcent cette illusion :
 3. **L’effet Google**  
    Une réponse instantanée est spontanément perçue comme correcte.
 
-👉 Résultat : nous confondons aisance verbale et vérité.
+Résultat : nous confondons aisance verbale et vérité.
 
 ---
 
@@ -105,10 +105,10 @@ Trois biais cognitifs renforcent cette illusion :
 
 Cette illusion cache quatre faiblesses fondamentales :
 
-1. **Un savoir figé** — le modèle ignore tout après sa date d’entraînement.  
-2. **Les hallucinations** — en cas de doute, il invente avec aplomb.  
-3. **L’opacité** — impossible de comprendre pourquoi telle réponse est produite.  
-4. **Les coûts croissants** — derrière chaque phrase fluide se cache une facture énergétique et financière.
+1. **Un savoir figé** : le modèle ignore tout après sa date d’entraînement.  
+2. **Les hallucinations** : en cas de doute, il invente avec aplomb.  
+3. **L’opacité** : impossible de comprendre pourquoi telle réponse est produite.  
+4. **Les coûts croissants** : derrière chaque phrase fluide se cache une facture énergétique et financière.
 
 ---
 
@@ -118,7 +118,7 @@ Cette illusion cache quatre faiblesses fondamentales :
 * Des étudiants ont rendu des copies brillantes mais truffées d’erreurs subtiles.  
 * Des chercheurs ont observé que les réponses d’un modèle variaient d’un jour à l’autre, suite à des ajustements opaques de l’API.  
 
-👉 Ces cas montrent une vérité simple : **le modèle donne l’illusion du savoir, mais ne garantit jamais la vérité.**
+Ces cas montrent une vérité simple : **le modèle donne l’illusion du savoir, mais ne garantit jamais la vérité.**
 
 ---
 
@@ -129,8 +129,8 @@ Accepter que le modèle seul est insuffisant.
 Qu’il n’est pas une fin, mais un **maillon**.
 
 Ce chapitre pose la ligne de fracture :  
-- soit nous restons fascinés par le mythe du *« LLM-Dieu »* — et nous bâtirons des systèmes fragiles,  
-- soit nous comprenons que le modèle doit être intégré dans un **écosystème modulaire** — et nous pourrons bâtir des systèmes antifragiles.  
+- soit nous restons fascinés par le mythe du *« LLM-Dieu »* : et nous bâtirons des systèmes fragiles,  
+- soit nous comprenons que le modèle doit être intégré dans un **écosystème modulaire** : et nous pourrons bâtir des systèmes antifragiles.  
 
 ---
 
@@ -143,8 +143,8 @@ Un pipeline modulaire, gouverné et souverain, peut transformer ce gadget en **i
 - évolutive,  
 - et surtout, digne de confiance.  
 
-👉 Voilà le cœur de ce manifeste : passer du **jouet fragile** à l’**infrastructure antifragile**.
-# Chapitre 2 — Les promesses et limites du RAG actuel
+Voilà le cœur de ce manifeste : passer du **jouet fragile** à l’**infrastructure antifragile**.
+# Chapitre 2 : Les promesses et limites du RAG actuel
 
 ---
 
@@ -172,10 +172,10 @@ On pourrait résumer la promesse du RAG en trois slogans :
 
 Le RAG offre de vrais avantages :
 
-1. **Actualisation** — Le savoir n’est plus limité à la date d’entraînement.  
-2. **Personnalisation** — Chaque organisation peut brancher ses propres données (FAQ, manuels internes, bases réglementaires).  
-3. **Réduction des hallucinations** — Le modèle se cale sur une source fournie plutôt que d’inventer.  
-4. **Économie** — Pas besoin de réentraîner un modèle complet : on nourrit un LLM existant avec de nouvelles données.  
+1. **Actualisation** : Le savoir n’est plus limité à la date d’entraînement.  
+2. **Personnalisation** : Chaque organisation peut brancher ses propres données (FAQ, manuels internes, bases réglementaires).  
+3. **Réduction des hallucinations** : Le modèle se cale sur une source fournie plutôt que d’inventer.  
+4. **Économie** : Pas besoin de réentraîner un modèle complet : on nourrit un LLM existant avec de nouvelles données.  
 
 Pas étonnant que le RAG ait été perçu comme un **sauveur** : une rustine élégante au problème du savoir figé.
 
@@ -185,7 +185,7 @@ Pas étonnant que le RAG ait été perçu comme un **sauveur** : une rustine él
 
 Mais là encore, une illusion s’est installée.  
 Dans les discours commerciaux, le RAG est présenté comme une solution magique :  
-👉 *“Ajoutez un moteur vectoriel et vos problèmes de vérité sont réglés !”*
+*“Ajoutez un moteur vectoriel et vos problèmes de vérité sont réglés !”*
 
 En pratique, les implémentations sont souvent **simplistes** :  
 - ingestion brute de documents PDF,  
@@ -194,27 +194,27 @@ En pratique, les implémentations sont souvent **simplistes** :
 - retrieval + concaténation dans le prompt.  
 
 Ce pipeline minimaliste fonctionne pour une démo… mais il s’effondre vite en conditions réelles.  
-👉 On parle alors de **prototype maquillé en produit fini**.
+On parle alors de **prototype maquillé en produit fini**.
 
 ---
 
 ## Les limites techniques du RAG actuel
 
-1. **Qualité de l’ingestion** — Un PDF scanné mal parsé = embeddings inutiles. Sans pipeline robuste d’ingestion (OCR, nettoyage, structuration), le retrieval est biaisé dès le départ.  
-2. **Granularité du découpage** — Trop gros chunks = bruit ; trop petits = perte de contexte.  
-3. **Scores trompeurs** — La similarité cosinus ne garantit pas la pertinence sémantique.  
-4. **Dépendance au modèle** — Beaucoup d’implémentations reposent sur le même fournisseur (souvent OpenAI), créant dépendance et manque d’agilité.  
-5. **Hallucinations persistantes** — Même avec des documents injectés, le LLM peut les ignorer ou les transformer.  
-6. **Scalabilité** — Avec des millions de documents, l’indexation et la recherche deviennent coûteuses. Peu de solutions gèrent efficacement les grands volumes.  
+1. **Qualité de l’ingestion** : Un PDF scanné mal parsé = embeddings inutiles. Sans pipeline robuste d’ingestion (OCR, nettoyage, structuration), le retrieval est biaisé dès le départ.  
+2. **Granularité du découpage** : Trop gros chunks = bruit ; trop petits = perte de contexte.  
+3. **Scores trompeurs** : La similarité cosinus ne garantit pas la pertinence sémantique.  
+4. **Dépendance au modèle** : Beaucoup d’implémentations reposent sur le même fournisseur (souvent OpenAI), créant dépendance et manque d’agilité.  
+5. **Hallucinations persistantes** : Même avec des documents injectés, le LLM peut les ignorer ou les transformer.  
+6. **Scalabilité** : Avec des millions de documents, l’indexation et la recherche deviennent coûteuses. Peu de solutions gèrent efficacement les grands volumes.  
 
 ---
 
 ## Les limites organisationnelles
 
-1. **Absence de gouvernance** — Que faire si un utilisateur injecte des données sensibles ? Qui contrôle la conformité RGPD ?  
-2. **Pas de traçabilité** — La plupart des frameworks ne permettent pas d’expliquer quelle source exacte a produit telle phrase.  
-3. **Fragilité face aux évolutions** — Changer de modèle, de base vectorielle ou de méthode d’ingestion = souvent tout réécrire.  
-4. **Promesse marketing vs réalité** — De nombreux acteurs vendent des “assistants intelligents”, mais derrière : un simple moteur vectoriel branché sur un modèle fermé.
+1. **Absence de gouvernance** : Que faire si un utilisateur injecte des données sensibles ? Qui contrôle la conformité RGPD ?  
+2. **Pas de traçabilité** : La plupart des frameworks ne permettent pas d’expliquer quelle source exacte a produit telle phrase.  
+3. **Fragilité face aux évolutions** : Changer de modèle, de base vectorielle ou de méthode d’ingestion = souvent tout réécrire.  
+4. **Promesse marketing vs réalité** : De nombreux acteurs vendent des “assistants intelligents”, mais derrière : un simple moteur vectoriel branché sur un modèle fermé.
 
 ---
 
@@ -225,11 +225,11 @@ Ce pipeline minimaliste fonctionne pour une démo… mais il s’effondre vite e
 - **Haystack** : robuste côté NLP classique, moins fluide pour la génération hybride.  
 - **RAGFlow, Weaviate, Pinecone…** : chaque acteur pousse sa solution, souvent fermée et orientée lock-in.  
 
-👉 Chacun a ses forces, mais tous partagent une faiblesse : **ils n’abordent pas la question de l’architecture modulaire et souveraine**.
+Chacun a ses forces, mais tous partagent une faiblesse : **ils n’abordent pas la question de l’architecture modulaire et souveraine**.
 
 ---
 
-## 📊 Synthèse visuelle — Avantages vs Limites
+## 📊 Synthèse visuelle : Avantages vs Limites
 
 | Aspect | Promesse du RAG | Réalité / Limites |
 |--------|-----------------|-------------------|
@@ -242,7 +242,7 @@ Ce pipeline minimaliste fonctionne pour une démo… mais il s’effondre vite e
 
 ---
 
-## 🔀 Schéma comparatif — RAG naïf vs RAG robuste
+## 🔀 Schéma comparatif : RAG naïf vs RAG robuste
 
 ### ❌ RAG naïf (pipeline fragile)
 
@@ -304,7 +304,7 @@ Le RAG n’est pas inutile :
 - il a inspiré des architectures hybrides.  
 
 Mais dans sa forme actuelle, il reste une **béquille**.  
-👉 Pas encore une colonne vertébrale.
+Pas encore une colonne vertébrale.
 
 ---
 
@@ -313,7 +313,7 @@ Mais dans sa forme actuelle, il reste une **béquille**.
 Le RAG actuel a créé une attente légitime : sortir du mythe du modèle omniscient.  
 Mais ses implémentations restent **immatures, fragiles, mal gouvernées**.  
 
-👉 Le message est clair : **le RAG est une promesse, pas encore une solution**.  
+Le message est clair : **le RAG est une promesse, pas encore une solution**.  
 Il doit évoluer vers un pipeline **modulaire, agnostique et configurable** pour devenir réellement robuste.  
 
 C’est précisément l’objet de ce manifeste : montrer comment transformer cette rustine en une **architecture antifragile**, capable de soutenir des usages critiques.
@@ -321,8 +321,8 @@ C’est précisément l’objet de ce manifeste : montrer comment transformer ce
 
 
 
-Le prochain chapitre examinera **les problèmes structurels non résolus** — hallucinations, biais, obsolescence et coûts — qui expliquent pourquoi le RAG naïf ne suffit pas en production critique.
-# Chapitre 3 — Comparaison des approches et problèmes persistants
+Le prochain chapitre examinera **les problèmes structurels non résolus** : hallucinations, biais, obsolescence et coûts : qui expliquent pourquoi le RAG naïf ne suffit pas en production critique.
+# Chapitre 3 : Comparaison des approches et problèmes persistants
 
 ---
 
@@ -357,7 +357,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Gouvernance et sécurité souvent laissées de côté.  
 - Stabilité relative : certaines API évoluent vite.  
 
-👉 Pertinent pour **prototyper rapidement** ou explorer un use case, mais demande des efforts supplémentaires pour une mise en production robuste.
+Pertinent pour **prototyper rapidement** ou explorer un use case, mais demande des efforts supplémentaires pour une mise en production robuste.
 
 ---
 
@@ -375,7 +375,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Ce ne sont pas des pipelines complets : ingestion, prompts et vérification restent à orchestrer.  
 - Gouvernance et conformité peu couvertes nativement.  
 
-👉 Adaptées comme **fondation mémoire** dans une architecture RAG, mais nécessitent une intégration dans un pipeline plus large.
+Adaptées comme **fondation mémoire** dans une architecture RAG, mais nécessitent une intégration dans un pipeline plus large.
 
 ---
 
@@ -394,7 +394,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Gouvernance quasi inexistante.  
 - Difficultés à industrialiser et monitorer à grande échelle.  
 
-👉 Conviennent pour **évangéliser, prototyper ou tester des concepts**, mais limitées pour une exploitation critique.
+Conviennent pour **évangéliser, prototyper ou tester des concepts**, mais limitées pour une exploitation critique.
 
 ---
 
@@ -416,7 +416,7 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 - Mise en place plus exigeante (design upfront, ingénierie solide).  
 - Coût initial supérieur à un framework clé en main.  
 
-👉 C’est l’**approche la plus durable et souveraine**, pensée pour la production critique.
+C’est l’**approche la plus durable et souveraine**, pensée pour la production critique.
 
 ---
 
@@ -439,21 +439,21 @@ Chaque approche répond à des besoins différents, avec ses atouts, ses limites
 Pour illustrer ces différences, voici quelques situations où chaque approche trouve sa place :
 
 - **Framework intégré (LangChain, LlamaIndex, Haystack)**  
-  👉 Une startup qui veut présenter un **POC en 2 semaines** pour convaincre un client ou un investisseur.  
+  Une startup qui veut présenter un **POC en 2 semaines** pour convaincre un client ou un investisseur.  
 
 - **Base vectorielle seule (Weaviate, Milvus, Qdrant)**  
-  👉 Une DSI qui cherche à construire un **moteur de recherche interne** performant sur ses documents techniques.  
+  Une DSI qui cherche à construire un **moteur de recherche interne** performant sur ses documents techniques.  
 
 - **Approche low-code (Flowise, RAGFlow)**  
-  👉 Une école ou un hackathon qui veut permettre à des étudiants ou citoyens de **prototyper un assistant IA** sans écrire de code.  
+  Une école ou un hackathon qui veut permettre à des étudiants ou citoyens de **prototyper un assistant IA** sans écrire de code.  
 
 - **Pipeline modulaire**  
-  👉 Une banque, un hôpital ou un cabinet juridique qui a besoin d’un **système critique, traçable et souverain**.
+  Une banque, un hôpital ou un cabinet juridique qui a besoin d’un **système critique, traçable et souverain**.
 
 ---
 
 
-## 🔀 Schéma comparatif — 4 approches et problèmes communs
+## 🔀 Schéma comparatif : 4 approches et problèmes communs
 
 ```text
 
@@ -494,12 +494,12 @@ Pour illustrer ces différences, voici quelques situations où chaque approche t
 
 Quelle que soit l’approche choisie, certains défis restent communs :
 
-1. **Hallucinations** — Les modèles n’ont pas été conçus pour dire “je ne sais pas”. Même avec RAG, ils peuvent déformer ou ignorer les sources.  
-2. **Biais** — Les données d’entraînement et les algorithmes de retrieval amplifient certains contextes au détriment d’autres.  
-3. **Obsolescence rapide** — Les frameworks évoluent vite, créant une dette technique accélérée.  
-4. **Coûts** — Entre API LLM, bases vectorielles et orchestration, le RAG naïf peut devenir coûteux dès que l’échelle augmente.  
+1. **Hallucinations** : Les modèles n’ont pas été conçus pour dire “je ne sais pas”. Même avec RAG, ils peuvent déformer ou ignorer les sources.  
+2. **Biais** : Les données d’entraînement et les algorithmes de retrieval amplifient certains contextes au détriment d’autres.  
+3. **Obsolescence rapide** : Les frameworks évoluent vite, créant une dette technique accélérée.  
+4. **Coûts** : Entre API LLM, bases vectorielles et orchestration, le RAG naïf peut devenir coûteux dès que l’échelle augmente.  
 
-👉 Ces problèmes rappellent que la vraie valeur ne réside pas seulement dans l’outil choisi, mais dans une **architecture pensée pour durer, gouvernée et évolutive**.
+Ces problèmes rappellent que la vraie valeur ne réside pas seulement dans l’outil choisi, mais dans une **architecture pensée pour durer, gouvernée et évolutive**.
 
 ---
 
@@ -509,7 +509,7 @@ Les frameworks actuels sont utiles pour **prototyper et tester des idées**.
 Les bases vectorielles offrent des **fondations performantes** pour la mémoire.  
 Les approches low-code démocratisent l’accès, mais au prix de la robustesse.  
 
-👉 L’approche **pipeline modulaire** représente aujourd’hui la voie la plus crédible pour des systèmes :  
+L’approche **pipeline modulaire** représente aujourd’hui la voie la plus crédible pour des systèmes :  
 - gouvernés,  
 - traçables,  
 - souverains,  
@@ -520,7 +520,7 @@ Les approches low-code démocratisent l’accès, mais au prix de la robustesse.
 
 En résumé, chaque approche a ses atouts mais aussi ses limites structurelles.  
 Le chapitre suivant va poser les **principes fondateurs** (modularité, agnosticité, configurabilité, antifragilité) qui permettent d’aller au-delà de ces choix techniques pour construire des architectures durables.
-# Chapitre 4 — Les quatre principes fondateurs : modularité, agnosticité, configurabilité, antifragilité
+# Chapitre 4 : Les quatre principes fondateurs : modularité, agnosticité, configurabilité, antifragilité
 
 ---
 
@@ -542,7 +542,7 @@ Chaque module (ingestion, retrieval, génération, vérification) peut être am�
 - **Évolutivité** : on remplace une technologie (ex. moteur vectoriel) sans refactoriser tout le pipeline.  
 - **Innovation continue** : on expérimente localement sans risquer l’ensemble.
 
-👉 On peut comparer la modularité à un **pipeline Lego** : des briques standards, interchangeables et évolutives.  
+On peut comparer la modularité à un **pipeline Lego** : des briques standards, interchangeables et évolutives.  
 C’est aussi le principe des **microservices** en ingénierie logicielle.
 
 ---
@@ -557,7 +557,7 @@ Pas de dépendance définitive à un LLM, une base vectorielle ou un cloud.
 - **Agilité** : basculer vers un nouveau modèle sans tout réécrire.  
 - **Pérennité** : éviter l’obsolescence rapide et le “vendor lock-in”.
 
-👉 L’agnosticité est une **lingua franca technologique** : elle permet au système de dialoguer avec tous.  
+L’agnosticité est une **lingua franca technologique** : elle permet au système de dialoguer avec tous.  
 Dans un contexte de souveraineté numérique, c’est un facteur clé de confiance.
 
 ---
@@ -572,7 +572,7 @@ Un pipeline doit proposer des **paramètres réglables** (taille des chunks, typ
 - **Expérimentation rapide** : tester plusieurs configurations sans redéployer.  
 - **Efficience opérationnelle** : configuration as code, intégrable en CI/CD.
 
-👉 La configurabilité ressemble à un **tableau de bord d’avion** : les réglages sont accessibles, sans démonter le moteur.  
+La configurabilité ressemble à un **tableau de bord d’avion** : les réglages sont accessibles, sans démonter le moteur.  
 C’est un principe hérité du DevOps et du MLOps modernes.
 
 ---
@@ -587,7 +587,7 @@ Il ne se contente pas de résister : il apprend, s’adapte et devient plus robu
 - **Redondance** : multiplier les retrievers ou modèles pour diversifier les perspectives.  
 - **Expérimentation contrôlée** : intégrer du chaos engineering ou du red teaming.  
 
-👉 L’antifragilité peut être comparée à un **muscle** : plus il est sollicité, plus il devient fort.  
+L’antifragilité peut être comparée à un **muscle** : plus il est sollicité, plus il devient fort.  
 C’est un principe essentiel pour des systèmes critiques comme la santé ou la finance.
 
 ---
@@ -622,7 +622,7 @@ C’est un principe essentiel pour des systèmes critiques comme la santé ou la
 ---
 
 
-##  Schéma — Le quadrilatère des principes
+##  Schéma : Le quadrilatère des principes
 
 ```text
               ┌───────────────┐
@@ -662,8 +662,8 @@ C’est un principe essentiel pour des systèmes critiques comme la santé ou la
 Ces quatre principes ne sont pas des idéaux abstraits : ils forment un **quadrilatère structurel** où chaque dimension renforce les autres.  
 C’est sur ce socle que se construit un pipeline RAG antifragile : non pas une rustine, mais une **infrastructure vivante, souveraine et durable**.
 
-👉 Le prochain chapitre détaillera l’**architecture concrète** et ses analogies avec les systèmes distribués.
-# Chapitre 5 — Architecture détaillée : du jouet fragile à l’infrastructure antifragile
+Le prochain chapitre détaillera l’**architecture concrète** et ses analogies avec les systèmes distribués.
+# Chapitre 5 : Architecture détaillée : du jouet fragile à l’infrastructure antifragile
 
 ---
 
@@ -674,7 +674,7 @@ Les chapitres précédents ont montré :
 - le mirage d’un RAG naïf (Chapitre 2),  
 - et la comparaison des approches actuelles (Chapitre 3–4).  
 
-👉 Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
+Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
 
 Il est temps de franchir un cap : concevoir une **infrastructure antifragile**, capable de transformer un prototype fragile en un système critique.
 
@@ -693,7 +693,7 @@ Un RAG naïf ressemble à un **jouet technologique** :
 - Absence de filtrage des PII.  
 - Obsolescence rapide face à des évolutions réglementaires ou techniques.  
 
-👉 Résultat : un système fragile, peu digne de confiance.
+Résultat : un système fragile, peu digne de confiance.
 
 ---
 
@@ -716,11 +716,11 @@ ne plus voir le pipeline comme une simple *feature collée au modèle*, mais com
 - **Le jouet fragile** : un petit drone de loisir. Il vole bien en intérieur, mais au premier coup de vent, il s’écrase.  
 - **L’infrastructure antifragile** : l’aviation mondiale. Des milliers d’avions, redondants, supervisés par des tours de contrôle, avec audits permanents. Chaque incident renforce la sécurité globale.  
 
-👉 Le pipeline modulaire doit ressembler à l’aviation, pas à un gadget.
+Le pipeline modulaire doit ressembler à l’aviation, pas à un gadget.
 
 ---
 
-## 5.5 Schéma comparatif — pipeline fragile vs antifragile
+## 5.5 Schéma comparatif : pipeline fragile vs antifragile
 
 ### ❌ Pipeline naïf (fragile)
 
@@ -773,7 +773,7 @@ L’architecture antifragile s’inspire de disciplines éprouvées :
 - **Chaos engineering** → tester volontairement la robustesse du système en introduisant des perturbations contrôlées.  
 - **Biologie** → les organismes vivants qui s’adaptent et s’améliorent après des chocs illustrent bien l’antifragilité.  
 
-👉 La robustesse ne vient pas de la force brute, mais de l’**organisation intelligente**.
+La robustesse ne vient pas de la force brute, mais de l’**organisation intelligente**.
 
 ---
 
@@ -787,7 +787,7 @@ Une architecture antifragile ne se limite pas à la technique : elle doit intég
 - **Droit à l’oubli** : capacité à supprimer une information sur demande.  
 - **Risk governor** : composant qui surveille les sorties et bloque toute réponse risquée ou hors politique.
 
-👉 Sans gouvernance, la robustesse technique reste incomplète.
+Sans gouvernance, la robustesse technique reste incomplète.
 
 ---
 
@@ -800,7 +800,7 @@ Un pipeline antifragile doit être capable de **grandir avec les usages**.
 - **Monitoring de performance** : latence, coût par requête, consommation mémoire.  
 - **Optimisation continue** : ajustement dynamique des paramètres (taille des chunks, méthodes de retrieval).  
 
-👉 L’antifragilité inclut la capacité à absorber la croissance sans s’effondrer.
+L’antifragilité inclut la capacité à absorber la croissance sans s’effondrer.
 
 ---
 
@@ -836,7 +836,7 @@ C’est un **saut conceptuel** :
 Ce chapitre a montré pourquoi il fallait penser le pipeline comme une **infrastructure critique**.  
 Le prochain chapitre (Chapitre 6) passera de la vision globale à la **mécanique détaillée** :  
 étape par étape, du document brut à la réponse validée (ingestion → retrieval → génération → vérification).
-# Chapitre 6 — Anatomie du pipeline
+# Chapitre 6 : Anatomie du pipeline
 
 ---
 
@@ -857,7 +857,7 @@ Un pipeline antifragile suit quatre grandes étapes : **ingestion → retrieval 
                   [ Orchestrateur central ]
 ```
 
-👉 Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
+Chaque étape joue un rôle précis. Si l’une faiblit, l’ensemble ne doit pas s’écrouler.
 
 ---
 
@@ -876,7 +876,7 @@ Elle consiste à transformer des données brutes en documents exploitables.
 - Absence de suivi des versions.  
 - Manque de pipeline d’ETL clair.  
 
-👉 Une ingestion fragile = retrieval biaisé dès le départ.
+Une ingestion fragile = retrieval biaisé dès le départ.
 
 ---
 
@@ -895,7 +895,7 @@ C’est lui qui va sélectionner les documents les plus pertinents.
 - Ajouter des filtres sémantiques et des métadonnées.  
 - Surveiller la précision/recall via métriques.  
 
-👉 Retrieval robuste = moins d’hallucinations.
+Retrieval robuste = moins d’hallucinations.
 
 ---
 
@@ -912,7 +912,7 @@ La génération correspond au **travail du LLM** : formuler une réponse en util
 - Concaténer trop de documents (bruit + coûts élevés).  
 - Laisser le modèle répondre librement sans contrainte.  
 
-👉 Une génération bien encadrée est le cœur de la crédibilité du pipeline.
+Une génération bien encadrée est le cœur de la crédibilité du pipeline.
 
 ---
 
@@ -925,7 +925,7 @@ La vérification est l’étape qui transforme une réponse “probable” en un
 - **Risk governor** : filtre de conformité (données sensibles, RGPD, biais).  
 - **Auditabilité** : chaque réponse reliée à ses sources.  
 
-👉 C’est la **ceinture de sécurité** du pipeline.
+C’est la **ceinture de sécurité** du pipeline.
 
 ---
 
@@ -972,7 +972,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 [ Réponse validée + Audit ]
 ```
 
-👉 Ce schéma met en évidence les **sous-modules** de chaque étape.
+Ce schéma met en évidence les **sous-modules** de chaque étape.
 
 ---
 
@@ -984,7 +984,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 - **Vérification = système immunitaire** : détecter et corriger les erreurs.  
 - **Orchestrateur = cerveau** : coordonner l’ensemble.  
 
-👉 Le pipeline antifragile se comporte comme un organisme vivant : chaque organe est spécialisé, mais c’est leur coopération qui crée la résilience.
+Le pipeline antifragile se comporte comme un organisme vivant : chaque organe est spécialisé, mais c’est leur coopération qui crée la résilience.
 
 ---
 
@@ -995,7 +995,7 @@ Avec orchestrateur, c’est une **infrastructure maîtrisée**.
 - **Prompts trop longs** : coûts explosifs et dépassements de tokens.  
 - **Absence de vérification** : hallucinations validées sans contrôle.  
 
-👉 Les erreurs sont inévitables, mais un pipeline antifragile apprend à les corriger.
+Les erreurs sont inévitables, mais un pipeline antifragile apprend à les corriger.
 
 ---
 
@@ -1008,7 +1008,7 @@ Un pipeline antifragile doit être **observé en continu** :
 - **Alertes proactives** : détection de PII, dérive des performances, dépassements budgétaires.  
 - **Boucles de feedback** : utiliser les erreurs pour ajuster ingestion, retrieval ou prompts.  
 
-👉 L’observabilité est la clé pour passer de la théorie à la pratique.
+L’observabilité est la clé pour passer de la théorie à la pratique.
 
 ---
 
@@ -1019,7 +1019,7 @@ Un pipeline antifragile doit être **observé en continu** :
 - Génération assemble une réponse avec 5 citations.  
 - Vérification par critic-LLM élimine 2 incohérences.  
 
-👉 Résultat : une réponse **fiable, sourcée et générée en <3 secondes**, avec un coût maîtrisé.
+Résultat : une réponse **fiable, sourcée et générée en <3 secondes**, avec un coût maîtrisé.
 
 ---
 
@@ -1034,7 +1034,7 @@ Un pipeline antifragile doit être **observé en continu** :
 ## 6.14 Comparaison avec les frameworks actuels
 
 Beaucoup de frameworks actuels implémentent seulement : **ingestion + retrieval + génération**.  
-👉 La **vérification** et l’**orchestrateur** sont souvent absents.  
+La **vérification** et l’**orchestrateur** sont souvent absents.  
 
 C’est la différence entre :  
 - un pipeline de **démonstration** (rapide mais fragile),  
@@ -1045,7 +1045,7 @@ C’est la différence entre :
 ## 6.15 Conclusion et transition
 
 L’anatomie du pipeline révèle une vérité simple :  
-👉 **chaque étape est un maillon critique**.  
+**chaque étape est un maillon critique**.  
 
 Une ingestion fragile biaise tout le reste.  
 Un retrieval faible augmente les hallucinations.  
@@ -1059,15 +1059,15 @@ Ce n’est pas un luxe, c’est une nécessité : un pipeline antifragile doit �
 ## 6.16 Transition vers le Chapitre 7
 
 Le prochain chapitre confrontera cette vision **pipeline modulaire** avec les **frameworks actuels** : LangChain, LlamaIndex, Haystack…  
-👉 Chapitre 7 : **Modularité vs frameworks**.
-# Chapitre 7 — Modularité vs frameworks
+Chapitre 7 : **Modularité vs frameworks**.
+# Chapitre 7 : Modularité vs frameworks
 
 ---
 
 ## 7.1 Introduction
 
 Après avoir détaillé l’anatomie du pipeline (Chapitre 6), il est essentiel de comparer deux approches qui coexistent aujourd’hui :  
-👉 **les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
+**les frameworks intégrés** (LangChain, LlamaIndex, Haystack…) et **le pipeline modulaire**.  
 
 Cette comparaison est centrale : elle détermine si l’on construit un **prototype rapide** ou une **infrastructure durable**.
 
@@ -1222,7 +1222,7 @@ Une **banque** met en place un pipeline modulaire souverain. Résultat : conform
 - **Court terme** : les frameworks intégrés minimisent les coûts initiaux, mais la dette technique augmente rapidement avec la montée en charge.  
 - **Long terme** : le pipeline modulaire demande un investissement upfront plus élevé, mais offre un **ROI supérieur** grâce à la maintenance simplifiée, la conformité intégrée et la flexibilité.  
 
-👉 Les organisations doivent penser en **coût total de possession (TCO)**, pas seulement en coût de démarrage.
+Les organisations doivent penser en **coût total de possession (TCO)**, pas seulement en coût de démarrage.
 
 ---
 
@@ -1257,7 +1257,7 @@ Exploration (POC rapide) → Industrialisation (pipeline modulaire)
 
 Selon une étude fictive inspirée des analyses Gartner (2024), plus de **70% des projets LLM échouent à passer du POC à la production** faute d’architecture modulaire et de gouvernance adaptée.  
 
-👉 Cela confirme qu’il ne s’agit pas seulement d’un choix technique, mais d’un **enjeu stratégique**.
+Cela confirme qu’il ne s’agit pas seulement d’un choix technique, mais d’un **enjeu stratégique**.
 
 ---
 
@@ -1268,8 +1268,8 @@ Mais leur nature même les rend fragiles dès qu’on parle de conformité, de s
 
 Le pipeline modulaire est plus coûteux au départ, mais il constitue la **fondation antifragile** des systèmes de demain.  
 
-👉 Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.
-# Chapitre 8 — Sécurité, gouvernance et souveraineté
+Le prochain chapitre (Chapitre 8) explorera en détail la **sécurité et la gouvernance** dans ces architectures.
+# Chapitre 8 : Sécurité, gouvernance et souveraineté
 
 ---
 
@@ -1278,7 +1278,7 @@ Le pipeline modulaire est plus coûteux au départ, mais il constitue la **fonda
 Un pipeline RAG n’est pas un gadget de hackathon.  
 Il sera utilisé pour des **données sensibles**, des **décisions critiques**, des **contextes réglementés** (santé, finance, droit, éducation).  
 
-👉 La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
+La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
 
 Or, la plupart des frameworks actuels (LangChain, LlamaIndex, etc.) traitent la sécurité **après coup**, comme une couche externe. Résultat :  
 - fuites de données internes,  
@@ -1314,7 +1314,7 @@ Un pipeline mal conçu peut aspirer et ré-exposer des **données personnelles i
 Une fois indexé, un document est rarement supprimable.  
 Mais un pipeline responsable doit permettre la **purge sélective** (par chunk, UUID).  
 
-👉 La **souveraineté documentaire** repose sur cette capacité.  
+La **souveraineté documentaire** repose sur cette capacité.  
 
 ---
 
@@ -1360,7 +1360,7 @@ Où tourne le pipeline ? Qui contrôle ?
 - **Cloud souverain / local** → plus coûteux, mais maîtrise totale.  
 - **Hybride** → local par défaut, fallback API externe si besoin.  
 
-👉 La souveraineté n’est pas un luxe, mais un **prérequis de confiance**.  
+La souveraineté n’est pas un luxe, mais un **prérequis de confiance**.  
 
 ---
 
@@ -1376,7 +1376,7 @@ Chaque réponse doit être traçable :
 - **OpenTelemetry**, **W&B**, **MLflow**, dashboards custom.  
 - **Alertes proactives** (fuite de PII, coûts anormaux, dérive qualité).  
 
-👉 L’observabilité est la colonne vertébrale de la gouvernance.  
+L’observabilité est la colonne vertébrale de la gouvernance.  
 
 ---
 
@@ -1401,7 +1401,7 @@ Le pipeline doit être testé **contre ses propres failles** :
 ### Outils
 - **GuardrailsAI**, **NeMo Guardrails**, **firewalls IA**.  
 
-👉 Le red teaming est une assurance-vie : on découvre les failles avant les attaquants.  
+Le red teaming est une assurance-vie : on découvre les failles avant les attaquants.  
 
 ---
 
@@ -1410,7 +1410,7 @@ Le pipeline doit être testé **contre ses propres failles** :
 - **Samsung (2023)** → fuite de code interne via ChatGPT → interdiction interne.  
 - **Avocats US (2023)** → ChatGPT a inventé des jurisprudences inexistantes → sanctions disciplinaires.  
 
-👉 Morale : sans gouvernance, une erreur devient un scandale.  
+Morale : sans gouvernance, une erreur devient un scandale.  
 
 ---
 
@@ -1494,11 +1494,11 @@ La **sécurité**, la **gouvernance** et la **souveraineté** forment un **cercl
 - **Gouvernance** → confiance légale et organisationnelle.  
 - **Souveraineté** → indépendance stratégique.  
 
-👉 Sans elles, on obtient des **pipelines-jouets**.  
-👉 Avec elles, on obtient des **pipelines critiques**, capables de soutenir santé, droit, économie.  
+Sans elles, on obtient des **pipelines-jouets**.  
+Avec elles, on obtient des **pipelines critiques**, capables de soutenir santé, droit, économie.  
 
 Le prochain chapitre (Chapitre 9) explorera les **extensions possibles du pipeline** : mémoire longue, agents, multi-modalité.
-# Chapitre 9 — Les extensions originales du pipeline
+# Chapitre 9 : Les extensions originales du pipeline
 
 ---
 
@@ -1514,7 +1514,7 @@ Jusqu’ici, nous avons défini :
 Mais un pipeline modulaire ne doit pas seulement **corriger les faiblesses**.
 Il doit aussi être **inventif, évolutif et enrichi**.
 
-👉 Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
+Voici quatre extensions originales qui ouvrent la voie à une IA **vivante et antifragile**.
 
 ---
 
@@ -1539,7 +1539,7 @@ Permettre au pipeline de retrouver des documents **dans une dimension temporelle
 * Permettre des requêtes comme :
   *“Explique-moi ce qu’un médecin aurait recommandé en 2019 selon les guidelines officielles.”*
 
-👉 C’est une extension critique pour la **traçabilité** et la **conformité légale**.
+C’est une extension critique pour la **traçabilité** et la **conformité légale**.
 
 ---
 
@@ -1562,7 +1562,7 @@ Dans un support client :
 * mémoire moyenne → contexte du client (produits possédés, tickets passés).
 * mémoire longue → base documentaire (FAQ, manuels).
 
-👉 Ce design évite la surcharge cognitive du LLM et renforce la **pertinence contextuelle**.
+Ce design évite la surcharge cognitive du LLM et renforce la **pertinence contextuelle**.
 
 ---
 
@@ -1588,7 +1588,7 @@ Il agit comme un **pair reviewer** automatique.
 * Dans un hôpital → le critic vérifie que la réponse respecte les guidelines médicales.
 * Dans une banque → le critic rejette toute hallucination chiffrée non sourcée.
 
-👉 C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
+C’est une brique d’**antifragilité** : chaque réponse est une double vérification.
 
 ---
 
@@ -1613,7 +1613,7 @@ Dans un cabinet juridique :
 * le gouverneur n’expose pas une réponse unique,
 * mais propose : *“2 jurisprudences possibles, à vérifier par un juriste.”*
 
-👉 C’est la logique du **“human in the loop” intelligent**.
+C’est la logique du **“human in the loop” intelligent**.
 
 ---
 
@@ -1653,13 +1653,13 @@ Ces extensions transforment le pipeline :
 * **Critic LLM** → introduit la vérification par les pairs automatisée.
 * **Gouverneur de risque intelligent** → incarne la gouvernance vivante et dynamique.
 
-👉 Ensemble, elles créent un pipeline **plus qu’un outil** : un système **évolutif, critique, souverain et antifragile**.
+Ensemble, elles créent un pipeline **plus qu’un outil** : un système **évolutif, critique, souverain et antifragile**.
 
 Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des cas d’usage concrets** : santé, droit, support client.
 
 
 
-# 📌 Synthèse visuelle — Extensions originales du pipeline RAG
+# 📌 Synthèse visuelle : Extensions originales du pipeline RAG
 
 ---
 
@@ -1755,7 +1755,7 @@ Ces **extensions** transforment le pipeline en un système **vivant et évolutif
 * 🔍 **Vérifié** (critic LLM)
 * 🛡️ **Sécurisé & gouverné** (risk governor)
 
-👉 Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
+Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
 
 
 Le **Chapitre 10 présente des cas concrets. : Cas d’usage emblématiques**.
@@ -1763,7 +1763,7 @@ Ce chapitre a pour but de **montrer la valeur concrète** du pipeline modulaire 
 
 ---
 
-# Chapitre 10 — Cas d’usage concrets
+# Chapitre 10 : Cas d’usage concrets
 
 ---
 
@@ -1884,10 +1884,10 @@ Pipeline fragile = risque d’erreurs coûteuses.
 ## 10.8 Conclusion et transition
 
 Ces cas d’usage montrent que les pipelines RAG antifragiles ne sont pas théoriques :  
-👉 ils apportent une **valeur critique** dans des environnements sensibles.  
+ils apportent une **valeur critique** dans des environnements sensibles.  
 
 Le prochain chapitre (Chapitre 11) comparera ces approches avec des **alternatives non-RAG** (finetuning, règles expertes, moteurs de recherche traditionnels).
-# Chapitre 11 — Comparaison avec les alternatives au RAG
+# Chapitre 11 : Comparaison avec les alternatives au RAG
 
 ---
 
@@ -2008,8 +2008,8 @@ Hybrides        → puissants mais complexes
 Chaque approche a ses forces et faiblesses.  
 Le RAG n’est pas une solution universelle : il s’inscrit dans un **continuum de stratégies**.  
 
-👉 Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
-# Chapitre 12 — Limites et défis
+Le prochain chapitre (Chapitre 12) explorera les **limites et défis persistants** même avec RAG et ses alternatives.
+# Chapitre 12 : Limites et défis
 
 ---
 
@@ -2018,7 +2018,7 @@ Le RAG n’est pas une solution universelle : il s’inscrit dans un **continuum
 Un manifeste responsable ne peut pas seulement chanter ses promesses.  
 Il doit aussi reconnaître ses **limites**, ses **angles morts** et ses **défis non résolus**.  
 
-👉 Le pipeline modulaire antifragile n’est pas une baguette magique.  
+Le pipeline modulaire antifragile n’est pas une baguette magique.  
 C’est une **direction prometteuse**, mais encore incomplète.  
 
 ---
@@ -2031,7 +2031,7 @@ Mettre en œuvre un pipeline modulaire antifragile n’est pas gratuit :
 - multiplication des modules = plus de points de défaillance,  
 - orchestration plus lourde qu’un “framework clé en main”.  
 
-👉 Défi : **abaisser la barrière d’entrée** (standards ouverts, documentation, outillage accessible).  
+Défi : **abaisser la barrière d’entrée** (standards ouverts, documentation, outillage accessible).  
 
 ---
 
@@ -2044,8 +2044,8 @@ Pas encore de **protocole commun** pour :
 - interfaces entre modules,  
 - auditabilité cross-modules.  
 
-👉 Risque : des “Lego incompatibles”.  
-👉 Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
+Risque : des “Lego incompatibles”.  
+Sujet à creuser : un **OpenRAG Standard**, comme OpenAPI pour les APIs.  
 + Proposer un standard « OpenRAG » regroupant 5 à 7 interfaces minimales (Ingestion, Index, Retriever, Reranker, Generator, Critic, Governor) et un schéma commun d’événements d’audit.
 
 
@@ -2056,7 +2056,7 @@ Pas encore de **protocole commun** pour :
 - Trop de gouvernance = système lent, bureaucratique.  
 - Trop peu = fuite de données, hallucinations, perte de confiance.  
 
-👉 Défi : trouver un **équilibre subtil** entre contrôle et fluidité, sécurité et expérience utilisateur.  
+Défi : trouver un **équilibre subtil** entre contrôle et fluidité, sécurité et expérience utilisateur.  
 
 ---
 
@@ -2067,7 +2067,7 @@ Même dans un pipeline antifragile, le **LLM reste le cœur**.
 - Si les modèles stagnent, le pipeline plafonne.  
 - Si une API fermée disparaît, le pipeline souffre.  
 
-👉 Sujet à creuser : hybrider avec **d’autres paradigmes** (symbolique, probabiliste, graphes de connaissance).  
+Sujet à creuser : hybrider avec **d’autres paradigmes** (symbolique, probabiliste, graphes de connaissance).  
 
 ---
 
@@ -2076,7 +2076,7 @@ Même dans un pipeline antifragile, le **LLM reste le cœur**.
 Antifragilité = souvent **redondance** (retrievers multiples, critic LLM, gouverneur).  
 Plus de calcul = plus de consommation énergétique.  
 
-👉 Défi : inventer un **RAG frugal** :  
+Défi : inventer un **RAG frugal** :  
 - caching intelligent,  
 - modèles légers spécialisés,  
 - arbitrage entre précision et coût carbone.  
@@ -2091,7 +2091,7 @@ La souveraineté et l’open source sont des idéaux fragiles.
 - Les startups financées reproduisent ces logiques.  
 - Les États eux-mêmes peuvent imposer des règles contradictoires.  
 
-👉 Défi : créer une **gouvernance collective** (fondations, consortiums, alliances open source).  
+Défi : créer une **gouvernance collective** (fondations, consortiums, alliances open source).  
 
 ---
 
@@ -2133,7 +2133,7 @@ Même avec des pipelines antifragiles, certaines limites persistent :
 
 Reconnaître ces limites, ce n’est pas fragiliser le manifeste, c’est l’ancrer dans la réalité.  
 
-👉 Le pipeline modulaire antifragile est une **direction crédible**, mais :  
+Le pipeline modulaire antifragile est une **direction crédible**, mais :  
 - complexe,  
 - énergivore,  
 - dépendant de standards à inventer,  
@@ -2142,7 +2142,7 @@ Reconnaître ces limites, ce n’est pas fragiliser le manifeste, c’est l’an
 Ce n’est donc pas un point final, mais un **point de départ**.  
 Un **cadre en construction**, que la communauté doit explorer, tester, améliorer et compléter.  
 
-# Chapitre 13 — Conclusion générale
+# Chapitre 13 : Conclusion générale
 
 ---
 
@@ -2158,7 +2158,7 @@ Chemin faisant, nous avons appris que :
 
 ## 🔑 Le message central
 
-👉 Le futur de l’IA générative ne se jouera pas sur la **taille des modèles**, mais sur la **qualité des pipelines**.  
+Le futur de l’IA générative ne se jouera pas sur la **taille des modèles**, mais sur la **qualité des pipelines**.  
 Les modèles sont des briques impressionnantes, mais sans architecture, ils s’effondrent au premier choc.  
 
 ---
@@ -2192,7 +2192,7 @@ Deux chemins s’offrent à nous :
 - celui de solutions fermées, propriétaires, opaques, fragiles,  
 - ou celui d’architectures ouvertes, souveraines, antifragiles.  
 
-👉 Ce livre prend parti : pour l’ouverture, la modularité, la responsabilité collective.  
+Ce livre prend parti : pour l’ouverture, la modularité, la responsabilité collective.  
 
 ---
 
@@ -2202,7 +2202,7 @@ De la boîte noire fragile à l’écosystème vivant, le chemin est exigeant.
 Mais il est aussi porteur d’une promesse : celle de systèmes qui **méritent la confiance**.  
 
 🌱 Construisons ensemble des pipelines **robustes, souverains et antifragiles**.  
-C’est un **appel à l’action collective** — car la véritable valeur de l’IA n’est pas dans les modèles, mais dans les **systèmes que nous créons autour d’eux**.  
+C’est un **appel à l’action collective** : car la véritable valeur de l’IA n’est pas dans les modèles, mais dans les **systèmes que nous créons autour d’eux**.  
 
 ---
 
@@ -2219,26 +2219,26 @@ Parce que la modularité, la souveraineté et l’antifragilité ne sont pas des
 * de nouvelles découvertes techniques,  
 * et surtout : de nouvelles contributions communautaires.  
 
-👉 Si certains points te semblent manquants ou discutables : rejoins la discussion.  
+Si certains points te semblent manquants ou discutables : rejoins la discussion.  
 Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi par la diversité des regards et des pratiques.  
-# 📎 Annexes — Mode d’emploi opérationnel du pipeline RAG
+# 📎 Annexes : Mode d’emploi opérationnel du pipeline RAG
 
 ---
 
-## Annexe A — I/O et vision multimodale
+## Annexe A : I/O et vision multimodale
 
 ---
 
 # 🧩 Schéma du pipeline RAG modulaire & antifragile 
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/pipeline.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/pipeline.png "Pipeline RAG modulaire & antifragile")
 
 ---
 
 
-# 🧩 Pipeline RAG modulaire & antifragile — Vue complète
+# 🧩 Pipeline RAG modulaire & antifragile : Vue complète
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/pipeline_2.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/pipeline_2.png "Pipeline RAG modulaire & antifragile")
 
 ```text
 [ 1. SOURCES ]
@@ -2352,7 +2352,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 ---
 🧩 carte mentale
 
-![Schéma global — Pipeline RAG modulaire & antifragile](images/mind.png "Pipeline RAG modulaire & antifragile")
+![Schéma global : Pipeline RAG modulaire & antifragile](images/mind.png "Pipeline RAG modulaire & antifragile")
 
 
 ### Explication simplifiée
@@ -2365,7 +2365,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Tables** : fichiers Excel, bases de données.  
 - **APIs** : ERP/CRM, SaaS externes.  
 
-👉 Ça liste tous les types de contenus qu’on peut brancher.
+Ça liste tous les types de contenus qu’on peut brancher.
 
 ---
 
@@ -2378,7 +2378,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Qualité du contenu** : mesurer si le texte est lisible et utile.  
 - **Gouvernance** : droit à l’oubli, gestion des PII (données personnelles).  
 
-👉 Bref, nettoyer et structurer avant de stocker.
+Bref, nettoyer et structurer avant de stocker.
 
 ---
 
@@ -2390,7 +2390,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Tables** : expansion des colonnes, embeddings.  
 - **Transversal** : versioning, multi-tenant (multi-clients), index oubliables.  
 
-👉 L’index est comme un gros catalogue intelligent pour retrouver vite l’info.
+L’index est comme un gros catalogue intelligent pour retrouver vite l’info.
 
 ---
 
@@ -2403,7 +2403,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Mémoires spéciales** : time travel, pyramid memory.  
 - **Gouvernance** : filtrer les résultats selon les règles.  
 
-👉 C’est le chef d’orchestre qui décide quoi chercher et comment combiner.
+C’est le chef d’orchestre qui décide quoi chercher et comment combiner.
 
 ---
 
@@ -2413,7 +2413,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Routage/fallback** (plan B si un modèle échoue).  
 - **Citations, timecodes, formats spécifiques** (JSON, Markdown, légal, simplifié).  
 
-👉 Ici, l’IA rédige la réponse en respectant des règles.
+Ici, l’IA rédige la réponse en respectant des règles.
 
 ---
 
@@ -2424,7 +2424,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Politiques métier**.  
 - **Humain dans la boucle** (validation manuelle possible).  
 
-👉 C’est la partie pour éviter les réponses fausses ou risquées.
+C’est la partie pour éviter les réponses fausses ou risquées.
 
 ---
 
@@ -2433,7 +2433,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - Rapports **RGPD/HIPAA**.  
 - **Red teaming** (tester les failles de sécurité).  
 
-👉 Comme un tableau de bord qualité et conformité.
+Comme un tableau de bord qualité et conformité.
 
 ---
 
@@ -2443,7 +2443,7 @@ Ce manifeste n’a de valeur que s’il devient un **cadre partagé**, enrichi p
 - **Score de confiance**.  
 - **Traçabilité**.  
 
-👉 L’utilisateur reçoit une réponse claire, avec preuves et transparence.
+L’utilisateur reçoit une réponse claire, avec preuves et transparence.
 
 ---
 
@@ -2539,7 +2539,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe B — Schémas récapitulatifs & pipeline détaillé
+## Annexe B : Schémas récapitulatifs & pipeline détaillé
 
 ### B.1 Pipeline global (vue d’ensemble)
 
@@ -2565,7 +2565,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse validée ] ──► [ Observabilité / Audit / Feedback ]
 ```
 
-### B.2 Étape 1 — Ingestion & normalisation
+### B.2 Étape 1 : Ingestion & normalisation
 
 ```text
 [ Sources brutes ]
@@ -2582,7 +2582,7 @@ Utilisateur / Systèmes → [ Entrées ]
   └─ PII Filter (amont)
 ```
 
-### B.3 Étape 2 — Indexation & stockage
+### B.3 Étape 2 : Indexation & stockage
 
 ```text
 [ Chunks + Métadonnées ]
@@ -2597,7 +2597,7 @@ Utilisateur / Systèmes → [ Entrées ]
   └─ Cold: originaux chiffrés + logs ingestion
 ```
 
-### B.4 Étape 3 — Retrieval (sélection candidates)
+### B.4 Étape 3 : Retrieval (sélection candidates)
 
 ```text
 [ Requête enrichie ]
@@ -2610,7 +2610,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Union de candidats ]
 ```
 
-### B.5 Étape 4 — Fusion & re-ranking
+### B.5 Étape 4 : Fusion & re-ranking
 
 ```text
 [ Candidats (K1 + K2) ]
@@ -2623,7 +2623,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Top N final + Citations ]
 ```
 
-### B.6 Étape 5 — Génération (prompts contrôlés)
+### B.6 Étape 5 : Génération (prompts contrôlés)
 
 ```text
 [ Contexte Top N + Instructions ]
@@ -2636,7 +2636,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse provisoire + Citations ]
 ```
 
-### B.7 Étape 6 — Vérification (critic)
+### B.7 Étape 6 : Vérification (critic)
 
 ```text
 [ Réponse provisoire ]
@@ -2648,7 +2648,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse revue ]
 ```
 
-### B.8 Étape 7 — Gouverneur de risque (policies)
+### B.8 Étape 7 : Gouverneur de risque (policies)
 
 ```text
 [ Réponse revue ]
@@ -2662,7 +2662,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Réponse validée ]
 ```
 
-### B.9 Étape 8 — Observabilité, audit & boucles de feedback
+### B.9 Étape 8 : Observabilité, audit & boucles de feedback
 
 ```text
 [ Événements ]
@@ -2676,7 +2676,7 @@ Utilisateur / Systèmes → [ Entrées ]
 [ Dashboards + Alertes ]  →  [ Améliorations: prompts, index, policies ]
 ```
 
-### B.10 Étape 9 — Réponse & post-traitement
+### B.10 Étape 9 : Réponse & post-traitement
 
 ```text
 [ Réponse validée ]
@@ -2691,7 +2691,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe C — Checklists pratiques
+## Annexe C : Checklists pratiques
 
 ### C.1 Qualité des données
 - [ ] OCR appliqué correctement  
@@ -2729,7 +2729,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe D — Outils open source
+## Annexe D : Outils open source
 
 | Outil                                 | Points forts              | Limites                            |
 | ------------------------------------- | ------------------------- | ---------------------------------- |
@@ -2744,7 +2744,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe E — Évaluation & métriques
+## Annexe E : Évaluation & métriques
 
 | Catégorie   | Métrique                | Cible prod               |
 | ----------- | ----------------------- | ------------------------ |
@@ -2769,7 +2769,7 @@ Utilisateur / Systèmes → [ Entrées ]
 - **Process** : réévaluer régulièrement (hebdomadaire) sur un échantillon représentatif pour détecter les dérives.
 
 
-## Annexe F — Red teaming
+## Annexe F : Red teaming
 
 - Attaques : prompt injection, data poisoning, jailbreak, exfiltration PII.  
 - Rôles : red team (attaque), blue team (défense), purple team (coordination).  
@@ -2777,7 +2777,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe G — Stratégies de stockage
+## Annexe G : Stratégies de stockage
 
 - **Hot storage** : chunks + embeddings + index (opérationnel).  
 - **Cold storage** : originaux chiffrés + logs d’ingestion (probatoire).  
@@ -2785,7 +2785,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe H — Bonnes pratiques de déploiement
+## Annexe H : Bonnes pratiques de déploiement
 
 - **Canary / Blue-Green** : limiter l’impact d’une régression.  
 - **Migrations d’index** : double écriture + vérification croisée.  
@@ -2795,7 +2795,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe I — Glossaire visuel
+## Annexe I : Glossaire visuel
 
 - 🎼 **Orchestrateur** → chef d’orchestre du pipeline.  
 - 🤖 **LLM** → générateur encadré.  
@@ -2809,7 +2809,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ---
 
-## Annexe J — Templates de configuration (YAML)
+## Annexe J : Templates de configuration (YAML)
 
 ### J.1 Pipeline minimal modulaire
 ```yaml
@@ -2888,4 +2888,4 @@ observability:
 
 Ces annexes ne sont pas figées : c’est un **kit évolutif** qui accompagne le manifeste.  
 Elles visent un double objectif : **pragmatisme opérationnel** et **ouverture communautaire**.  
-Améliore-les, adapte-les, partage tes retours — pour des pipelines **robustes, souverains et antifragiles**.
+Améliore-les, adapte-les, partage tes retours : pour des pipelines **robustes, souverains et antifragiles**.

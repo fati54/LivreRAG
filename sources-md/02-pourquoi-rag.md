@@ -1,4 +1,4 @@
-# Chapitre 2 — Les promesses et limites du RAG actuel
+# Chapitre 2 : Les promesses et limites du RAG actuel
 
 ---
 
@@ -26,10 +26,10 @@ On pourrait résumer la promesse du RAG en trois slogans :
 
 Le RAG offre de vrais avantages :
 
-1. **Actualisation** — Le savoir n’est plus limité à la date d’entraînement.  
-2. **Personnalisation** — Chaque organisation peut brancher ses propres données (FAQ, manuels internes, bases réglementaires).  
-3. **Réduction des hallucinations** — Le modèle se cale sur une source fournie plutôt que d’inventer.  
-4. **Économie** — Pas besoin de réentraîner un modèle complet : on nourrit un LLM existant avec de nouvelles données.  
+1. **Actualisation** : Le savoir n’est plus limité à la date d’entraînement.  
+2. **Personnalisation** : Chaque organisation peut brancher ses propres données (FAQ, manuels internes, bases réglementaires).  
+3. **Réduction des hallucinations** : Le modèle se cale sur une source fournie plutôt que d’inventer.  
+4. **Économie** : Pas besoin de réentraîner un modèle complet : on nourrit un LLM existant avec de nouvelles données.  
 
 Pas étonnant que le RAG ait été perçu comme un **sauveur** : une rustine élégante au problème du savoir figé.
 
@@ -39,7 +39,7 @@ Pas étonnant que le RAG ait été perçu comme un **sauveur** : une rustine él
 
 Mais là encore, une illusion s’est installée.  
 Dans les discours commerciaux, le RAG est présenté comme une solution magique :  
-👉 *“Ajoutez un moteur vectoriel et vos problèmes de vérité sont réglés !”*
+*“Ajoutez un moteur vectoriel et vos problèmes de vérité sont réglés !”*
 
 En pratique, les implémentations sont souvent **simplistes** :  
 - ingestion brute de documents PDF,  
@@ -54,21 +54,21 @@ On parle alors de **prototype maquillé en produit fini**.
 
 ## Les limites techniques du RAG actuel
 
-1. **Qualité de l’ingestion** — Un PDF scanné mal parsé = embeddings inutiles. Sans pipeline robuste d’ingestion (OCR, nettoyage, structuration), le retrieval est biaisé dès le départ.  
-2. **Granularité du découpage** — Trop gros chunks = bruit ; trop petits = perte de contexte.  
-3. **Scores trompeurs** — La similarité cosinus ne garantit pas la pertinence sémantique.  
-4. **Dépendance au modèle** — Beaucoup d’implémentations reposent sur le même fournisseur (souvent OpenAI), créant dépendance et manque d’agilité.  
-5. **Hallucinations persistantes** — Même avec des documents injectés, le LLM peut les ignorer ou les transformer.  
-6. **Scalabilité** — Avec des millions de documents, l’indexation et la recherche deviennent coûteuses. Peu de solutions gèrent efficacement les grands volumes.  
+1. **Qualité de l’ingestion** : Un PDF scanné mal parsé = embeddings inutiles. Sans pipeline robuste d’ingestion (OCR, nettoyage, structuration), le retrieval est biaisé dès le départ.  
+2. **Granularité du découpage** : Trop gros chunks = bruit ; trop petits = perte de contexte.  
+3. **Scores trompeurs** : La similarité cosinus ne garantit pas la pertinence sémantique.  
+4. **Dépendance au modèle** : Beaucoup d’implémentations reposent sur le même fournisseur (souvent OpenAI), créant dépendance et manque d’agilité.  
+5. **Hallucinations persistantes** : Même avec des documents injectés, le LLM peut les ignorer ou les transformer.  
+6. **Scalabilité** : Avec des millions de documents, l’indexation et la recherche deviennent coûteuses. Peu de solutions gèrent efficacement les grands volumes.  
 
 ---
 
 ## Les limites organisationnelles
 
-1. **Absence de gouvernance** — Que faire si un utilisateur injecte des données sensibles ? Qui contrôle la conformité RGPD ?  
-2. **Pas de traçabilité** — La plupart des frameworks ne permettent pas d’expliquer quelle source exacte a produit telle phrase.  
-3. **Fragilité face aux évolutions** — Changer de modèle, de base vectorielle ou de méthode d’ingestion = souvent tout réécrire.  
-4. **Promesse marketing vs réalité** — De nombreux acteurs vendent des “assistants intelligents”, mais derrière : un simple moteur vectoriel branché sur un modèle fermé.
+1. **Absence de gouvernance** : Que faire si un utilisateur injecte des données sensibles ? Qui contrôle la conformité RGPD ?  
+2. **Pas de traçabilité** : La plupart des frameworks ne permettent pas d’expliquer quelle source exacte a produit telle phrase.  
+3. **Fragilité face aux évolutions** : Changer de modèle, de base vectorielle ou de méthode d’ingestion = souvent tout réécrire.  
+4. **Promesse marketing vs réalité** : De nombreux acteurs vendent des “assistants intelligents”, mais derrière : un simple moteur vectoriel branché sur un modèle fermé.
 
 ---
 
@@ -83,7 +83,7 @@ Chacun a ses forces, mais tous partagent une faiblesse : **ils n’abordent pas 
 
 ---
 
-## 📊 Synthèse visuelle — Avantages vs Limites
+## 📊 Synthèse visuelle : Avantages vs Limites
 
 | Aspect | Promesse du RAG | Réalité / Limites |
 |--------|-----------------|-------------------|
@@ -96,7 +96,7 @@ Chacun a ses forces, mais tous partagent une faiblesse : **ils n’abordent pas 
 
 ---
 
-## 🔀 Schéma comparatif — RAG naïf vs RAG robuste
+## 🔀 Schéma comparatif : RAG naïf vs RAG robuste
 
 ### ❌ RAG naïf (pipeline fragile)
 
@@ -158,7 +158,7 @@ Le RAG n’est pas inutile :
 - il a inspiré des architectures hybrides.  
 
 Mais dans sa forme actuelle, il reste une **béquille**.  
-👉 Pas encore une colonne vertébrale.
+Pas encore une colonne vertébrale.
 
 ---
 
@@ -175,4 +175,4 @@ C’est précisément l’objet de ce manifeste : montrer comment transformer ce
 
 
 
-Le prochain chapitre examinera **les problèmes structurels non résolus** — hallucinations, biais, obsolescence et coûts — qui expliquent pourquoi le RAG naïf ne suffit pas en production critique.
+Le prochain chapitre examinera **les problèmes structurels non résolus** : hallucinations, biais, obsolescence et coûts : qui expliquent pourquoi le RAG naïf ne suffit pas en production critique.

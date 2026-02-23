@@ -1,4 +1,4 @@
-# 🎯 PROMPT COMPLET — Claude Cowork — Livre RAG Antifragile
+# 🎯 PROMPT COMPLET : Claude Cowork : Livre RAG Antifragile
 
 Tu vas m'aider à finaliser, enrichir et publier mon livre technique open source :
 **"RAG : Architectures Antifragiles pour l'IA Générative"** par Fatima-Ezzahra Bouzidi Idrissi.
@@ -10,21 +10,21 @@ Le projet Nextra est déjà prêt (dans le zip joint). Tu as accès aux sources 
 ## 📂 CONTEXTE & FICHIERS
 
 Le zip `livre-rag-site-v2.zip` contient :
-- `/pages/*.mdx` — 15 chapitres + annexes (Nextra/MDX)
-- `/public/images/` — 3 schémas existants (PNG)
-- `theme.config.tsx` — Configuration Nextra
+- `/pages/*.mdx` : 15 chapitres + annexes (Nextra/MDX)
+- `/public/images/` : 3 schémas existants (PNG)
+- `theme.config.tsx` : Configuration Nextra
 - `package.json`, `next.config.js`, etc.
 
 Le zip `livre-rag-v2-sources.zip` contient les sources Markdown brutes dans `/livre_full_v2/`.
 
-**Auteure** : Fatima-Ezzahra Bouzidi Idrissi — Tech Lead Data & AI, 8+ ans d'expérience, spécialiste RAG, certifiée GCP (ML Engineer + Data Engineer), auteure de ce livre. Projets personnels : PedaGen (éducation), Plaide (juridique).
+**Auteure** : Fatima-Ezzahra Bouzidi Idrissi : Tech Lead Data & AI, 8+ ans d'expérience, spécialiste RAG, certifiée GCP (ML Engineer + Data Engineer), auteure de ce livre. Projets personnels : PedaGen (éducation), Plaide (juridique).
 
 **GitHub** : github.com/fati54/LivreRAG
 **Objectif** : publier sur Vercel avec un rendu professionnel digne d'un vrai livre technique de référence.
 
 ---
 
-## 🔥 MISSION 1 — ENRICHIR LE CONTENU TECHNIQUE
+## 🔥 MISSION 1 : ENRICHIR LE CONTENU TECHNIQUE
 
 ### 1A. Nouveau chapitre ou section majeure : "L'ingestion en profondeur"
 
@@ -73,14 +73,14 @@ Inclure du **code Python** pour chaque concept clé (pas juste de la théorie).
 
 ---
 
-## 🎨 MISSION 2 — GRAPHIQUES & VISUELS PROFESSIONNELS
+## 🎨 MISSION 2 : GRAPHIQUES & VISUELS PROFESSIONNELS
 
 Les schémas actuels sont en ASCII art ou en PNG basiques. Il faut les transformer en **visuels professionnels**.
 
 ### Option A : Mermaid (intégré à Nextra)
 Convertir les schémas ASCII en diagrammes Mermaid quand c'est possible :
 - Pipeline naïf vs antifragile (Ch2, Ch6)
-- Les 4 principes (Ch4) — en quadrant
+- Les 4 principes (Ch4) : en quadrant
 - Architecture complète (Ch5)
 - Flux de vérification (Ch8)
 - Extensions (Ch9)
@@ -101,7 +101,7 @@ Pour les schémas qui nécessitent plus d'interactivité, créer des composants 
 
 ---
 
-## 💬 MISSION 3 — FONCTIONNALITÉS COMMUNAUTAIRES
+## 💬 MISSION 3 : FONCTIONNALITÉS COMMUNAUTAIRES
 
 ### 3A. Système de commentaires
 Intégrer un système de commentaires pour que les lecteurs puissent réagir par chapitre :
@@ -149,7 +149,7 @@ Et l'intégrer dans chaque page MDX ou via un layout custom Nextra.
 
 ---
 
-## 🚀 MISSION 4 — DÉPLOIEMENT VERCEL
+## 🚀 MISSION 4 : DÉPLOIEMENT VERCEL
 
 ### 4A. Préparer le déploiement
 1. S'assurer que `npm install && npm run build` fonctionne sans erreur
@@ -185,7 +185,7 @@ Et l'intégrer dans chaque page MDX ou via un layout custom Nextra.
 
 ---
 
-## 🏠 MISSION 5 — PAGE D'ACCUEIL PREMIUM
+## 🏠 MISSION 5 : PAGE D'ACCUEIL PREMIUM
 
 Transformer la page d'accueil (`index.mdx`) en une **landing page professionnelle** :
 
@@ -202,7 +202,7 @@ Utiliser un composant React (`pages/index.tsx` ou un layout custom) plutôt que 
 
 ---
 
-## 📋 MISSION 6 — QUALITÉ & FINITIONS
+## 📋 MISSION 6 : QUALITÉ & FINITIONS
 
 ### Relecture technique
 - Vérifier que tous les noms de modèles, frameworks et outils sont à jour (2025)
@@ -225,14 +225,14 @@ Utiliser un composant React (`pages/index.tsx` ou un layout custom) plutôt que 
 
 ## ⚡ ORDRE DE PRIORITÉ
 
-1. **Mission 1A** — Contenu technique (ingestion, chunking, embedding, coûts, cache) → C'est la valeur ajoutée principale
-2. **Mission 5** — Page d'accueil premium → Première impression
-3. **Mission 2** — Graphiques Mermaid + composants interactifs → Rendre le livre vivant
-4. **Mission 3A** — Giscus commentaires → Communauté
-5. **Mission 4** — Déploiement Vercel → Publication
-6. **Mission 6** — Qualité, glossaire, finitions
-7. **Mission 1B** — Enrichissements secondaires
-8. **Mission 3B-D** — Newsletter, analytics
+1. **Mission 1A** : Contenu technique (ingestion, chunking, embedding, coûts, cache) → C'est la valeur ajoutée principale
+2. **Mission 5** : Page d'accueil premium → Première impression
+3. **Mission 2** : Graphiques Mermaid + composants interactifs → Rendre le livre vivant
+4. **Mission 3A** : Giscus commentaires → Communauté
+5. **Mission 4** : Déploiement Vercel → Publication
+6. **Mission 6** : Qualité, glossaire, finitions
+7. **Mission 1B** : Enrichissements secondaires
+8. **Mission 3B-D** : Newsletter, analytics
 
 ---
 

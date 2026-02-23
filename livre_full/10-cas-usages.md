@@ -1,4 +1,4 @@
-# Chapitre 10 — Cas d’usage concrets
+# Chapitre 10 : Cas d’usage concrets
 
 ---
 
@@ -119,6 +119,6 @@ Pipeline fragile = risque d’erreurs coûteuses.
 ## 10.8 Conclusion et transition
 
 Ces cas d’usage montrent que les pipelines RAG antifragiles ne sont pas théoriques :  
-👉 ils apportent une **valeur critique** dans des environnements sensibles.  
+ils apportent une **valeur critique** dans des environnements sensibles.  
 
 Le prochain chapitre (Chapitre 11) comparera ces approches avec des **alternatives non-RAG** (finetuning, règles expertes, moteurs de recherche traditionnels).

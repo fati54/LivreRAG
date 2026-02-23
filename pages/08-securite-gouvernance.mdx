@@ -1,7 +1,7 @@
 import Mermaid from '../components/Mermaid'
 import Comments from '../components/Comments'
 
-# Chapitre 8 — Sécurité, gouvernance et souveraineté
+# Chapitre 8 : Sécurité, gouvernance et souveraineté
 
 ---
 
@@ -10,7 +10,7 @@ import Comments from '../components/Comments'
 Un pipeline RAG n’est pas un gadget de hackathon.  
 Il sera utilisé pour des **données sensibles**, des **décisions critiques**, des **contextes réglementés** (santé, finance, droit, éducation).  
 
-👉 La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
+La sécurité et la gouvernance ne sont donc pas des add-ons, mais des **éléments constitutifs** du pipeline.  
 
 Or, la plupart des frameworks actuels (LangChain, LlamaIndex, etc.) traitent la sécurité **après coup**, comme une couche externe. Résultat :  
 - fuites de données internes,  
@@ -111,7 +111,7 @@ Chaque réponse doit être traçable :
 - **OpenTelemetry**, **W&B**, **MLflow**, dashboards custom.  
 - **Alertes proactives** (fuite de PII, coûts anormaux, dérive qualité).  
 
-👉 L’observabilité est la colonne vertébrale de la gouvernance.  
+L’observabilité est la colonne vertébrale de la gouvernance.  
 
 ---
 
@@ -180,13 +180,31 @@ safe_context = sanitize_chunks(retrieved_chunks)
 ```
 
 ### Sources (prompt injection)
-- [OWASP — Top 10 for LLM Applications (LLM01 Prompt Injection)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Greshake et al. — Indirect Prompt Injection (arXiv:2302.12173)](https://arxiv.org/abs/2302.12173)
-- [Liu et al. — Formalizing & Benchmarking Prompt Injection Defenses (arXiv:2310.12815)](https://arxiv.org/abs/2310.12815)
+- [OWASP : Top 10 for LLM Applications (LLM01 Prompt Injection)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Greshake et al. : Indirect Prompt Injection (arXiv:2302.12173)](https://arxiv.org/abs/2302.12173)
+- [Liu et al. : Formalizing & Benchmarking Prompt Injection Defenses (arXiv:2310.12815)](https://arxiv.org/abs/2310.12815)
 
 ---
 
-## 8.10 Red teaming et tests adversariaux
+## 8.10 Menaces au‑delà du prompt injection
+
+Le prompt injection n’est qu’une partie du risque. D’autres menaces structurelles doivent être prises en compte :
+
+- **Data poisoning** : des documents malveillants sont injectés dans le corpus pour biaiser le retrieval ou la génération.  
+- **Membership inference** : un attaquant infère si un document sensible a servi à l’entraînement.  
+- **Extraction de données d’entraînement** : récupération d’extraits exacts mémorisés par le modèle.  
+- **Supply chain** : dépendances ou plugins compromis qui exfiltrent des données.  
+- **Excessive agency** : des agents trop autonomes exécutent des actions risquées sans validation.
+
+**Sources**  
+- [OWASP LLM Top 10 : supply chain, data poisoning, excessive agency](https://owasp.org/www-project-top-10-for-large-language-model-applications/)  
+- [Data poisoning (Biggio et al.)](https://arxiv.org/abs/1206.6389)  
+- [Membership inference (Shokri et al.)](https://arxiv.org/abs/1610.05820)  
+- [Training data extraction (Carlini et al.)](https://arxiv.org/abs/2012.07805)  
+
+---
+
+## 8.11 Red teaming et tests adversariaux
 
 Le pipeline doit être testé **contre ses propres failles** :  
 - Injection de prompts.  
@@ -200,7 +218,7 @@ Le red teaming est une assurance-vie : on découvre les failles avant les attaqu
 
 ---
 
-## 8.11 Illustrations concrètes
+## 8.12 Illustrations concrètes
 
 - **Samsung (2023)** → fuite de code interne via ChatGPT → interdiction interne.  
 - **Avocats US (2023)** → ChatGPT a inventé des jurisprudences inexistantes → sanctions disciplinaires.  
@@ -209,7 +227,7 @@ Morale : sans gouvernance, une erreur devient un scandale.
 
 ---
 
-## 8.12 Schéma global sécurité & gouvernance
+## 8.13 Schéma global sécurité & gouvernance
 
 <Mermaid
   chart={`
@@ -230,7 +248,7 @@ flowchart TB
 
 ---
 
-## 8.13 Tableau récapitulatif
+## 8.14 Tableau récapitulatif
 
 | Mécanisme         | Objectif                          | Exemple concret |
 |-------------------|-----------------------------------|-----------------|
@@ -244,14 +262,14 @@ flowchart TB
 
 ---
 
-## 8.14 Conclusion et transition
+## 8.15 Conclusion et transition
 
 La **sécurité**, la **gouvernance** et la **souveraineté** forment un **cercle vertueux** :  
 - **Sécurité** → protection immédiate.  
 - **Gouvernance** → confiance légale et organisationnelle.  
 - **Souveraineté** → indépendance stratégique.  
 
-👉 Sans elles, on obtient des **pipelines-jouets**.  
+Sans elles, on obtient des **pipelines-jouets**.  
 Avec elles, on obtient des **pipelines critiques**, capables de soutenir santé, droit, économie.  
 
 Le prochain chapitre (Chapitre 9) explorera les **extensions possibles du pipeline** : mémoire longue, agents, multi-modalité.

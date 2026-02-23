@@ -44,6 +44,38 @@ html:not(.dark) .nextra-content {
   margin-bottom: 1em;
 }
 
+html:not(.dark) .nextra-content h2 {
+  color: var(--book-navy);
+  border-left: 4px solid rgba(13, 148, 136, 0.65);
+  padding-left: 0.6rem;
+  margin-top: 2rem;
+}
+
+html:not(.dark) .nextra-content h3 {
+  color: var(--book-blue);
+  margin-top: 1.6rem;
+}
+
+html[class~="dark"] .nextra-content h2 {
+  color: #e2e8f0;
+  border-left-color: rgba(13, 148, 136, 0.5);
+}
+
+html[class~="dark"] .nextra-content h3 {
+  color: #93c5fd;
+}
+
+/* Subtle separators */
+.nextra-content hr {
+  border: 0;
+  border-top: 1px solid rgba(37, 99, 235, 0.2);
+  margin: 2rem 0;
+}
+
+html[class~="dark"] .nextra-content hr {
+  border-top-color: rgba(148, 163, 184, 0.25);
+}
+
 /* Quote blocks - manifesto style */
 .nextra-content blockquote {
   border-left: 4px solid var(--book-teal);
@@ -87,8 +119,42 @@ html:not(.dark) .nextra-content table {
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
 }
 
+html:not(.dark) .nextra-content tbody tr:nth-child(even) {
+  background: rgba(37, 99, 235, 0.04);
+}
+
+html[class~="dark"] .nextra-content tbody tr:nth-child(even) {
+  background: rgba(148, 163, 184, 0.08);
+}
+
 html[class~="dark"] .nextra-content td {
   border-bottom: 1px solid hsl(210, 20%, 25%);
+}
+
+/* Inline code */
+html:not(.dark) .nextra-content :not(pre) > code {
+  background: rgba(37, 99, 235, 0.08);
+  color: #1e293b;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+}
+
+html[class~="dark"] .nextra-content :not(pre) > code {
+  background: rgba(37, 99, 235, 0.15);
+  color: #e2e8f0;
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Code blocks: subtle accent */
+.nextra-content pre {
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-left: 4px solid rgba(13, 148, 136, 0.6);
+}
+
+html[class~="dark"] .nextra-content pre {
+  border-color: rgba(148, 163, 184, 0.25);
+  border-left-color: rgba(13, 148, 136, 0.5);
 }
 
 /* Sidebar - light mode */
@@ -108,6 +174,7 @@ html:not(.dark) .nextra-sidebar-container a:hover {
 html:not(.dark) .nextra-sidebar-container a.active {
   background: rgba(37, 99, 235, 0.1);
   border-radius: 8px;
+  box-shadow: inset 3px 0 0 rgba(37, 99, 235, 0.7);
 }
 
 html:not(.dark) .nextra-content a {
