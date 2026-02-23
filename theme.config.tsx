@@ -15,7 +15,7 @@ const config: DocsThemeConfig = {
   footer: {
     text: (
       <span>
-        © {new Date().getFullYear()} — <strong>Fatima-Ezzahra Bouzidi Idrissi</strong> — RAG : Architectures Antifragiles pour l'IA Générative
+        © 2025 — <strong>Fatima-Ezzahra Bouzidi Idrissi</strong> — RAG : Architectures Antifragiles pour l'IA Générative
       </span>
     ),
   },
