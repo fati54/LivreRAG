@@ -305,8 +305,12 @@ export default function HomePage() {
                 GitHub
               </a>
               <span className="home-link-sep">•</span>
-              <a href="#" aria-disabled="true">
-                LinkedIn (à compléter)
+              <a
+                href="https://www.linkedin.com/in/fatima-ezzahra-idrissi-bouzidi/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
               </a>
             </div>
           </div>
