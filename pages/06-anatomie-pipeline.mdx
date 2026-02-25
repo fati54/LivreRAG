@@ -82,29 +82,28 @@ Objectif : transformer des sources hétérogènes en **unités de connaissance f
 | KG-RAG | 1 024 tokens | 0.804 | Page-level 0.790 |
 | RAGBattlePacket | 1 024 tokens | 0.790 | Page-level non indiqué |
 
-Conclusion pratique : la "bonne" taille dépend du type de documents **et** de la structure des questions.  
-Sur des corpus juridiques (Plaide) et santé (MGEN), le gain vient souvent d'un **chunking document-aware** (articles, sections, annexes) plus que d'un simple ajustement de taille.
+Conclusion pratique : la "bonne" taille dépend du type de documents et de la structure des questions.
+
+Sources :
+- [NVIDIA : Finding the Best Chunking Strategy for Accurate AI Responses (2025)](https://developer.nvidia.com/blog/finding-the-best-chunking-strategy-for-accurate-ai-responses/)
 
 ##### Overlap : pourquoi, combien, quand éviter
 - **Pourquoi** : réduire les coupures de contexte au bord des chunks.  
-- **Combien** : souvent **10-20%** suffit (ex. chunk 500 tokens, overlap 50-100).  
+- **Combien** : 10-20% est un bon point de départ (ex. chunk 500 tokens, overlap 50-100). Dans l'étude NVIDIA, 15% d'overlap donne le meilleur score sur FinanceBench.  
 - **Quand éviter** : documents très courts, ou si vous faites déjà du **re-ranking** (l'overlap ajoute du bruit).
 
 ##### Chunking spécialisé par type de document
-- **PDF structuré** : découper par titres + paragraphes; garder les numéros d'articles.  
-- **PDF scanné** : OCR -> détection de blocs -> nettoyage agressif des artefacts.  
-- **Markdown** : sections (`#`, `##`, `###`) + limites de code fences.  
-- **HTML** : split par `<h1>…<h3>` puis par `<p>`.  
-- **Tables** : chunk par ligne/colonne, stocker schéma + table complète.  
-- **Code source** : chunk par fonction/classe; garder la signature avec la docstring.
+- **PDF structuré / scanné** : titres + paragraphes; OCR + nettoyage si besoin.  
+- **Markdown / HTML** : sections (`#`, `##`, `###` ou `<h1>…<h3>`).  
+- **Tables** : chunk par ligne/colonne, conserver le schéma.  
+- **Code source** : chunk par fonction/classe, garder la signature.
 
 ##### Late chunking vs early chunking
 - **Early chunking** : on découpe **avant** l'indexation (classique).  
 - **Late chunking** : on indexe d'abord **au niveau document**, puis on recoupe **après** un premier retrieval.  
 
 **Quand préférer le late chunking ?**  
-- Corpus courts, mais documents très structurés (contrats, normes).  
-- Quand la cohérence globale du document compte plus que la granularité fine.
+Corpus courts et très structurés, quand la cohérence globale compte plus que la granularité fine.
 
 ##### Exemple Python (from scratch)
 
@@ -197,20 +196,35 @@ print(len(chunks), chunks[0][:200])
 Un embedding est une **projection numérique** : on transforme une phrase en un vecteur dense qui capture le **sens** plutôt que la forme exacte.  
 Deux textes proches en sens -> vecteurs proches en distance (cosinus, dot product).
 
-##### Comparatif des modèles d'embedding (référence MTEB retrieval)
+##### Comparatif des modèles d'embedding (MTEB public)
 
 | Modèle | Dim | MTEB Retrieval (NDCG@10) | Coût API (USD / 1M tokens) | FR |
 |---|---:|---:|---:|---|
 | OpenAI `text-embedding-3-large` | 3 072 | 55.44 | 0.13 | Oui (multilingue) |
-| OpenAI `text-embedding-ada-002` | 1 536 | 49.25 | 0.10 | Oui (multilingue) |
-| Cohere `embed-multilingual-v3.0` | 1 024 | 55.00 | 0.12 | Oui (multilingue) |
+| OpenAI `text-embedding-3-small` | 1 536 | 51.08 | 0.02 | Oui (multilingue) |
+| OpenAI `text-embedding-ada-002` | 1 536 | Non publié | 0.10 | Oui (legacy) |
+| Cohere `embed-english-v3.0` | 1 024 | 55.00 | Variable (provider) | Non (EN) |
 | Sentence-Transformers `all-MiniLM-L6-v2` | 384 | 41.95 | Self-hosted | EN (FR limité) |
 | BGE `bge-large-en-v1.5` | 1 024 | 54.29 | Self-hosted | EN (FR limité) |
 | E5 `e5-large-v2` | 1 024 | 50.56 | Self-hosted | EN (FR limité) |
-| Mistral `mistral-embed` | 1 024 | 55.26 | 0.10 | Non précisé |
-| Voyage `voyage-large-2-instruct` | 1 024 | 58.28 | 0.12 | Non précisé |
+| Mistral `mistral-embed` | 1 024 | Non publié | 0.10 | Non précisé |
+| Voyage `voyage-4` | 1 024 | Non publié | 0.06 | Oui (multilingue) |
 
-Notes : les scores MTEB Retrieval proviennent de benchmarks publiés (voir sources). Les modèles open-source n'ont pas de coût API fixe mais un **coût d'infrastructure** (CPU/GPU + stockage).
+Notes : les scores MTEB Retrieval proviennent de tableaux publics (voir sources). `text-embedding-ada-002` est un modèle legacy : OpenAI publie un score MTEB moyen mais pas de score retrieval dédié. Cohere propose aussi `embed-multilingual-v3.0` pour le FR, avec des scores variables selon la langue. Les modèles open source n'ont pas de coût API fixe mais un **coût d'infrastructure** (CPU/GPU + stockage).
+
+Sources :
+- [OpenAI : pricing embeddings](https://openai.com/api/pricing/)
+- [OpenAI : embeddings guide (dimensions par défaut)](https://platform.openai.com/docs/guides/embeddings)
+- [OpenAI : new embedding models and API updates](https://openai.com/index/new-embedding-models-and-api-updates/)
+- [NVIDIA NIM : Snowflake Arctic Embed L (MTEB retrieval table)](https://docs.api.nvidia.com/nim/reference/snowflake-arctic-embed-l)
+- [Snowflake Arctic Embed (MTEB retrieval table : text-embedding-3-small, all-MiniLM)](https://github.com/Snowflake-Labs/arctic-embed)
+- [BAAI : bge-large-en-v1.5 model card](https://huggingface.co/BAAI/bge-large-en-v1.5)
+- [E5 Large v2 benchmark table](https://www.modeldatabase.com/models/e5-large-v2.html)
+- [Mistral : text embeddings](https://docs.mistral.ai/capabilities/embeddings/text_embeddings/)
+- [Mistral : Mistral Embed model page](https://docs.mistral.ai/models/mistral-embed-23-12)
+- [Vercel AI SDK Core : Cohere embed dimensions](https://v5.ai-sdk.dev/docs/foundations/providers-and-models#cohere)
+- [Voyage AI : text embeddings (dimensions, multilingue)](https://www.mongodb.com/docs/voyageai/models/text-embeddings/)
+- [Voyage AI : pricing](https://docs.voyageai.com/docs/pricing)
 
 ##### Fine-tuning d'embeddings : quand et comment
 - **Quand** : jargon métier, taxonomies propres, ou faibles recall/précision sur vos requêtes réelles.  
@@ -257,16 +271,20 @@ Voici un **comparatif simplifié** (prix publics, par 1M tokens) :
 
 | Modèle | Input $ / 1M | Output $ / 1M | Source |
 |---|---:|---:|---|
-| OpenAI GPT-4o | 2.50 | 10.00 | OpenAI API pricing |
-| OpenAI GPT-4o-mini | 0.15 | 0.60 | OpenAI API pricing |
-| Claude Opus | 5.00 | 25.00 | Anthropic pricing |
-| Claude Sonnet | 3.00 | 15.00 | Anthropic pricing |
-| Claude Haiku | 0.25 | 1.25 | Anthropic pricing |
-| Mistral Large 3 | 2.00 | 6.00 | Mistral docs |
-| Mistral Small 3.2 | 0.10 | 0.30 | Mistral docs |
-| Gemini 2.5 Pro | 1.25 | 10.00 | Google Gemini pricing |
-| Gemini 2.5 Flash | 0.30 | 2.50 | Google Gemini pricing |
-| Llama 3.1 70B (API) | 0.90 | 0.90 | Together AI pricing |
+| OpenAI GPT-4o | 2.50 | 10.00 | [OpenAI API pricing](https://openai.com/api/pricing/) |
+| OpenAI GPT-4o-mini | 0.15 | 0.60 | [OpenAI API pricing](https://openai.com/api/pricing/) |
+| Claude Opus 4.5 | 5.00 | 25.00 | [Anthropic pricing](https://www.anthropic.com/pricing) |
+| Claude Sonnet 4.5 | 3.00 | 15.00 | [Anthropic pricing](https://www.anthropic.com/pricing) |
+| Claude Haiku 4.5 | 1.00 | 5.00 | [Anthropic pricing](https://www.anthropic.com/pricing) |
+| Mistral Large 3 | 0.50 | 1.50 | [Mistral Large 3](https://docs.mistral.ai/models/mistral-large/) |
+| Mistral Small 3.2 | 0.10 | 0.30 | [Mistral Small 3.2](https://docs.mistral.ai/models/mistral-small-3-2-25-06/) |
+| Gemini 3 Pro Preview | 2.00 | 12.00 | [Vertex AI pricing](https://cloud.google.com/vertex-ai/generative-ai/pricing) |
+| Gemini 3 Flash Preview | 0.50 | 3.00 | [Vertex AI pricing](https://cloud.google.com/vertex-ai/generative-ai/pricing) |
+| Llama 3.1 70B (API) | 0.88 | 0.88 | [Together AI pricing](https://www.together.ai/pricing) |
+
+<div className="callout callout--warning">
+Conseil pratique : la variable la plus explosive est la longueur du contexte. Fixez un budget par requête, puis ajustez le routing, le top-k et la compression.
+</div>
 
 ##### Routage intelligent (routing)
 
@@ -323,7 +341,8 @@ print(f"Coût mensuel ≈ ${monthly:.2f}")
 - Embeddings `text-embedding-3-large` pour index + requêtes.  
 
 **Résultat** :
-- **≈ 293 $ / mois** (≈ 293 € à parité), pour les requêtes.  
+- **≈ 285 $ / mois** pour la génération (GPT-4o).  
+- **≈ 5 $ / mois** si un critic léger passe sur chaque réponse (GPT-4o-mini, hypothèse 600 tokens input et 120 output).  
 - **≈ 5.2 $** de coût unique pour l'index initial (50k docs × 800 tokens).  
 
 Les coûts explosent surtout avec : **trop de contexte**, **trop de tokens sortants**, et **pas de routing**.

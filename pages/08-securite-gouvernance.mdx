@@ -58,6 +58,8 @@ Résultat : risque de **fuites croisées**.
 ### Exemple réel (2023)  
 **Samsung** a interdit ChatGPT après des fuites de code interne dans les logs OpenAI.  
 
+Source : [TechCrunch : Samsung bans ChatGPT after employees leaked sensitive code](https://techcrunch.com/2023/05/02/samsung-bans-chatgpt-after-employees-leaked-sensitive-code/)
+
 ### Solution
 - **Multi-tenancy sécurisé**.  
 - **Namespaces isolés**.  
@@ -99,34 +101,28 @@ La souveraineté n’est pas un luxe, mais un **prérequis de confiance**.
 
 ---
 
-## 8.7 Observabilité et traçabilité
+## 8.7 Observabilité, audit et conformité
 
-Un pipeline RAG doit être **observable**.  
+Un pipeline RAG doit être **observable** et **auditable**.  
 Chaque réponse doit être traçable :  
 - Quelle requête utilisateur ?  
 - Quels documents utilisés ?  
 - Quelles règles appliquées ?  
-
-### Outils
-- **OpenTelemetry**, **W&B**, **MLflow**, dashboards custom.  
-- **Alertes proactives** (fuite de PII, coûts anormaux, dérive qualité).  
-
-L’observabilité est la colonne vertébrale de la gouvernance.  
-
----
-
-## 8.8 Auditabilité et conformité
-
-Un pipeline peut viser des certifications (ex. ISO 27001, SOC 2) et la conformité HIPAA / RGPD, ou être validé pour un usage clinique.
 
 Cela suppose :  
 - **Journalisation** (qui a fait quoi, quand).  
 - **Versioning documentaire** (quelle version d’un texte était en vigueur).  
 - **Explicabilité** (source exacte de chaque réponse).  
 
+Un pipeline peut viser des certifications (ISO 27001, SOC 2) et la conformité HIPAA / RGPD.  
+
+### Outils
+- **OpenTelemetry**, **W&B**, **MLflow**, dashboards custom.  
+- **Alertes proactives** (fuite de PII, coûts anormaux, dérive qualité).  
+
 ---
 
-## 8.9 Prompt injection (directe et indirecte)
+## 8.8 Prompt injection (directe et indirecte)
 
 La **prompt injection** consiste à injecter des instructions malveillantes dans le flux d’entrée d’un LLM pour **contourner les règles** et détourner la sortie.  
 C’est aujourd’hui le risque #1 identifié par l’OWASP pour les applications LLM.
@@ -149,6 +145,10 @@ Ce scénario est documenté par les travaux sur **l’indirect prompt injection*
 - **Gating des outils** : l’agent n’appelle jamais un outil sensible sans validation explicite.  
 - **Vérification de sortie** : vérifier que la réponse respecte les politiques (citations, pas de secrets).  
 - **Red teaming régulier** : tests adversariaux continus.
+
+<div className="callout callout--danger">
+À retenir : ne jamais exécuter une action sensible sans validation explicite, même si la consigne vient d'un document interne.
+</div>
 
 #### Exemple Python : filtrage simple de contenu injecté
 
@@ -186,7 +186,7 @@ safe_context = sanitize_chunks(retrieved_chunks)
 
 ---
 
-## 8.10 Menaces au‑delà du prompt injection
+## 8.9 Menaces au‑delà du prompt injection
 
 Le prompt injection n’est qu’une partie du risque. D’autres menaces structurelles doivent être prises en compte :
 
@@ -204,7 +204,7 @@ Le prompt injection n’est qu’une partie du risque. D’autres menaces struct
 
 ---
 
-## 8.11 Red teaming et tests adversariaux
+## 8.10 Red teaming et tests adversariaux
 
 Le pipeline doit être testé **contre ses propres failles** :  
 - Injection de prompts.  
@@ -218,16 +218,20 @@ Le red teaming est une assurance-vie : on découvre les failles avant les attaqu
 
 ---
 
-## 8.12 Illustrations concrètes
+## 8.11 Illustrations concrètes
 
 - **Samsung (2023)** → fuite de code interne via ChatGPT → interdiction interne.  
 - **Avocats US (2023)** → ChatGPT a inventé des jurisprudences inexistantes → sanctions disciplinaires.  
 
 Morale : sans gouvernance, une erreur devient un scandale.  
 
+Sources :
+- [TechCrunch : Samsung bans ChatGPT after employees leaked sensitive code](https://techcrunch.com/2023/05/02/samsung-bans-chatgpt-after-employees-leaked-sensitive-code/)
+- [CNBC : US lawyers sanctioned after submitting fake citations from ChatGPT](https://www.cnbc.com/2023/06/22/lawyers-sanctioned-after-citing-fake-cases-made-up-by-chatgpt.html)
+
 ---
 
-## 8.13 Schéma global sécurité & gouvernance
+## 8.12 Schéma global sécurité & gouvernance
 
 <Mermaid
   chart={`
@@ -248,7 +252,7 @@ flowchart TB
 
 ---
 
-## 8.14 Tableau récapitulatif
+## 8.13 Tableau récapitulatif
 
 | Mécanisme         | Objectif                          | Exemple concret |
 |-------------------|-----------------------------------|-----------------|
@@ -262,7 +266,7 @@ flowchart TB
 
 ---
 
-## 8.15 Conclusion et transition
+## 8.14 Conclusion et transition
 
 La **sécurité**, la **gouvernance** et la **souveraineté** forment un **cercle vertueux** :  
 - **Sécurité** → protection immédiate.  

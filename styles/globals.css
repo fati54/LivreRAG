@@ -90,6 +90,49 @@ html[class~="dark"] .nextra-content blockquote {
   background: hsl(210, 30%, 15%);
 }
 
+/* Callouts */
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.callout--success {
+  border-color: rgba(13, 148, 136, 0.5);
+  background: rgba(13, 148, 136, 0.08);
+}
+
+.callout--warning {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.callout--danger {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+html[class~="dark"] .callout {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+html[class~="dark"] .callout--success {
+  border-color: rgba(45, 212, 191, 0.6);
+  background: rgba(13, 148, 136, 0.18);
+}
+
+html[class~="dark"] .callout--warning {
+  border-color: rgba(251, 191, 36, 0.6);
+  background: rgba(245, 158, 11, 0.15);
+}
+
+html[class~="dark"] .callout--danger {
+  border-color: rgba(248, 113, 113, 0.6);
+  background: rgba(239, 68, 68, 0.15);
+}
+
 /* Tables */
 .nextra-content table {
   border-collapse: collapse;

@@ -3,7 +3,7 @@
 ### Manifeste et Guide Technique
 
 **Fatima-Ezzahra Bouzidi Idrissi**  
-2025 – Première édition
+2025 - Première édition
 
 ---
 

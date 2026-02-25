@@ -9,8 +9,8 @@ import Comments from '../components/Comments'
 
 Jusqu’ici, nous avons défini :
 
-* les **limites** du LLM et du RAG naïf (Ch1–3),
-* les **fondations philosophiques** (Ch4–5),
+* les **limites** du LLM et du RAG naïf (Ch1-3),
+* les **fondations philosophiques** (Ch4-5),
 * l’**anatomie minimale** (Ch6),
 * et les **garanties de sécurité et gouvernance** (Ch8).
 
@@ -290,6 +290,8 @@ flowchart TB
 `}
 />
 
+Lecture : la récupération s'enrichit au fil des extensions jusqu'à la réponse finale validée.
+
 ---
 
 ## Conclusion du chapitre
@@ -303,123 +305,9 @@ Ces extensions transforment le pipeline :
 
 Ensemble, elles créent un pipeline **plus qu’un outil** : un système **évolutif, critique, souverain et antifragile**.
 
-Le chapitre suivant (10) montrera comment ces concepts s’appliquent **dans des cas d’usage concrets** : santé, droit, support client.
+Résumé rapide : ces extensions ajoutent historique, hiérarchisation mémoire, vérification et gouvernance.
 
-
-
-# 📌 Synthèse visuelle : Extensions originales du pipeline RAG
-
----
-
-## 🕰️ Time-travel retrieval
-
-**But** : retrouver la connaissance à une époque donnée.
-
-* En droit → état d’une loi en 2018.
-* En santé → comparer protocoles 2020 vs 2024.
-* Implémentation → métadonnées temporelles + requêtes historiques.
-
-<Mermaid
-  chart={`
-flowchart LR
-  Q["Question"] --> T["Retrieval temporel"]
-  T --> R["Résultat adapté à l'année demandée"]
-`}/>
-
-Lecture : la requête est évaluée dans un contexte temporel pour récupérer la version pertinente au bon moment.
-
----
-
-## 🏛️ Mémoire pyramidale
-
-**But** : organiser la mémoire selon sa durée de vie.
-
-* **Courte** (cache session) : contexte immédiat.
-* **Moyenne** (session/projet) : historique ciblé.
-* **Longue** (archive/KB) : savoir durable.
-
-<Mermaid
-  chart={`
-flowchart TB
-  C["Mémoire courte\ncache session"] --> M["Mémoire moyenne\nsession ou projet"]
-  M --> L["Mémoire longue\narchive ou base durable"]
-`}/>
-
-Lecture : l’information passe de la mémoire courte vers des couches plus stables et durables.
-
----
-
-## 🧑‍⚖️ Critic LLM
-
-**But** : un modèle critique la sortie du modèle principal.
-
-* Vérifie cohérence et sources.
-* Rejette ou reformule en cas d’erreur.
-* Exemples → médecine (guidelines), banque (chiffres exacts).
-
-<Mermaid
-  chart={`
-flowchart LR
-  L["LLM principal"] --> R["Réponse"]
-  R --> C["Critic LLM"]
-  C --> V["Validation ou correction"]
-`}/>
-
-Lecture : un second modèle vérifie la réponse avant qu’elle ne soit exposée.
-
----
-
-## 🛡️ Gouverneur de risque intelligent
-
-**But** : surveiller et réguler dynamiquement les sorties.
-
-* Filtre PII, fact-check, jailbreak defense.
-* Détection de biais, signaux faibles.
-* Escalade vers humain si doute.
-
-<Mermaid
-  chart={`
-flowchart LR
-  R["Réponse"] --> G["Gouverneur de risque"]
-  G --> V["Validée"]
-  G --> B["Bloquée"]
-  G --> E["Escaladée"]
-`}/>
-
-Lecture : le gouverneur applique les politiques et décide si la réponse est publiée, bloquée ou revue par un humain.
-
----
-
-## 🧬 Vision globale
-
-<Mermaid
-  chart={`
-flowchart TB
-  T["Time-travel retrieval"] --> M["Mémoire pyramidale"]
-  M --> G["Génération (LLM)"]
-  G --> C["Critic LLM"]
-  C --> R["Gouverneur de risque"]
-  R --> A["Réponse antifragile"]
-`}/>
-
-Lecture : les extensions s’enchaînent pour produire une réponse plus sûre, plus contextualisée et plus fiable.
-
----
-
-## 🎯 Message-clé
-
-Ces **extensions** transforment le pipeline en un système **vivant et évolutif** :
-
-* 🌐 **Historique** (time-travel)
-* 🗂️ **Hiérarchisé** (mémoire pyramidale)
-* 🔍 **Vérifié** (critic LLM)
-* 🛡️ **Sécurisé & gouverné** (risk governor)
-
-Résultat : un **RAG antifragile** qui **apprend des erreurs**, s’adapte, et inspire confiance.
-
-
-Le **Chapitre 10 présente des cas concrets. : Cas d’usage emblématiques**.
-Ce chapitre a pour but de **montrer la valeur concrète** du pipeline modulaire et antifragile dans des contextes critiques : santé, droit, support client.
+Le chapitre suivant (10) montre comment ces concepts s’appliquent dans des cas d’usage concrets : santé, droit, support client.
 
 ---
 

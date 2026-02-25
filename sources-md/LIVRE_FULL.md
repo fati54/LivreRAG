@@ -3,7 +3,7 @@
 ### Manifeste et Guide Technique
 
 **Fatima-Ezzahra Bouzidi Idrissi**  
-2025 – Première édition
+2025 - Première édition
 
 ---
 
@@ -672,7 +672,7 @@ Le prochain chapitre détaillera l’**architecture concrète** et ses analogies
 Les chapitres précédents ont montré :  
 - les limites du LLM seul (Chapitre 1),  
 - le mirage d’un RAG naïf (Chapitre 2),  
-- et la comparaison des approches actuelles (Chapitre 3–4).  
+- et la comparaison des approches actuelles (Chapitre 3-4).  
 
 Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
 
@@ -1506,8 +1506,8 @@ Le prochain chapitre (Chapitre 9) explorera les **extensions possibles du pipeli
 
 Jusqu’ici, nous avons défini :
 
-* les **limites** du LLM et du RAG naïf (Ch1–3),
-* les **fondations philosophiques** (Ch4–5),
+* les **limites** du LLM et du RAG naïf (Ch1-3),
+* les **fondations philosophiques** (Ch4-5),
 * l’**anatomie minimale** (Ch6),
 * et les **garanties de sécurité et gouvernance** (Ch8).
 
@@ -2615,7 +2615,7 @@ Utilisateur / Systèmes → [ Entrées ]
 ```text
 [ Candidats (K1 + K2) ]
     │
-    ├─► Normalisation des scores (0–1)
+    ├─► Normalisation des scores (0-1)
     ├─► Re-ranking (cross-encoder)
     └─► Diversification (MMR)
     │
@@ -2710,7 +2710,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ### C.3 Fusion multimodale
 - [ ] Index séparés par modalité  
-- [ ] Scores normalisés (0–1)  
+- [ ] Scores normalisés (0-1)  
 - [ ] Re-ranking validé (tests offline)  
 - [ ] Fallback si modalité indisponible  
 

@@ -392,7 +392,7 @@ Utilisateur / Systèmes → [ Entrées ]
 ```text
 [ Candidats (K1 + K2) ]
     │
-    ├─► Normalisation des scores (0–1)
+    ├─► Normalisation des scores (0-1)
     ├─► Re-ranking (cross-encoder)
     └─► Diversification (MMR)
     │
@@ -487,7 +487,7 @@ Utilisateur / Systèmes → [ Entrées ]
 
 ### C.3 Fusion multimodale
 - [ ] Index séparés par modalité  
-- [ ] Scores normalisés (0–1)  
+- [ ] Scores normalisés (0-1)  
 - [ ] Re-ranking validé (tests offline)  
 - [ ] Fallback si modalité indisponible  
 
@@ -666,3 +666,5 @@ observability:
 Ces annexes ne sont pas figées : c’est un **kit évolutif** qui accompagne le manifeste.  
 Elles visent un double objectif : **pragmatisme opérationnel** et **ouverture communautaire**.  
 Améliore-les, adapte-les, partage tes retours : pour des pipelines **robustes, souverains et antifragiles**.
+
+Pour lire un schéma : repérez d'abord les blocs (sources, ingestion, retrieval, génération), puis suivez les flèches pour comprendre l'ordre des étapes. Les checklists sont là pour valider chaque maillon du pipeline et les templates servent de point de départ prêt à l'emploi.

@@ -6,8 +6,8 @@
 
 Jusqu’ici, nous avons défini :
 
-* les **limites** du LLM et du RAG naïf (Ch1–3),
-* les **fondations philosophiques** (Ch4–5),
+* les **limites** du LLM et du RAG naïf (Ch1-3),
+* les **fondations philosophiques** (Ch4-5),
 * l’**anatomie minimale** (Ch6),
 * et les **garanties de sécurité et gouvernance** (Ch8).
 

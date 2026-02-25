@@ -7,7 +7,7 @@
 Les chapitres précédents ont montré :  
 - les limites du LLM seul (Chapitre 1),  
 - le mirage d’un RAG naïf (Chapitre 2),  
-- et la comparaison des approches actuelles (Chapitre 3–4).  
+- et la comparaison des approches actuelles (Chapitre 3-4).  
 
 Ce chapitre met en pratique les quatre principes fondateurs (modularité, agnosticité, configurabilité, antifragilité) en les traduisant dans une **architecture concrète**.
 
